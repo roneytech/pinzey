@@ -1,1 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="PictureShare1.AlbumService" CodeBehind="AlbumService.svc.cs" %>
