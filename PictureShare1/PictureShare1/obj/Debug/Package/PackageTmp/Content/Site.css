@@ -1,0 +1,88 @@
+﻿/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* ----- Header ----- */
+
+header { position: fixed; top: 0; width: 100%; z-index: 1; }
+#logo {
+  color: #fff;
+  position: absolute;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  top: 21px; left: 0;
+}
+#logo strong { display: none; }
+#logo:before { font-size: 50px; padding-left: 24px; }
+.gnav { float: right; display: inline-block; margin: 0; padding: 0; }
+.gnav li { list-style: none outside none; margin: 7px 0 0 7px; float: left; }
+.gnav li a {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 7px 28px 12px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="select"] {
+    max-width: 280px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .jumbotron {
+        margin-top: 20px;
+    }
+
+    .body-content {
+        padding: 0;
+    }
+}
+
+
+form { color: #7e7e7e; }
+input {
+  color: #7e7e7e;
+  padding: 14px 21px;
+  width: 100%;
+  border: 1px solid #a7a9ac;
+  border-radius: 28px;
+  font-size: 16px;
+  margin-bottom: 21px;
+}
+input[type="submit"] {
+  color: #fff;
+  border: none;
+  padding: 14px 0;
+  width: 100%;
+  border-radius: 28px;
+  background: #5fc3b0;
+  position: relative;
+}
+input[type="submit"]:after {
+  position: absolute: content: "";
+  right: -14px; top: 14px;
+}
+input[type="submit"]:hover:after { right: 21px; }
+.forgot { font-style: italic; color: #7f7f7f; font-size: 12px; }
+
