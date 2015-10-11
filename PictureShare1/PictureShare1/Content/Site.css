@@ -215,12 +215,13 @@ input {
 }
 input:focus { border: 1px solid #5fc3b0; }
 input[type="submit"] {
-  color: #fff;
+  color: #A05366;
+  display: inline-block;
   border: none;
-  padding: 14px 0;
-  width: 100%;
+  width: auto;
+  padding: 14px 42px;
   border-radius: 28px;
-  background: #5fc3b0;
+  background: #fff;
   position: relative;
 }
 input[type="submit"]:after {
@@ -228,6 +229,8 @@ input[type="submit"]:after {
   right: -14px; top: 14px;
 }
 input[type="submit"]:hover:after { right: 21px; }
+input[type="submit"]:focus,
+input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
 .forgot { font-style: italic; color: #7f7f7f; font-size: 12px; }
 
 #existing_album,
