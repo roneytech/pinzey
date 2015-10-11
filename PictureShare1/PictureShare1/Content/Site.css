@@ -27,15 +27,17 @@
 }
 @font-face {
   font-family: 'pinzey';
-  src:url('../fonts/pinzey.eot?yo3at3');
-  src:url('../fonts/pinzey.eot?yo3at3#iefix') format('embedded-opentype'),
-    url('../fonts/pinzey.ttf?yo3at3') format('truetype'),
-    url('../fonts/pinzey.woff?yo3at3') format('woff'),
-    url('../fonts/pinzey.svg?yo3at3#pinzey') format('svg');
+  src:url('../fonts/pinzey.eot?f1woeo');
+  src:url('../fonts/pinzey.eot?f1woeo#iefix') format('embedded-opentype'),
+    url('../fonts/pinzey.ttf?f1woeo') format('truetype'),
+    url('../fonts/pinzey.woff?f1woeo') format('woff'),
+    url('../fonts/pinzey.svg?f1woeo#pinzey') format('svg');
   font-weight: normal;
   font-style: normal;
 }
-[class^="icon-"], [class*=" icon-"], #logo:before, #existing_album:after, #new_album:after {
+[class^="icon-"], [class*=" icon-"], #logo:before, #existing_album:after, #new_album:after, .rfeFileExtension.folder:before, body .RadTreeView_Default .rtPlus:before, body .RadTreeView_Default .rtMinus:before, .RadFileExplorer .RadToolBar .icnUpload .rtbText:before,
+.RadFileExplorer .RadToolBar .icnDelete .rtbText:before, .RadFileExplorer .RadToolBar .icnNewFolder .rtbText:before, .RadFileExplorer .RadToolBar .icnGridView .rtbText:before, .RadFileExplorer .RadToolBar .icnThumbnailsView .rtbText:before, .RadFileExplorer .RadToolBar .icnRefresh .rtbText:before, .RadFileExplorer .RadToolBar .icnOpen .rtbText:before, .RadFileExplorer .RadToolBar .icnNewFolder .rtbText:before, .RadFileExplorer .RadToolBar .icnForward .rtbText:before, .RadFileExplorer .RadToolBar .icnBack .rtbText:before,
+.RadWindow .rwCloseButton:before {
   font-family: 'pinzey';
   speak: none;
   font-style: normal;
@@ -47,10 +49,13 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.RadFileExplorer .RadToolBar .icnRefresh .rtbText:before,
 .icon-replay:before { content: "\e800"; }
 #existing_album:after,
 #new_album:after,
+.RadFileExplorer .RadToolBar .icnForward .rtbText:before,
 .icon-arrow-right:before { content: "\e82d"; }
+.RadFileExplorer .RadToolBar .icnBack .rtbText:before,
 .icon-arrow-left:before { content: "\e82e"; }
 .icon-arrow-down:before { content: "\e82f"; }
 .icon-arrow-up:before { content: "\e830"; }
@@ -59,11 +64,14 @@
 .icon-video:before { content: "\e803"; }
 .icon-image:before { content: "\e804"; }
 .icon-camera:before { content: "\e805"; }
+.RadTreeView_Default .rtPlus:before,
 .icon-plus:before { content: "\e806"; }
 .icon-file-add2:before { content: "\e807"; }
-.icon-folder:before { content: "\e808"; }
+.rfeFileExtension.folder:before,
+.icon-folder:before { content: "\e837"; }
 .icon-cloud-upload:before { content: "\e809"; }
 .icon-mail:before { content: "\e80a"; }
+.RadWindow .rwCloseButton:before,
 .icon-cross:before { content: "\e80b"; }
 .icon-menu:before { content: "\e80c"; }
 .icon-search:before { content: "\e80d"; }
@@ -78,6 +86,7 @@
 .icon-add-user:before { content: "\e816"; }
 .icon-remove-user:before { content: "\e817"; }
 .icon-users:before { content: "\e818"; }
+.RadFileExplorer .RadToolBar .icnDelete .rtbText:before,
 .icon-trashcan:before { content: "\e819"; }
 #logo:before,
 .icon-pinzey:before { content: "\e81a"; }
@@ -92,6 +101,7 @@
 .icon-stop:before { content: "\e823"; }
 .icon-pause:before { content: "\e824"; }
 .icon-play:before { content: "\e825"; }
+.RadFileExplorer .RadToolBar .icnUpload .rtbText:before,
 .icon-folder-upload:before { content: "\e826"; }
 .icon-reddit:before { content: "\e827"; }
 .icon-blogger:before { content: "\e828"; }
@@ -99,6 +109,19 @@
 .icon-youtube:before { content: "\e82a"; }
 .icon-instagram:before { content: "\e82b"; }
 .icon-google-plus:before { content: "\e82c"; }
+.RadFileExplorer .RadToolBar .icnThumbnailsView .rtbText:before,
+.icon-grid:before { content: "\e807"; font-size: 21px; }
+.icon-share:before { content: "\e808"; }
+.icon-minus:before { content: "\e831"; }
+.RadFileExplorer .RadToolBar .icnGridView .rtbText:before,
+.icon-list:before { content: "\e832"; }
+.icon-folder-download:before { content: "\e833"; }
+body .RadTreeView_Default .rtMinus:before,
+.icon-folder-minus:before { content: "\e834"; }
+.RadFileExplorer .RadToolBar .icnNewFolder .rtbText:before,
+.icon-folder-plus:before { content: "\e835"; }
+.RadFileExplorer .RadToolBar .icnOpen .rtbText:before,
+.icon-folder-open:before { content: "\e836"; }
 
 /* ----- Global ----- */
 
@@ -111,7 +134,19 @@ a {
   -ms-transition: all 0.4s ease-in-out;
 }
 a:hover, a:active, a:focus, *:focus { text-decoration: none; outline: 0; }
-body { position: relative; font-family: 'Open Sans', sans-serif; min-height: 100vh; }
+body {
+  position: relative;
+  font-family: 'Open Sans', sans-serif;
+  min-height: 100vh;
+  background: #f0586f;
+  background: -moz-linear-gradient(45deg,  #f0586f 0%, #452f41 100%);
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#f0586f), color-stop(100%,#452f41));
+  background: -webkit-linear-gradient(45deg,  #f0586f 0%,#452f41 100%);
+  background: -o-linear-gradient(45deg,  #f0586f 0%,#452f41 100%);
+  background: -ms-linear-gradient(45deg,  #f0586f 0%,#452f41 100%);
+  background: linear-gradient(45deg,  #f0586f 0%,#452f41 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0586f', endColorstr='#452f41',GradientType=1 );
+}
 a,
 button,
 .button,
@@ -193,7 +228,13 @@ body .container.body-content { width: 100%; max-width: 100%; }
 h1,
 h2,
 h3,
-h4 { font-family: 'Open Sans', sans-serif; font-weight: normal; margin-bottom: 21px; display: inline-block; }
+h4 {
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: normal;
+  margin-bottom: 21px;
+  display: inline-block;
+}
 h2 { font-size: 40px; }
 h4 { font-weight: normal; font-size: 21px; }
 
@@ -214,6 +255,7 @@ input {
   -o-transition: all 0.4s ease-in-out;
 }
 input:focus { border: 1px solid #5fc3b0; }
+input[type="checkbox"], input[type="radio"] { float: left; width: auto; margin-top: 0; margin-right: 6px; }
 input[type="submit"] {
   color: #A05366;
   display: inline-block;
@@ -284,4 +326,118 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
   clear: both;
   width: 100%; text-align: center;
   font-weight: bold; color: rgba(0, 0, 0, 0.4); font-size: 21px;
+}
+
+/* ----- File Mananger ----- */
+
+body .RadFileExplorer {
+  display: block;
+  margin: 0 auto;
+  background: #fff;
+  border: none;
+  clear: both;
+  width: 60% !important;
+}
+.RadToolBar_Default { font-family: 'Open Sans', sans-serif; background-color: transparent; }
+body .RadToolBar_Default .rtbOuter { background: #F9FAFC; background-image: none; box-shadow: none; border: none; padding: 0; }
+body .RadSplitter .rspPane {  }
+body .RadSplitter .rspResizeBar { border-left: none; width: 1px; }
+body .RadSplitter .rspResizeBar input { display: none; }
+body .rfeFileExtension.folder,
+body .RadTreeView_Default .rtPlus,
+body .RadTreeView_Default .rtMinus,
+body .RadFileExplorer .RadToolBar .icnUpload .rtbText,
+body .RadFileExplorer .RadToolBar .icnDelete .rtbText,
+body .RadFileExplorer .RadToolBar .icnNewFolder .rtbText,
+body .RadFileExplorer .RadToolBar .icnGridView .rtbText,
+body .RadToolBar_Default .rtbSplBtnExpanded .rtbWrap,
+body .RadToolBar_Default .rtbSplBtnExpanded .rtbOut,
+body .RadToolBar_Default .rtbSplBtnExpanded .rtbMid,
+body .RadToolBar_Default .rtbSplBtnExpanded .rtbIn,
+body .RadToolBar_Default .rtbDropDownExpanded .rtbWrap,
+body .RadToolBar_Default .rtbDropDownExpanded .rtbOut,
+body .RadToolBar_Default .rtbDropDownExpanded .rtbMid,
+body .RadToolBar_Default .rtbDropDownExpanded .rtbIn,
+body .RadToolBar_Default .rtbChecked .rtbWrap,
+body .RadToolBar_Default .rtbChecked .rtbOut,
+body .RadToolBar_Default .rtbChecked .rtbMid,
+body .RadToolBar_Default .rtbChecked .rtbIn,
+body .RadFileExplorer .RadToolBar .icnRefresh .rtbText,
+body .RadFileExplorer .RadToolBar .icnOpen .rtbText,
+body .RadFileExplorer .RadToolBar .icnThumbnailsView .rtbText,
+body .RadFileExplorer .RadToolBar .icnForward .rtbText,
+body .RadFileExplorer .RadToolBar .icnBack .rtbText,
+body .RadButton_Default.rbSkinnedButton,
+body .RadSplitter_Default .rspResizeBar { font-size: 14px; background: none; padding: 0 !important; }
+body .RadTreeView_Default .rtPlus,
+body .RadTreeView_Default .rtMinus { width: 14px; height: 14px; }
+.RadFileExplorer .RadToolBar .icnUpload .rtbText:before { margin-right: 4px; }
+body .RadWindow .rwIcon { display: none; }
+
+body .RadToolBar_Default .rtbItemHovered * { background: none !important; border: none !important; }
+
+/* - File Upload - */
+body .rfeUploadContainer { margin: 5%; width: 90%; }
+body .RadWindow .rwTitlebarControls { color: #fff; background: #A05366; }
+body .RadWindow .rwTitlebarControls td { padding: 10px; }
+body .RadWindow_Default .rwTable .rwTitlebarControls em { color: #fff; font-size: 18px; font-weight: normal; padding: 4px 0 0; }
+body .RadWindow .rwTitlebarControls td:first-child,
+body .RadWindow_Default .rwTopResize,
+body .RadWindow .rwCorner,
+body .RadWindow_Default .rwFooterCenter { display: none; }
+body .RadWindow .rwCloseButton,
+body .RadWindow_Default .rwTitlebar,
+body .RadWindow .rwControlButtons a { background-image: none; }
+body .RadWindow .rwCloseButton { color: #fff; text-indent: 0 !important; cursor: pointer !important; }
+body .RadWindow .rwCloseButton:before {
+  display: inline-block;
+  width: 21px; height: 21px;
+  font-size: 21px;
+
+}
+body .RadButton .rbDecorated,
+.RadUpload_Default .ruButton {
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  background: #A05366;
+  background-image: none;
+  height: auto;
+  width: auto;
+  border-radius: 3px;
+  padding: 7px 21px;
+}
+
+
+/* ----- Media Queries ----- */
+
+@media (max-width: 940px) {
+  .left h2,
+  .right h2 { max-width: 80%; }
+  #existing_album,
+  #new_album { width: 70%; left: 5%; }
+  #existing_album input,
+  #new_album input { width: 100%; margin-left: -21px; }
+  #existing_album:after,
+  #new_album:after { right: 40px; }
+  #existing_album:hover:after,
+  #new_album:hover:after { right: 32px; }
+}
+@media (max-width: 655px) {
+  #existing_album,
+  #new_album { left: 7%; }
+}
+@media (max-width: 500px) {
+  .left,
+  .right { width: 100%; float: none; clear: both; }
+  #top:hover .left,
+  #top:hover .right,
+  #top:hover .left:hover,
+  #top:hover .right:hover { width: 100%; }
+  .left { height: 60vh; }
+  .right { height: 40vh; }
+  .left h2 { margin-top: 20vh; }
+  .right h2 { margin-top: 10vh; }
+  .gnav li a { padding: 7px 14px 12px; }
+  .modal { padding: 60px; margin-left: -160px; }
+  #existing_album, #new_album { left: 5%; }
 }
