@@ -52,13 +52,6 @@
           </div>
           <div id="tabs-2">
             <h4>Sign Up</h4>
-            <form action="#" id="signup">
-                <input type="text" name="username" id="username" placeholder="User Name" />
-                <input type="email" name="email" id="email" placeholder="Email Address" />
-                <input type="password" name="password" id="password" placeholder="Password" />
-                <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" />
-                <input type="submit" value="Let's Go!" />
-            </form>  
           </div>
           <ul>
             <li><a href="#tabs-1">Login</a></li>

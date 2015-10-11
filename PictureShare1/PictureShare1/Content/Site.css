@@ -103,8 +103,14 @@
 /* ----- Global ----- */
 
 * { padding: 0; margin: 0; }
-a { text-decoration: none; }
-a:hover, a:active, a:focus, *:focus { outline: 0; }
+a {
+  text-decoration: none;
+  transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+}
+a:hover, a:active, a:focus, *:focus { text-decoration: none; outline: 0; }
 body { position: relative; font-family: 'Open Sans', sans-serif; min-height: 100vh; }
 a,
 button,
@@ -127,39 +133,53 @@ header { position: fixed; top: 0; width: 100%; z-index: 1; }
 #logo:before { font-size: 50px; padding-left: 24px; }
 .gnav { float: right; display: inline-block; margin: 0; padding: 0; }
 .gnav li { list-style: none outside none; margin: 0 0 0 7px; float: left; }
-body .gnav li a {
-  color: #fff !important;
-  background: rgba(0, 0, 0, 0.3);
+body .gnav li a,
+body .navbar-inverse .navbar-nav > li > a {
+  color: rgba(255, 255, 255, 0.8);
   padding: 7px 28px 12px;
 }
+body .navbar-inverse .navbar-nav > li:last-child > a { padding-right: none; }
 
 /* ----- Top ----- */
 
 body .container.body-content { width: 100%; max-width: 100%; }
 #top { color: #fff; position: relative; width: 100%; height: 100vh; }
-.left {color: #DDE6E7;
+.left {
+  color: rgba(255, 255, 255, 0.8);
   text-align: center;
   width: 50%; height: 100%;
   float: left;
+  background: #f99f2a; /* fallback for old browsers */
+  background: -moz-linear-gradient(45deg,  #f99f2a 0%, #f0586f 100%);
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#f99f2a), color-stop(100%,#f0586f));
+  background: -webkit-linear-gradient(45deg,  #f99f2a 0%,#f0586f 100%);
+  background: -o-linear-gradient(45deg,  #f99f2a 0%,#f0586f 100%);
+  background: -ms-linear-gradient(45deg,  #f99f2a 0%,#f0586f 100%);
+  background: linear-gradient(45deg,  #f99f2a 0%,#f0586f 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f99f2a', endColorstr='#f0586f',GradientType=1 );
   transition: all 0.4s ease-in-out;
     -webkit-transition: all 0.4s ease-in-out;
     -o-transition: all 0.4s ease-in-out;
     -ms-transition: all 0.4s ease-in-out;
 }
 .right {
-  color: #eddab6;
+  color: rgba(255, 255, 255, 0.8);
   text-align: center;
   width: 50%; height: 100%;
   float: left;
+  background: #a05366; /* fallback for old browsers */
+  background: -moz-linear-gradient(45deg,  #a05366 0%, #452f41 100%);
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#a05366), color-stop(100%,#452f41));
+  background: -webkit-linear-gradient(45deg,  #a05366 0%,#452f41 100%);
+  background: -o-linear-gradient(45deg,  #a05366 0%,#452f41 100%);
+  background: -ms-linear-gradient(45deg,  #a05366 0%,#452f41 100%);
+  background: linear-gradient(45deg,  #a05366 0%,#452f41 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a05366', endColorstr='#452f41',GradientType=1 );
   transition: all 0.4s ease-in-out;
     -webkit-transition: all 0.4s ease-in-out;
     -o-transition: all 0.4s ease-in-out;
     -ms-transition: all 0.4s ease-in-out;
 }
-/*.left { background: #5fc3b0; }*/
-.left { background: #558188; }
-/*.right { background: #ef5352; }E05857 */
-.right { background: #E05857; }
 #top:hover .left,
 #top:hover .right { width: 30%; }
 #top:hover .left:hover,
@@ -213,10 +233,23 @@ input[type="submit"]:hover:after { right: 21px; }
 #existing_album,
 #new_album { position: relative; width: 50%; display: block; margin: 0 auto; }
 #existing_album input,
-#new_album input { position: absolute; left: 0; top: 0; width: 100%; border: none; }
+#new_album input {
+  color: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%;
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.8);
+}
+#top::-webkit-input-placeholder { color: rgba(255, 255, 255, 0.8); }
+#top:-moz-placeholder { color: rgba(255, 255, 255, 0.8); }
+#top::-moz-placeholder { color: rgba(255, 255, 255, 0.8); }
+#top:-ms-input-placeholder { color: rgba(255, 255, 255, 0.8); }
 #existing_album input[type="submit"],
 #new_album input[type="submit"] {
-  color: #7e7e7e;
+  color: rgba(255, 255, 255, 0.8);
   top: 0; right: 0; left: auto;
   width: auto;
   float: right;
@@ -227,7 +260,7 @@ input[type="submit"]:hover:after { right: 21px; }
 }
 #existing_album:after,
 #new_album:after {
-  color: #7e7e7e;
+  color: rgba(255, 255, 255, 0.8);
   position: absolute;
   top: 8px; right: 21px;
   font-size: 28px;
