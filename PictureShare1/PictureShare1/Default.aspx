@@ -42,17 +42,13 @@
                         <asp:Button runat="server" OnClick="LogIn" Text="Log in" CssClass="btn btn-default" ValidationGroup="Login" />
                     </div>
                 </div>
-            </div>
-            <p>
-                <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Register as a new user</asp:HyperLink>
-            </p>
-            <p></p>
-            <%-- Enable this once you have account confirmation enabled for password reset functionality
-                    <asp:HyperLink runat="server" ID="ForgotPasswordHyperLink" ViewStateMode="Disabled">Forgot your password?</asp:HyperLink>
-                    
+                <p>
+                    <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Register as a new user</asp:HyperLink>
                 </p>
-                <uc:openauthproviders runat="server" id="OpenAuthLogin" />
-            <a href="#" class="forgot">Forgot your password?</a>
+                <asp:HyperLink runat="server" ID="ForgotPasswordHyperLink" ViewStateMode="Disabled">Forgot your password?</asp:HyperLink>
+                    
+                <%--<uc:openauthproviders runat="server" id="OpenAuthLogin" />--%>
+                <a href="#" class="forgot">Forgot your password?</a>
           </div>
           <div id="tabs-2">
             <h4>Sign Up</h4>
