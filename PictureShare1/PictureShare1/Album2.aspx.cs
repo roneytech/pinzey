@@ -26,7 +26,7 @@ namespace PictureShare1
             userFolder = rootDir;
             albumPin = Request.QueryString["pin"];
             LabelAlbumPin.Text = albumPin;
-            LabelAlbumName.Text = album.GetAlbumName(albumPin);
+            
 
             if (!IsPostBack)
             {
@@ -40,17 +40,26 @@ namespace PictureShare1
                     if (!String.IsNullOrEmpty(albumPin))
                     {                
                         RadFileExplorerUser.InitialPath = Page.ResolveUrl(userFolder + albumPin);
+                        LabelAlbumName.Text = album.GetAlbumName(albumPin);
                     }
                 }
                 else
                 {
-                    userFolder += album.GetAlbumUserId(Request.QueryString["pin"]) + "/";
-                    RadFileExplorer RadFileExplorerAnon = (RadFileExplorer)LoginView1.FindControl("RadFileExplorerAnon");
-                    RadFileExplorerAnon.Configuration.SearchPatterns = new string[] { "*.jpg", "*.jpeg", "*.gif", "*.png" };
-                    RadFileExplorerAnon.Configuration.ViewPaths = new string[] { userFolder + albumPin };
-                    RadFileExplorerAnon.Configuration.UploadPaths = new string[] { userFolder + albumPin };
-                    RadFileExplorerAnon.Configuration.DeletePaths = new string[] { userFolder + albumPin };
-                    RadFileExplorerAnon.InitialPath = Page.ResolveUrl(userFolder + albumPin);
+                    if (!String.IsNullOrEmpty(albumPin))
+                    {
+                        userFolder += album.GetAlbumUserId(albumPin) + "/";
+                        RadFileExplorer RadFileExplorerAnon = (RadFileExplorer)LoginView1.FindControl("RadFileExplorerAnon");
+                        RadFileExplorerAnon.Configuration.SearchPatterns = new string[] { "*.jpg", "*.jpeg", "*.gif", "*.png" };
+                        RadFileExplorerAnon.Configuration.ViewPaths = new string[] { userFolder + albumPin };
+                        RadFileExplorerAnon.Configuration.UploadPaths = new string[] { userFolder + albumPin };
+                        RadFileExplorerAnon.Configuration.DeletePaths = new string[] { userFolder + albumPin };
+                        RadFileExplorerAnon.InitialPath = Page.ResolveUrl(userFolder + albumPin);
+                        LabelAlbumName.Text = album.GetAlbumName(albumPin);
+                    }
+                    else
+                    {
+                        Response.Redirect("~/Default.aspx");
+                    }
                 }
             }
         }
