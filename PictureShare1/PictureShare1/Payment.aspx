@@ -2,16 +2,15 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="payment">
-        <br />
-        <br />
+        <h3>Payment Details</h3>
         <p>
-        <asp:DropDownList ID="DropDownListOption" runat="server">
+        <span class="select"><asp:DropDownList ID="DropDownListOption" runat="server">
             <asp:ListItem Text="$2/Month for 12 Months = $24.00" Value="24"></asp:ListItem>
-        </asp:DropDownList>
-        <asp:TextBox ID="TextBoxCardNumber" Text="4242424242424242" runat="server"></asp:TextBox>
-        <asp:TextBox ID="TextBoxExpirationYear" Text="2022" runat="server"></asp:TextBox>
-        <asp:TextBox ID="TextBoxExpirationMonth" Text="12" runat="server"></asp:TextBox>
-        <asp:TextBox ID="TextBoxCvc" Text="123" runat="server"></asp:TextBox>
+        </asp:DropDownList></span>
+        <asp:TextBox ID="TextBoxCardNumber" Text="4242424242424242" runat="server" placeholder="Credit Card Number"></asp:TextBox>
+        <asp:TextBox ID="TextBoxExpirationYear" Text="2022" runat="server" placeholder="Exp Year"></asp:TextBox>
+        <asp:TextBox ID="TextBoxExpirationMonth" Text="12" runat="server" placeholder="Exp Month"></asp:TextBox>
+        <asp:TextBox ID="TextBoxCvc" Text="123" runat="server" placeholder="CVS"></asp:TextBox>
         <asp:Button ID="ButtonSubmit" Text="Submit Credit Card Details" runat="server" OnClick="ButtonSubmit_Click" />
         <br />
         <asp:Label ID="LabelTokenId" runat="server"></asp:Label>
