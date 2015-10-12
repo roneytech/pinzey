@@ -40,7 +40,9 @@
 .RadWindow .rwCloseButton:before,
 .RadAsyncUpload span.ruFileWrap:after,
 .RadUpload .ruUploadSuccess:before,
-.payment #MainContent_ButtonSubmit:after {
+.payment #MainContent_ButtonSubmit:after,
+.RadFileExplorer .jpg:before, .RadFileExplorer .jpeg:before, .RadFileExplorer .jpe:before,
+.RadFileExplorer .rfeThumbnailView .rfeFile .rfeFileIcon:before {
   font-family: 'pinzey';
   speak: none;
   font-style: normal;
@@ -66,6 +68,7 @@
 .icon-file-add:before { content: "\e801"; }
 .icon-file:before { content: "\e802"; }
 .icon-video:before { content: "\e803"; }
+.RadFileExplorer .jpg:before, .RadFileExplorer .jpeg:before, .RadFileExplorer .jpe:before,
 .icon-image:before { content: "\e804"; }
 .icon-camera:before { content: "\e805"; }
 .icon-plus:before { content: "\e806"; }
@@ -114,7 +117,7 @@
 .icon-instagram:before { content: "\e82b"; }
 .icon-google-plus:before { content: "\e82c"; }
 .RadFileExplorer .RadToolBar .icnThumbnailsView .rtbText:before,
-.icon-grid:before { content: "\e807"; font-size: 21px; }
+.icon-grid:before { content: "\e807"; font-size: 34px; }
 .icon-share:before { content: "\e808"; }
 .icon-minus:before { content: "\e831"; }
 .RadFileExplorer .RadToolBar .icnGridView .rtbText:before,
@@ -126,6 +129,7 @@ body .RadTreeView_Default .rtMinus:before,
 .RadTreeView_Default .rtPlus:before,
 .icon-folder-plus:before { content: "\e835"; }
 .RadFileExplorer .RadToolBar .icnOpen .rtbText:before,
+.RadFileExplorer .rfeThumbnailView .rfeFile .rfeFileIcon:before,
 .icon-folder-open:before { content: "\e836"; }
 .RadUpload .ruUploadSuccess:before,
 .icon-check:before { content: "\e838"; }
@@ -334,13 +338,17 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
 #new_album:hover:after { right: 14px; }
 .left .error,
 .right .error,
-#MainContent_LabelLoginError {
+#MainContent_LabelLoginError,
+#MainContent_LabelErrorMessage {
   display: inline-block;
   clear: both;
   width: 100%; text-align: center;
-  font-weight: bold; color: rgba(0, 0, 0, 0.4); font-size: 21px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.4) !important;
+  font-size: 21px;
 }
-
+#MainContent_LabelErrorMessage,
+.error h3 { margin-top: 70px; }
 
 /* ----- Account Settings ----- */
 
@@ -399,9 +407,12 @@ body dt { font-weight: normal; margin-bottom: 18px; text-transform: uppercase; }
   font-size: 24px;
   border-bottom: none;
   text-align: right;
-  padding-right: 0;
+  padding: 0 0 0 21px;
 }
-.set_password input[type="submit"]:hover { background: transparent; }
+.set_password input[type="submit"]:hover { color: rgba(255, 255, 255, 0.6); background: transparent; }
+
+.manage_logins p { color: rgba(255, 255, 255, 0.8); }
+.manage_logins p a { color: #f99f2a; }
 
 
 /* ----- Payment Processing ----- */
@@ -496,13 +507,19 @@ body .RadFileExplorer .RadToolBar .icnThumbnailsView .rtbText,
 body .RadFileExplorer .RadToolBar .icnForward .rtbText,
 body .RadFileExplorer .RadToolBar .icnBack .rtbText,
 body .RadButton_Default.rbSkinnedButton,
-body .RadSplitter_Default .rspResizeBar { font-size: 14px; background: none; padding: 0 !important; }
+body .RadSplitter_Default .rspResizeBar,
+body .RadFileExplorer .jpg,
+body .RadFileExplorer .jpeg,
+body .RadFileExplorer .jpe,
+body .RadFileExplorer .rfeThumbnailView .rfeFile .rfeFileIcon { font-size: 14px; background: none; padding: 0 !important; }
 body .RadTreeView_Default .rtPlus,
-body .RadTreeView_Default .rtMinus { width: 14px; height: 14px; }
+body .RadTreeView_Default .rtMinus { margin-top: 0; width: 14px; height: 14px; }
 .RadFileExplorer .RadToolBar .icnUpload .rtbText:before { margin-right: 4px; }
 body .RadWindow .rwIcon { display: none; }
 
 body .RadToolBar_Default .rtbItemHovered * { background: none !important; border: none !important; }
+
+body .RadFileExplorer .rfeFileExtension:before { margin-right: 5px; }
 
 body .RadGrid_Default .rgMasterTable .rgSelectedCell,
 body .RadGrid_Default .rgSelectedRow { color: #444444; background: #E6E7E8; background-image: none; }
@@ -518,6 +535,10 @@ body .RadFileExplorer .RadToolBar .rtbInner { height: auto; min-height: 32px; pa
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f99f2a', endColorstr='#f0586f',GradientType=1 );
 }
 body .rtbItem span, body .rtbItem span:before { font-size: 24px; color: rgba(255, 255, 255, 0.8); }
+body .RadTreeView_Default .rtSelected .rtIn,
+body .RadGrid_Default .rgHeader,
+body .RadGrid .rgRow:nth-child(even) { color: inherit; background-color: #e5e5e5; border: none; background-image: none; }
+body .RadGrid_Default .rgHoveredRow { background: inherit; }
 
 /* - File Upload - */
 body .rfeUploadContainer { margin: 5%; width: 90%; }
@@ -561,6 +582,25 @@ body .RadUpload .ruFileWrap { overflow: visible !important; }
 body .rfeUploadContainer .RadUpload .ruInputs li:last-child span.ruFileWrap:after { display: none; }
 body .RadUpload .ruUploadSuccess { background-image: none; }
 .RadUpload .ruUploadSuccess:before { color: green; position: absolute; top: 5px; left: 0; }
+body .RadSplitter_Default *:before { color: #666; }
+
+body .RadFileExplorer .rfeThumbnailView .rlvI { width: 100px; }
+body .RadFileExplorer_Default .rfeThumbList .rfeSelectedLink,
+body .RadFileExplorer_Default .rfeThumbList .rfeSelectedLink:hover,
+body .RadFileExplorer_Default .rfeThumbList .rfeLink:hover,
+body .RadTreeView_Default .rtHover .rtIn { color: inherit; border: none; background-color: transparent; background-image: none; }
+body .RadFileExplorer .rfeThumbnailView .rfeFile,
+body .RadFileExplorer .rfeThumbnailView .rfeImageFile img { width: 100px; height: auto; max-height: 100px; }
+body .RadFileExplorer .rfeThumbnailView .rfeImageFile img { height: 100px; }
+body .RadFileExplorer .rfeThumbList { margin: 0; }
+body .RadFileExplorer .rfeThumbList a,
+body .RadFileExplorer .rfeThumbList a:hover { padding: 0; margin: 0; border: none; }
+body .RadFileExplorer .RadTreeView .rtHover .rtIn { padding: 1px 4px 0 3px!important; border: 1px solid transparent !important; }
+
+body .RadFileExplorer .rfeThumbnailView .rfeFile { min-width: 40px; min-height: 40px; }
+body .RadFileExplorer .rfeThumbnailView .rfeFile .rfeFileIcon { background-image: none !important; font-size: 40px; }
+
+body .RadWindow_Default img { width: 100%; height: auto; }
 
 
 /* ----- Media Queries ----- */
