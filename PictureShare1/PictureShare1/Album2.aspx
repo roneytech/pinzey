@@ -5,6 +5,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div>
         <h1> Pin: <asp:Label ID="LabelAlbumPin" runat="server" /></h1>
+        <br />
         <h1> Name: <asp:Label ID="LabelAlbumName" runat="server" /></h1>
         <asp:LoginView ID="LoginView1" runat="server">
             <LoggedInTemplate>

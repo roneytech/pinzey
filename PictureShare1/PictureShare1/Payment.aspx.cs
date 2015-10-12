@@ -23,7 +23,7 @@ namespace PictureShare1
                 TextBoxExpirationYear.Text,
                 TextBoxExpirationMonth.Text,
                 TextBoxCvc.Text);
-            if (chargeCard(LabelTokenId.Text))
+            if (chargeCard(LabelTokenId.Text, (int.Parse(DropDownListOption.SelectedValue)*100)))
             {
                 LabelChargeDetails.Text = "Charge sucessful!";
             }
@@ -41,14 +41,14 @@ namespace PictureShare1
                 Number = cardNumber,
                 ExpirationYear = expirationYear,
                 ExpirationMonth = expirationMonth,
-                AddressCountry = "US",                // optional
-                AddressLine1 = "24 Beef Flank St",    // optional
-                AddressLine2 = "Apt 24",              // optional
-                AddressCity = "Biggie Smalls",        // optional
-                AddressState = "NC",                  // optional
-                AddressZip = "27617",                 // optional
-                Name = "Joe Meatballs",               // optional
-                Cvc = cvc                       // optional
+                //AddressCountry = "US",                // optional
+                //AddressLine1 = "24 Beef Flank St",    // optional
+                //AddressLine2 = "Apt 24",              // optional
+                //AddressCity = "Biggie Smalls",        // optional
+                //AddressState = "NC",                  // optional
+                //AddressZip = "27617",                 // optional
+                //Name = "Joe Meatballs",               // optional
+                Cvc = cvc
             };
 
             var tokenService = new StripeTokenService();
@@ -56,12 +56,12 @@ namespace PictureShare1
             return stripeToken.Id;
         }
 
-        protected bool chargeCard(string tokenId)
+        protected bool chargeCard(string tokenId, int amount)
         {
             var pinzeyCharge = new StripeChargeCreateOptions();
 
             // always set these properties
-            pinzeyCharge.Amount = 5153;
+            pinzeyCharge.Amount = amount;
             pinzeyCharge.Currency = "usd";
 
             // set this if you want to
