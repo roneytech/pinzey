@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ionic.Zip, Version=1.9.6.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.9.6\lib\net20\Ionic.Zip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="IZ.WebFileManager, Version=2.8.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\IZ.WebFileManager.dll</HintPath>
@@ -191,6 +195,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
+    <Content Include="UserSettings.aspx" />
     <None Include="Properties\PublishProfiles\Local Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Payment.aspx" />
@@ -427,12 +432,20 @@
     <Compile Include="TestWebForm.aspx.designer.cs">
       <DependentUpon>TestWebForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserSetting.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserSettings.aspx.cs">
+      <DependentUpon>UserSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserSettings.aspx.designer.cs">
+      <DependentUpon>UserSettings.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

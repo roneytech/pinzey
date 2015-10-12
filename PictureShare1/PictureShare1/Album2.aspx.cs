@@ -20,6 +20,18 @@ namespace PictureShare1
         protected string albumName;
         private const string rootDir = "~/Uploads/";
 
+        //protected void Page_Init(object sender, EventArgs e)
+        //{
+        //    //RadMenuItem item = new RadMenuItem("Download");
+        //    //item.PostBack = false;
+        //    //item.Value = "Download";
+        //    ////RadFileExplorer RadFileExplorerAlbum = (RadFileExplorer)LoginView1.FindControl("RadFileExplorerUser");
+        //    //RadFileExplorerAlbum.GridContextMenu.Items.Add(item);
+        //    //RadFileExplorerAlbum.GridContextMenu.OnClientItemClicked = "extendedFileExplorer_onGridContextItemClicked";
+        //    ////Button ButtonDownload = (Button)LoginView1.FindControl("ButtonDownload");
+        //    //ButtonDownload.Click += new EventHandler(ButtonDownload_Click);
+        //}
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Album album = new Album();
@@ -33,13 +45,12 @@ namespace PictureShare1
                 if (User.Identity.IsAuthenticated)
                 {
                     userFolder += User.Identity.GetUserId() + "/";
-                    RadFileExplorer RadFileExplorerUser = (RadFileExplorer)LoginView1.FindControl("RadFileExplorerUser");
-                    RadFileExplorerUser.Configuration.ViewPaths = new string[] { userFolder };
-                    RadFileExplorerUser.Configuration.UploadPaths = new string[] { userFolder };
-                    RadFileExplorerUser.Configuration.DeletePaths = new string[] { userFolder };
+                    RadFileExplorerAlbum.Configuration.ViewPaths = new string[] { userFolder };
+                    RadFileExplorerAlbum.Configuration.UploadPaths = new string[] { userFolder };
+                    RadFileExplorerAlbum.Configuration.DeletePaths = new string[] { userFolder };
                     if (!String.IsNullOrEmpty(albumPin))
                     {                
-                        RadFileExplorerUser.InitialPath = Page.ResolveUrl(userFolder + albumPin);
+                        RadFileExplorerAlbum.InitialPath = Page.ResolveUrl(userFolder + albumPin);
                         LabelAlbumName.Text = album.GetAlbumName(albumPin);
                     }
                 }
@@ -48,12 +59,11 @@ namespace PictureShare1
                     if (!String.IsNullOrEmpty(albumPin))
                     {
                         userFolder += album.GetAlbumUserId(albumPin) + "/";
-                        RadFileExplorer RadFileExplorerAnon = (RadFileExplorer)LoginView1.FindControl("RadFileExplorerAnon");
-                        RadFileExplorerAnon.Configuration.SearchPatterns = new string[] { "*.jpg", "*.jpeg", "*.gif", "*.png" };
-                        RadFileExplorerAnon.Configuration.ViewPaths = new string[] { userFolder + albumPin };
-                        RadFileExplorerAnon.Configuration.UploadPaths = new string[] { userFolder + albumPin };
-                        RadFileExplorerAnon.Configuration.DeletePaths = new string[] { userFolder + albumPin };
-                        RadFileExplorerAnon.InitialPath = Page.ResolveUrl(userFolder + albumPin);
+                        RadFileExplorerAlbum.Configuration.SearchPatterns = new string[] { "*.jpg", "*.jpeg", "*.gif", "*.png" };
+                        RadFileExplorerAlbum.Configuration.ViewPaths = new string[] { userFolder + albumPin };
+                        RadFileExplorerAlbum.Configuration.UploadPaths = new string[] { userFolder + albumPin };
+                        RadFileExplorerAlbum.Configuration.DeletePaths = new string[] { userFolder + albumPin };
+                        RadFileExplorerAlbum.InitialPath = Page.ResolveUrl(userFolder + albumPin);
                         LabelAlbumName.Text = album.GetAlbumName(albumPin);
                     }
                     else
@@ -61,7 +71,114 @@ namespace PictureShare1
                         Response.Redirect("~/Default.aspx");
                     }
                 }
+
+                ////custom button
+                //RadToolBarButton customButton = new RadToolBarButton("Download");
+                //customButton.CssClass = "test_button";
+                //customButton.Value = "testCommand";
+                //RadFileExplorerAlbum.ToolBar.Items.Add(customButton);
+                ////context menu item
+                //RadMenuItem customMenuOption = new RadMenuItem("custom");
+                //customMenuOption.Value = "custom_Menu";
+                //RadFileExplorerAlbum.TreeView.ContextMenus[0].Items.Add(customMenuOption);
+                ////attach the event handler to the RadTreeView
+                ////RadFileExplorerAlbum.TreeView.OnClientContextMenuItemClicked = "treeContextMenuClicked";
+                ////if you want the custom context menu item to be visible in the grid as well
+                //RadFileExplorerAlbum.GridContextMenu.Items.Add(customMenuOption.Clone());
+            }
+
+
+
+        }
+
+
+        void ButtonDownload_Click(object sender, EventArgs e)
+        {
+            //HiddenField HiddenFieldDownload = (HiddenField)LoginView1.FindControl("HiddenFieldDownload");
+            string[] paths = HiddenFieldDownload.Value.Split('|');
+            if (paths.Length > 0 && !String.IsNullOrEmpty(paths[0]))
+            {
+                byte[] downloadFile = null;
+                string downloadFileName = String.Empty;
+                if (paths.Length == 1)
+                {
+                    //Single path
+                    string path = Request.MapPath(paths[0]);
+                    downloadFile = File.ReadAllBytes(path);
+                    downloadFileName = new FileInfo(path).Name;
+                }
+                else
+                {
+                    //Multiple paths
+                    List<FileInfo> fileInfos = new List<FileInfo>();
+                    List<DirectoryInfo> emptyDirectoryInfos = new List<DirectoryInfo>();
+
+                    foreach (string relativePath in paths)
+                    {
+                        string path = Request.MapPath(relativePath);
+                        FileAttributes attr = File.GetAttributes(path);
+                        if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
+                        {
+                            DirectoryInfo di = new DirectoryInfo(path);
+                            //All the files recursively within a directory
+                            FileInfo[] pathFileInfos = di.GetFiles("*", SearchOption.AllDirectories);
+                            if (pathFileInfos.Length > 0)
+                            {
+                                fileInfos.AddRange(pathFileInfos);
+                            }
+                            else
+                            {
+                                emptyDirectoryInfos.Add(di);
+                            }
+                            //All the folders recursively within a directory
+                            DirectoryInfo[] pathDirectoryInfos = di.GetDirectories("*", SearchOption.AllDirectories);
+                            foreach (DirectoryInfo pathDirectoryInfo in pathDirectoryInfos)
+                            {
+                                if (pathDirectoryInfo.GetFiles().Length == 0)
+                                {
+                                    emptyDirectoryInfos.Add(pathDirectoryInfo);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            fileInfos.Add(new FileInfo(path));
+                        }
+                    }
+
+                    //Needed for constructing the directory hierarchy by the DotNetZip requirements
+                    //RadFileExplorer RadFileExplorerUser = (RadFileExplorer)LoginView1.FindControl("RadFileExplorerUser");
+                    string currentFolder = Request.MapPath(RadFileExplorerAlbum.CurrentFolder);
+                    string zipFileName = Path.Combine(Path.GetTempPath(), String.Format("{0}.zip", new Guid()));
+
+                    using (Ionic.Zip.ZipFile zip = new Ionic.Zip.ZipFile(zipFileName))
+                    {
+                        foreach (FileInfo fileInfo in fileInfos)
+                        {
+                            zip.AddFile(fileInfo.FullName, !fileInfo.Directory.FullName.Equals(currentFolder, StringComparison.InvariantCultureIgnoreCase) ? fileInfo.Directory.FullName.Substring(currentFolder.Length + 1) : String.Empty);
+                        }
+                        foreach (DirectoryInfo directoryInfo in emptyDirectoryInfos)
+                        {
+                            zip.AddDirectoryByName(
+        directoryInfo.FullName.Substring(currentFolder.Length + 1));
+                        }
+
+                        zip.TempFileFolder = Path.GetTempPath();
+                        zip.Save();
+                    }
+
+                    downloadFile = File.ReadAllBytes(zipFileName);
+                    File.Delete(zipFileName);
+                    downloadFileName = "Combined.zip";
+                }
+
+                Response.Clear();
+                Response.AppendHeader("Content-Disposition", String.Format("attachment; filename=\"{0}\"", downloadFileName));
+                Response.ContentType = String.Format("application/{0}", downloadFileName);
+                Response.BinaryWrite(downloadFile);
+                Response.End();
             }
         }
+
     }
 }
