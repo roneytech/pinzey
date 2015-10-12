@@ -68,7 +68,6 @@
 .icon-video:before { content: "\e803"; }
 .icon-image:before { content: "\e804"; }
 .icon-camera:before { content: "\e805"; }
-.RadTreeView_Default .rtPlus:before,
 .icon-plus:before { content: "\e806"; }
 .icon-file-add2:before { content: "\e807"; }
 .rfeFileExtension.folder:before,
@@ -124,6 +123,7 @@
 body .RadTreeView_Default .rtMinus:before,
 .icon-folder-minus:before { content: "\e834"; }
 .RadFileExplorer .RadToolBar .icnNewFolder .rtbText:before,
+.RadTreeView_Default .rtPlus:before,
 .icon-folder-plus:before { content: "\e835"; }
 .RadFileExplorer .RadToolBar .icnOpen .rtbText:before,
 .icon-folder-open:before { content: "\e836"; }
@@ -134,6 +134,7 @@ body .RadTreeView_Default .rtMinus:before,
 
 * { padding: 0; margin: 0; }
 a {
+  color: #a05366;
   text-decoration: none;
   transition: all 0.4s ease-in-out;
   -webkit-transition: all 0.4s ease-in-out;
@@ -178,7 +179,7 @@ header { position: fixed; top: 0; width: 100%; z-index: 1; }
 body .gnav li a,
 body .navbar-inverse .navbar-nav > li > a {
   color: rgba(255, 255, 255, 0.8);
-  padding: 7px 28px 12px;
+  padding: 7px 18px 12px;
 }
 body .navbar-inverse .navbar-nav > li:last-child > a { padding-right: none; }
 
@@ -294,15 +295,16 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
   position: absolute;
   left: 0; top: 0;
   width: 100%;
+  padding-left: 0;
   background: transparent;
   border-radius: 0;
   border: none;
   border-bottom: 3px solid rgba(255, 255, 255, 0.8);
 }
-#top::-webkit-input-placeholder { color: rgba(255, 255, 255, 0.8); }
-#top:-moz-placeholder { color: rgba(255, 255, 255, 0.8); }
-#top::-moz-placeholder { color: rgba(255, 255, 255, 0.8); }
-#top:-ms-input-placeholder { color: rgba(255, 255, 255, 0.8); }
+.home input::-webkit-input-placeholder { color: rgba(255, 255, 255, 0.8); }
+.home input:-moz-placeholder { color: rgba(255, 255, 255, 0.8); }
+.home input::-moz-placeholder { color: rgba(255, 255, 255, 0.8); }
+.home input:-ms-input-placeholder { color: rgba(255, 255, 255, 0.8); }
 #existing_album input[type="submit"],
 #new_album input[type="submit"] {
   color: rgba(255, 255, 255, 0.8);
@@ -338,6 +340,69 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
   width: 100%; text-align: center;
   font-weight: bold; color: rgba(0, 0, 0, 0.4); font-size: 21px;
 }
+
+
+/* ----- Account Settings ----- */
+
+.account_settings,
+.set_password {
+  display: inline-block;
+  width: 100%;
+  background: #f99f2a; /* fallback for old browsers */
+  background: -moz-linear-gradient(45deg,  #f99f2a 0%, #f0586f 100%);
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#f99f2a), color-stop(100%,#f0586f));
+  background: -webkit-linear-gradient(45deg,  #f99f2a 0%,#f0586f 100%);
+  background: -o-linear-gradient(45deg,  #f99f2a 0%,#f0586f 100%);
+  background: -ms-linear-gradient(45deg,  #f99f2a 0%,#f0586f 100%);
+  background: linear-gradient(45deg,  #f99f2a 0%,#f0586f 100%);
+}
+.set_password h4,
+.account_settings h4 { margin: 28px 0 0 28px; }
+.set_password .white_container,
+.account_settings .dl-horizontal {
+  padding: 28px;
+  margin: 28px -28px 28px 28px;
+  background: #fff;
+  -webkit-box-shadow: -3px 3px 10px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: -3px 3px 10px 0px rgba(0,0,0,0.3);
+  box-shadow: -3px 3px 10px 0px rgba(0,0,0,0.3);
+}
+body dt { font-weight: normal; margin-bottom: 18px; text-transform: uppercase; }
+.account_settings .dl-horizontal dt { width: 180px; }
+.account_settings .dl-horizontal dd { margin-left: 200px; }
+
+.set_password label {
+  clear: both;
+  text-align: left !important;
+  width: 100%;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+.set_password input {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  width: 100%;
+  padding: 10px 0;
+  border-bottom: 2px solid #a7a9ac;
+}
+.set_password input:focus { border: none; border-bottom: 2px solid #a7a9ac; box-shadow: none; }
+.set_password .col-md-10 { width: 100%; margin: 0; }
+.set_password .form-group { margin-bottom: 0; }
+.set_password input[type="submit"] {
+  color: rgba(255, 255, 255, 0.8);
+  background: transparent;
+  margin: 0 56px 28px;
+  width: auto;
+  float: right;
+  font-size: 24px;
+  border-bottom: none;
+  text-align: right;
+  padding-right: 0;
+}
+.set_password input[type="submit"]:hover { background: transparent; }
+
 
 /* ----- Payment Processing ----- */
 
@@ -441,7 +506,8 @@ body .RadToolBar_Default .rtbItemHovered * { background: none !important; border
 
 body .RadGrid_Default .rgMasterTable .rgSelectedCell,
 body .RadGrid_Default .rgSelectedRow { color: #444444; background: #E6E7E8; background-image: none; }
-body .RadToolBar_Horizontal .rtbItem { margin-left: 28px; }
+body .RadToolBar_Horizontal .rtbItem,
+body .RadToolBar_Horizontal .rtbItem:first-child { margin-left: 28px; }
 body .RadFileExplorer .RadToolBar .rtbInner { height: auto; min-height: 32px; padding: 7px 0;
   background: -moz-linear-gradient(45deg,  #f99f2a 0%, #f0586f 100%);
   background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#f99f2a), color-stop(100%,#f0586f));
@@ -451,7 +517,7 @@ body .RadFileExplorer .RadToolBar .rtbInner { height: auto; min-height: 32px; pa
   background: linear-gradient(45deg,  #f99f2a 0%,#f0586f 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f99f2a', endColorstr='#f0586f',GradientType=1 );
 }
-body .rtbItem span:before { font-size: 24px; color: rgba(255, 255, 255, 0.8) }
+body .rtbItem span, body .rtbItem span:before { font-size: 24px; color: rgba(255, 255, 255, 0.8); }
 
 /* - File Upload - */
 body .rfeUploadContainer { margin: 5%; width: 90%; }
@@ -500,7 +566,7 @@ body .RadUpload .ruUploadSuccess { background-image: none; }
 /* ----- Media Queries ----- */
 
 @media (min-width: 1200px) {
-  .body-content { max-width: 66%; }
+  .body-content { max-width: 50%; }
 }
 @media (max-width: 940px) {
   .left h2,

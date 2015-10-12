@@ -13,9 +13,8 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="form-horizontal">
+            <div class="form-horizontal account_settings">
                 <h4>Change your account settings</h4>
-                <hr />
                 <dl class="dl-horizontal">
                     <dt>Password:</dt>
                     <dd>
