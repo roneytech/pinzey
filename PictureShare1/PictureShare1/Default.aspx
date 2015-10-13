@@ -65,11 +65,13 @@
         <div class="left">
             <h2>Access Existing Album</h2>
             <div id="existing_album">
+                <asp:Panel ID="Panel1" runat="server" defaultbutton="ButtonLoadAlbum">
                 <asp:TextBox ID="TextBoxPin" runat="server" placeholder="Album Code"></asp:TextBox>
                 <asp:Button ID="ButtonLoadAlbum" Text="Go" runat="server" OnClick="ButtonLoadAlbum_Click" />
                 <p class="error">
                     <asp:Label ID="LabelErrorMessage" runat="server" Text="" ForeColor="Red"></asp:Label>
                 </p>
+                </asp:Panel>
             </div>
         </div>
         <div class="right">
@@ -81,10 +83,12 @@
             <%--            <p>
                 <a class="btn btn-default" href="CreateAlbum.aspx">Create New Album &raquo;</a>
             </p>--%>
+            <asp:Panel ID="Panel2" runat="server" defaultbutton="ButtonCreateAlbum">
             <div id="new_album">
                 <asp:TextBox ID="TextBoxAlbumName" runat="server" placeholder="Album Name"></asp:TextBox>
                 <asp:Button ID="ButtonCreateAlbum" runat="server" Text="Go" OnClick="ButtonCreateAlbum_Click" />
             </div>
+            </asp:Panel>
             <div class="error">
                 <h3>
                     <asp:Label ID="LabelPin" runat="server" Text="Your pin is:" Visible="false"></asp:Label></h3>
