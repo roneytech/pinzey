@@ -195,6 +195,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
+    <Content Include="AccountSettings.aspx" />
     <None Include="Properties\PublishProfiles\Local Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Payment.aspx" />
@@ -437,6 +438,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AccountSettings.aspx.cs">
+      <DependentUpon>AccountSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccountSettings.aspx.designer.cs">
+      <DependentUpon>AccountSettings.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
