@@ -20,17 +20,23 @@ namespace PictureShare1
         protected string albumName;
         private const string rootDir = "~/Uploads/";
 
-        //protected void Page_Init(object sender, EventArgs e)
-        //{
-        //    //RadMenuItem item = new RadMenuItem("Download");
-        //    //item.PostBack = false;
-        //    //item.Value = "Download";
-        //    ////RadFileExplorer RadFileExplorerAlbum = (RadFileExplorer)LoginView1.FindControl("RadFileExplorerUser");
-        //    //RadFileExplorerAlbum.GridContextMenu.Items.Add(item);
-        //    //RadFileExplorerAlbum.GridContextMenu.OnClientItemClicked = "extendedFileExplorer_onGridContextItemClicked";
-        //    ////Button ButtonDownload = (Button)LoginView1.FindControl("ButtonDownload");
-        //    //ButtonDownload.Click += new EventHandler(ButtonDownload_Click);
-        //}
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            // Add a custom download item to the grid context menu.
+            RadMenuItem item = new RadMenuItem("Download");
+            item.PostBack = false;
+            item.Value = "Download";
+            RadFileExplorerAlbum.GridContextMenu.Items.Add(item);
+            RadFileExplorerAlbum.GridContextMenu.OnClientItemClicked = "extendedFileExplorer_onGridContextItemClicked";
+            
+            // Add a custom download item to the tree view context menu.
+            RadMenuItem item2 = new RadMenuItem("Download");
+            item2.PostBack = false;
+            item2.Value = "Download";
+            RadFileExplorerAlbum.TreeView.ContextMenus[0].Items.Add(item2);
+            RadFileExplorerAlbum.TreeView.OnClientContextMenuItemClicked = "onClientContextMenuItemClicked";
+            ButtonDownload.Click += new EventHandler(ButtonDownload_Click);
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -70,37 +76,18 @@ namespace PictureShare1
                     {
                         Response.Redirect("~/Default.aspx");
                     }
-                }
-
-                ////custom button
-                //RadToolBarButton customButton = new RadToolBarButton("Download");
-                //customButton.CssClass = "test_button";
-                //customButton.Value = "testCommand";
-                //RadFileExplorerAlbum.ToolBar.Items.Add(customButton);
-                ////context menu item
-                //RadMenuItem customMenuOption = new RadMenuItem("custom");
-                //customMenuOption.Value = "custom_Menu";
-                //RadFileExplorerAlbum.TreeView.ContextMenus[0].Items.Add(customMenuOption);
-                ////attach the event handler to the RadTreeView
-                ////RadFileExplorerAlbum.TreeView.OnClientContextMenuItemClicked = "treeContextMenuClicked";
-                ////if you want the custom context menu item to be visible in the grid as well
-                //RadFileExplorerAlbum.GridContextMenu.Items.Add(customMenuOption.Clone());
+                }                
             }
-
-
-
         }
-
 
         void ButtonDownload_Click(object sender, EventArgs e)
         {
-            //HiddenField HiddenFieldDownload = (HiddenField)LoginView1.FindControl("HiddenFieldDownload");
             string[] paths = HiddenFieldDownload.Value.Split('|');
             if (paths.Length > 0 && !String.IsNullOrEmpty(paths[0]))
             {
                 byte[] downloadFile = null;
                 string downloadFileName = String.Empty;
-                if (paths.Length == 1)
+                if (paths.Length == 1 && ((File.GetAttributes(Request.MapPath(paths[0])) & FileAttributes.Directory) != FileAttributes.Directory))
                 {
                     //Single path
                     string path = Request.MapPath(paths[0]);
@@ -147,7 +134,6 @@ namespace PictureShare1
                     }
 
                     //Needed for constructing the directory hierarchy by the DotNetZip requirements
-                    //RadFileExplorer RadFileExplorerUser = (RadFileExplorer)LoginView1.FindControl("RadFileExplorerUser");
                     string currentFolder = Request.MapPath(RadFileExplorerAlbum.CurrentFolder);
                     string zipFileName = Path.Combine(Path.GetTempPath(), String.Format("{0}.zip", new Guid()));
 
