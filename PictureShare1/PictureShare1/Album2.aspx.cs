@@ -9,7 +9,6 @@ using IZ.WebFileManager;
 using Microsoft.AspNet.Identity;
 using Telerik.Web.UI;
 
-
 namespace PictureShare1
 {
     public partial class AlbumTel : System.Web.UI.Page
