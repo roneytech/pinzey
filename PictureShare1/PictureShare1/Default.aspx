@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="PictureShare1._Default" %>
+﻿<%@ Page Title="Pinzey Picture Sharing" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="PictureShare1._Default" %>
 
 <%--<%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>--%>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -63,10 +63,10 @@
 
     <div id="top">
         <div class="left">
-            <h2>Access Existing Album</h2>
+            <h2>View album</h2>
             <div id="existing_album">
                 <asp:Panel ID="Panel1" runat="server" defaultbutton="ButtonLoadAlbum">
-                <asp:TextBox ID="TextBoxPin" runat="server" placeholder="Album Code"></asp:TextBox>
+                <asp:TextBox ID="TextBoxPin" runat="server" placeholder="Pin" ToolTip="Click here and enter your pin!"></asp:TextBox>
                 <asp:Button ID="ButtonLoadAlbum" Text="Go" runat="server" OnClick="ButtonLoadAlbum_Click" />
                 <p class="error">
                     <asp:Label ID="LabelErrorMessage" runat="server" Text="" ForeColor="Red"></asp:Label>
@@ -85,7 +85,7 @@
             </p>--%>
             <asp:Panel ID="Panel2" runat="server" defaultbutton="ButtonCreateAlbum">
             <div id="new_album">
-                <asp:TextBox ID="TextBoxAlbumName" runat="server" placeholder="Album Name"></asp:TextBox>
+                <asp:TextBox ID="TextBoxAlbumName" runat="server" placeholder="Album Name" ToolTip="Click here and enter a name for your new album. You will be given a pin to share with your friends and family."></asp:TextBox>
                 <asp:Button ID="ButtonCreateAlbum" runat="server" Text="Go" OnClick="ButtonCreateAlbum_Click" />
             </div>
             </asp:Panel>
