@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
-//using System.Web.Security;
 using IZ.WebFileManager;
 using Microsoft.AspNet.Identity;
 using Telerik.Web.UI;
