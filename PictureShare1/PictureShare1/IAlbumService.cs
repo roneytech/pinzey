@@ -32,6 +32,13 @@ namespace PictureShare1
             BodyStyle = WebMessageBodyStyle.Wrapped,
             UriTemplate = "CreateAlbum/{userName}/{albumName}")]
         string CreateAlbum(string albumName, string userName);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped,
+            UriTemplate = "GetPinNameList/{userName}/")]
+        Album.AlbumObject[] GetPinNameList(string userName);
     }
     
 }

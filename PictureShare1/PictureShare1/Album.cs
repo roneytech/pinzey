@@ -11,6 +11,13 @@ namespace PictureShare1
 {
     public class Album
     {
+        public class AlbumObject
+        {
+            public string Pin { get; set; }
+            public string AlbumName { get; set; }
+            public string UserId { get; set; }
+        }
+
         public string CreateNewAlbum(string albumName, string userId)
         {
             string pin = CreateNewAlbumDAL(albumName,userId);
@@ -32,6 +39,35 @@ namespace PictureShare1
         public string GetAlbumUserId(string pin)
         {
             return GetAlbumUserDAL(pin);
+        }
+
+        public AlbumObject[] GetPinNameListByUser(string userId)
+        {
+            using (SqlConnection conn = new SqlConnection())
+            {
+                List<AlbumObject> aList = new List<AlbumObject>();
+                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Album WHERE UserId = @0", conn);
+                cmd.Parameters.Add(new SqlParameter("0", userId));
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                //     var list = (from IDataRecord r in reader select new { Pin = (string)r["AlbumPin"], AlbumName = (string)r["AlbumName"] } AlbumList).ToList();
+                //     albums = list.Cast<AlbumList>().ToArray();
+                    
+                    while (reader.Read())
+                    {
+                        AlbumObject a = new AlbumObject();
+                        a.Pin = reader["AlbumPin"].ToString();
+                        a.AlbumName = reader["AlbumName"].ToString();
+                        a.UserId = reader["UserId"].ToString();
+                        aList.Add(a);
+                    }
+                }
+                
+                return aList.ToArray();
+            }
         }
 
         protected string CreateNewAlbumDAL(string albumName, string userId)
