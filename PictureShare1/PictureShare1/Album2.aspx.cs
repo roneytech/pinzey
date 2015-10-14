@@ -40,12 +40,11 @@ namespace PictureShare1
         {
             Album album = new Album();
             userFolder = rootDir;
-            albumPin = Request.QueryString["pin"];
-            //LabelAlbumPin.Text = albumPin;
-            
+            albumPin = Request.QueryString["pin"];         
 
             if (!IsPostBack)
             {
+                LabelAlbumPin.Text = albumPin;
                 if (User.Identity.IsAuthenticated)
                 {
                     userFolder += User.Identity.GetUserId() + "/";

@@ -53,9 +53,6 @@ namespace PictureShare1
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                //     var list = (from IDataRecord r in reader select new { Pin = (string)r["AlbumPin"], AlbumName = (string)r["AlbumName"] } AlbumList).ToList();
-                //     albums = list.Cast<AlbumList>().ToArray();
-                    
                     while (reader.Read())
                     {
                         AlbumObject a = new AlbumObject();
@@ -64,8 +61,7 @@ namespace PictureShare1
                         a.UserId = reader["UserId"].ToString();
                         aList.Add(a);
                     }
-                }
-                
+                }                
                 return aList.ToArray();
             }
         }
@@ -81,7 +77,6 @@ namespace PictureShare1
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@albumName", albumName));
                 cmd.Parameters.Add(new SqlParameter("@userId", userId));
-
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {

@@ -37,8 +37,7 @@ namespace PictureShare1
         [WebInvoke(Method = "GET",
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
-            UriTemplate = "GetPinNameList/{userName}/")]
-        Album.AlbumObject[] GetPinNameList(string userName);
-    }
-    
+            UriTemplate = "GetPinNameList/{userId}/")]
+        Album.AlbumObject[] GetPinNameList(string userId);
+    }   
 }

@@ -32,26 +32,11 @@ namespace PictureShare1
             return pin;
         }
 
-        public Album.AlbumObject[] GetPinNameList(string userName)
+        public Album.AlbumObject[] GetPinNameList(string userId)
         {
-//            Album.AlbumList[] a = new Album.AlbumList[2];
-//            Album.AlbumList a1 = new Album.AlbumList();
-//            a1.AlbumName = "aName1";
-//            a1.Pin = "aPin1";
-//            Album.AlbumList a2 = new Album.AlbumList();
-//            a2.AlbumName = "aName1";
-//            a2.Pin = "aPin1";
-//            a[0] = a1;
-//            a[1] = a2;
-////            new {Album.AlbumList = new [] {
-////    new {name = "command" , index = "X", optional = "0"}, 
-////    new {name = "command" , index = "X", optional = "0"}
-////}}
             Album album = new Album();
-            return album.GetPinNameListByUser("1a6ce3d7-1288-4501-8ebf-794141c520d8");
+            return album.GetPinNameListByUser(userId);
         }
         #endregion
-
-
     }
 }

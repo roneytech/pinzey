@@ -45,7 +45,38 @@
 
             function OnClientFolderChange(sender, args) {
                 var pinLabel = $get("<%= LabelAlbumPin.ClientID %>");
-                pinLabel.innerHTML = args.get_item().get_name();
+                var pinValue = args.get_item().get_name();
+                pinLabel.innerHTML = pinValue;
+                SetAlbumNameByPinFromRest(pinValue);
+            }
+
+            function SetAlbumNameByUserIdFromRest(userId) {
+                $.ajax({
+                    type: "GET",
+                    url: "/AlbumService.svc/GetPinNameList/" + userId,
+                    dataType: "json",
+                    success: function (resp) {
+                        for (var i = 0; i < resp.GetPinNameListResult.length; i++) {
+                            if (resp.GetPinNameListResult[i].Pin == searchPin) {
+                                var nameLabel = $get("<%= LabelAlbumName.ClientID %>");
+                                nameLabel.innerHTML = resp.GetPinNameListResult[i].AlbumName;
+                            }
+                        }
+
+                    }
+                })
+            }
+
+            function SetAlbumNameByPinFromRest(searchPin) {
+                    $.ajax({
+                        type: "GET",
+                        url: "/AlbumService.svc/GetAlbumName/" + searchPin,
+                        dataType: "json",
+                        success: function (resp) {
+                            var nameLabel = $get("<%= LabelAlbumName.ClientID %>");
+                            nameLabel.innerHTML = resp.GetAlbumNameResult;
+                        }
+                    })
             }
         </script>
     </telerik:RadCodeBlock>
