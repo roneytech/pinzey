@@ -1361,6 +1361,7 @@ body .RadUpload_Default .ruButton {
   border-radius: 3px;
   padding: 7px 21px;
 }
+body .RadFileExplorer .RadGrid .rgRow td { padding-top: 8px; padding-bottom: 8px; }
 /*body .RadUpload .ruUploadSuccess { background-image: url('../fonts/check.svg'); background-position: left center; }
 body .RadUpload .ruRemove { margin-bottom: 0; background-image: url('../fonts/cross.svg'); background-position: left center; }*/
 body .RadUpload .ruRemove,
