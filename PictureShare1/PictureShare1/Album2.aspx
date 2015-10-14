@@ -43,6 +43,10 @@
                 return itemPaths.join("|");
             }
 
+            function OnClientFolderChange(sender, args) {
+                var pinLabel = $get("<%= LabelAlbumPin.ClientID %>");
+                pinLabel.innerHTML = args.get_item().get_name();
+            }
         </script>
     </telerik:RadCodeBlock>
 
@@ -60,7 +64,8 @@
             Configuration-AllowMultipleSelection="true"
             Configuration-MaxUploadFileSize="500000000"
             ExplorerMode="Thumbnails"
-            Co>
+            OnClientFolderChange="OnClientFolderChange"
+            ToolTip="Right click on a file or folder to download it. Downloads will be zipped up into a single file.">
         </telerik:RadFileExplorer>
         <br />
         <br />

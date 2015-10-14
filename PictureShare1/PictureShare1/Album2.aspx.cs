@@ -41,7 +41,7 @@ namespace PictureShare1
             Album album = new Album();
             userFolder = rootDir;
             albumPin = Request.QueryString["pin"];
-            LabelAlbumPin.Text = albumPin;
+            //LabelAlbumPin.Text = albumPin;
             
 
             if (!IsPostBack)
