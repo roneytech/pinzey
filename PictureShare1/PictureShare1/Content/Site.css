@@ -233,9 +233,13 @@ body .navbar-inverse .navbar-nav > li:last-child > a { padding-right: none; }
     -ms-transition: all 0.4s ease-in-out;
 }
 #top:hover .left,
-#top:hover .right { width: 30%; }
+#top:hover .right,
+.left.nohover,
+.right.nohover { width: 30%; }
 #top:hover .left:hover,
-#top:hover .right:hover { width: 70%; }
+.left.hover,
+#top:hover .right:hover,
+.right.hover { width: 70%; }
 
 .left h2,
 .right h2 { margin-top: 30vh; }
@@ -349,6 +353,70 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
 }
 #MainContent_LabelErrorMessage,
 .error h3 { margin-top: 70px; }
+
+
+/* ----- About & Pricing ----- */
+
+#about,
+#pricing {
+  color: #414042;
+  background: #fff;
+  font-size: 18px;
+  text-align: center;
+  padding-bottom: 100px;
+}
+#pricing { background: #f1f2f2; }
+#about .body-content,
+#pricing .body-content { margin: 0 auto; }
+
+#about h2,
+#pricing h2 { color: #a15366; }
+
+.pricing_table { margin-top: 40px; display: inline-block; width: 100%; }
+.pricing_table li {
+  text-align: left;
+  width: 30%; margin-left: 5%;
+  position: relative;
+  min-height: 250px;
+  float: left; list-style: none outside none;
+  background: #a05366; /* fallback for old browsers */
+  background: -moz-linear-gradient(45deg,  #a05366 0%, #452f41 100%);
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#a05366), color-stop(100%,#452f41));
+  background: -webkit-linear-gradient(45deg,  #a05366 0%,#452f41 100%);
+  background: -o-linear-gradient(45deg,  #a05366 0%,#452f41 100%);
+  background: -ms-linear-gradient(45deg,  #a05366 0%,#452f41 100%);
+  background: linear-gradient(45deg,  #a05366 0%,#452f41 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a05366', endColorstr='#452f41',GradientType=1 );
+}
+.pricing_table li:first-child { margin-left: 0; }
+.pricing_table li:nth-child(2) {
+  background: #f99f2a; /* fallback for old browsers */
+  background: -moz-linear-gradient(45deg,  #f99f2a 0%, #f0586f 100%);
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#f99f2a), color-stop(100%,#f0586f));
+  background: -webkit-linear-gradient(45deg,  #f99f2a 0%,#f0586f 100%);
+  background: -o-linear-gradient(45deg,  #f99f2a 0%,#f0586f 100%);
+  background: -ms-linear-gradient(45deg,  #f99f2a 0%,#f0586f 100%);
+  background: linear-gradient(45deg,  #f99f2a 0%,#f0586f 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f99f2a', endColorstr='#f0586f',GradientType=1 );
+}
+.pricing_table li .white {
+  background: #fff;
+  padding: 21px;
+  position: absolute;
+  width: 200px;
+  top: -21px; left: -21px;
+}
+.white h4 { color: #414042; font-size: 24px; margin-bottom: 7px; }
+.white p { color: #939598; font-size: 14px; }
+.pricing_table li a {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.8);
+  bottom: 21px; right: 21px;
+}
+
+/* ----- Login ----- */
+
+#loginForm { color: rgba(255, 255, 255, 0.8); }
 
 /* ----- Account Settings ----- */
 
@@ -478,6 +546,8 @@ body .RadFileExplorer {
   width: 100% !important;
 }
 .RadToolBar_Default { font-family: 'Open Sans', sans-serif; background-color: transparent; }
+body #RAD_SPLITTER_PANE_CONTENT_ctl00_MainContent_RadFileExplorerAlbum_paneTree { height: calc(100% - 14px) !important; }
+body #ctl00_MainContent_RadFileExplorerAlbum_splitter { height: 454px !important; overflow: hidden; }
 body .RadToolBar_Default .rtbOuter { background: #F9FAFC; background-image: none; box-shadow: none; border: none; padding: 0; }
 body .RadSplitter .rspPane {  }
 body .RadSplitter .rspResizeBar { border-left: none; width: 1px; }
@@ -538,6 +608,8 @@ body .rtbItem span, body .rtbItem span:before { font-size: 24px; color: rgba(255
 body .RadTreeView_Default .rtSelected .rtIn,
 body .RadGrid_Default .rgHeader,
 body .RadGrid .rgRow:nth-child(even) { color: inherit; background-color: #e5e5e5; border: none; background-image: none; }
+body .RadGrid .rgRow:hover,
+body .RadTreeView .rtLines .rtTop + .rtUL .rtLI:hover { background-color: #cecece; }
 body .RadGrid_Default .rgHoveredRow { background: inherit; }
 
 /* - File Upload - */
@@ -595,12 +667,16 @@ body .RadFileExplorer .rfeThumbnailView .rfeImageFile img { height: 100px; }
 body .RadFileExplorer .rfeThumbList { margin: 0; }
 body .RadFileExplorer .rfeThumbList a,
 body .RadFileExplorer .rfeThumbList a:hover { padding: 0; margin: 0; border: none; }
-body .RadFileExplorer .RadTreeView .rtHover .rtIn { padding: 1px 4px 0 3px!important; border: 1px solid transparent !important; }
-
+/*body .RadFileExplorer .RadTreeView .rtHover .rtIn { padding: 1px 4px 0 3px!important; border: 1px solid transparent !important; }
+*/
+body .RadFileExplorer .RadTreeView .rtHover .rtIn { background-color: #e5e5e5; }
 body .RadFileExplorer .rfeThumbnailView .rfeFile { min-width: 40px; min-height: 40px; }
 body .RadFileExplorer .rfeThumbnailView .rfeFile .rfeFileIcon { background-image: none !important; font-size: 40px; }
 
 body .RadWindow_Default img { width: 100%; height: auto; }
+
+body .RadFileExplorer .rfeThumbnailView .rfeThumbTitle { padding: 8px 0 0 0; }
+body .RadFileExplorer_Default .rfeThumbList .rfeLink:hover { background-color: #e5e5e5; border-radius: 0; }
 
 
 /* ----- Media Queries ----- */
@@ -630,7 +706,9 @@ body .RadWindow_Default img { width: 100%; height: auto; }
   #top:hover .left,
   #top:hover .right,
   #top:hover .left:hover,
-  #top:hover .right:hover { width: 100%; }
+  .left.hover,
+  #top:hover .right:hover,
+  .right.hover { width: 100%; }
   .left { height: 60vh; }
   .right { height: 40vh; }
   .left h2 { margin-top: 20vh; }

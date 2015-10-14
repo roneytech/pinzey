@@ -73,7 +73,7 @@
                 </p>
                 </asp:Panel>
             </div>
-        </div>
+        </div><!-- End .left -->
         <div class="right">
             <h2>Create a New Album</h2>
             <%--<p>
@@ -99,7 +99,53 @@
                     <asp:Label ID="LabelLoginError" runat="server" Text=""></asp:Label>
                 </p>
             </div>
+        </div><!-- End .right -->
+    </div><!-- End #top -->
+
+    <div id="about">
+        <div class="body-content">
+            <h2>Share files with your loved ones, no signup to contribute.</h2>
+            <p>Let friends and family upload files all in one location, without the hastle of multiple signups. Only one account holder necessary.</p>
         </div>
     </div>
+
+    <div id="pricing">
+        <div class="body-content">
+            <h2>File sharing on the cheap-cheap</h2>
+            <ul class="pricing_table">
+                <li>
+                    <div class="white">
+                        <h4>Free</h4>
+                        <p>Simple sharing</p>
+                        <hr />
+                        <h5>Files:</h5>
+                        <p>.JPG, .PNG</p>
+                    </div>
+                    <a href="/payment">Yes Please</a>
+                </li>
+                <li>
+                    <div class="white">
+                        <h4>$2 per month</h4>
+                        <p>More Storage</p>
+                        <hr />
+                        <h5>Files:</h5>
+                        <p>.JPG, .PNG, .MP4, .PDF, .DOC, .PSD, .AI</p>
+                    </div>
+                    <a href="/payment">Yes Please</a>
+                </li>
+                <li>
+                    <div class="white">
+                        <h4>$4 per month</h4>
+                        <p>Unlimited Storage</p>
+                        <hr />
+                        <h5>Files:</h5>
+                        <p>.JPG, .PNG, .MP4, .PDF, .DOC, .PSD, .AI</p>
+                    </div>
+                    <a href="/payment">Yes Please</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
 </div>
 </asp:Content>

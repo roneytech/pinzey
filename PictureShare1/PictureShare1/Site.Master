@@ -80,5 +80,21 @@
             </footer>
         </div>
     </form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script>
+      $(".left *").click(function() {
+        $(".left").addClass("hover");
+        $(".left").removeClass("nohover");
+        $(".right").removeClass("hover");
+        $(".right").addClass("nohover");
+      });
+      $(".right *").click(function() {
+        $(".right").addClass("hover");
+        $(".right").addClass("nohover");
+        $(".left").removeClass("hover");
+        $(".left").addClass("nohover");
+      });
+</script>
 </body>
 </html>
