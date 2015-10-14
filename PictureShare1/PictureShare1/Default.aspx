@@ -106,6 +106,101 @@
         <div class="body-content">
             <h2>Share files with your loved ones, no signup to contribute.</h2>
             <p>Let friends and family upload files all in one location, without the hastle of multiple signups. Only one account holder necessary.</p>
+
+            <ul class="half">
+                <li>
+                    <div class="collaboration">
+                      <div class="circle">
+                        <div class="triangle"></div>
+                        <div class="triangle"></div>
+                        <div class="triangle"></div>
+                        <div class="triangle"></div>
+                        <div class="triangle"></div>
+                        <div class="triangle"></div>
+                      </div>
+                      <div class="circle">
+                        <div class="triangle"></div>
+                        <div class="triangle"></div>
+                        <div class="triangle"></div>
+                        <div class="triangle"></div>
+                        <div class="triangle"></div>
+                        <div class="triangle"></div>
+                      </div>
+                      <div class="circle">
+                        <div class="triangle"></div>
+                        <div class="triangle"></div>
+                        <div class="triangle"></div>
+                        <div class="triangle"></div>
+                        <div class="triangle"></div>
+                        <div class="triangle"></div>
+                      </div>
+                    </div>
+                    <h3>Group Collaboration</h3>
+                    <p>Invite everyone to view and contribute files with the use of just one PIN.</p>
+                </li>
+                <li>
+                    <div class="share">
+                      <div class="hexagon">
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                      </div>
+                      <div class="hexagon">
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                      </div>
+                      <div class="hexagon">
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                      </div>
+                      <div class="hexagon">
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                      </div>
+                      <div class="hexagon">
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                      </div>
+                      <div class="hexagon">
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                      </div>
+                      <div class="hexagon">
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                        <div class="part"></div>
+                      </div>
+                    </div>
+                    <h3>Sync with existing accounts</h3>
+                    <p>Sync files with your DropBox and Google accounts, publish to Facebook and more!</p>
+                </li>
+            </ul>
         </div>
     </div>
 
@@ -144,6 +239,9 @@
                     <a href="/payment">Yes Please</a>
                 </li>
             </ul>
+            <p>Does this sound familiar? You go on a trip with friends or family and everyone takes pictures. You get home and realize it’s so hard to share them. Not everyone uses an online photo service and the ones that do all use something different. How are you going to get all those great pictures?</p>
+            <p>There is an answer and it is Pinzey! Pinzey is the place where everyone, regardless of what tools they already own, can share their files. No need for them to sign up to something new, and no need for them to stop using the tools they already love.</p>
+            <a href="/Account/Register" class="buttonStyle2">Come try it out!</a>
         </div>
     </div>
 
