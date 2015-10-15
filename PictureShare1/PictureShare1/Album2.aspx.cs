@@ -8,6 +8,7 @@ using System.IO;
 using IZ.WebFileManager;
 using Microsoft.AspNet.Identity;
 using Telerik.Web.UI;
+using Telerik.Web.UI.Widgets;
 
 namespace PictureShare1
 {
@@ -34,6 +35,8 @@ namespace PictureShare1
             RadFileExplorerAlbum.TreeView.ContextMenus[0].Items.Add(item2);
             RadFileExplorerAlbum.TreeView.OnClientContextMenuItemClicked = "onClientContextMenuItemClicked";
             ButtonDownload.Click += new EventHandler(ButtonDownload_Click);
+
+            RadFileExplorerAlbum.Configuration.ContentProviderTypeName = typeof(CustomContentProvider).AssemblyQualifiedName;
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -161,6 +164,28 @@ namespace PictureShare1
                 Response.BinaryWrite(downloadFile);
                 Response.End();
             }
+        }
+
+
+
+        public class CustomContentProvider : FileSystemContentProvider
+        {
+
+            public CustomContentProvider(HttpContext context, string[] searchPatterns, string[] viewPaths, string[] uploadPaths, string[] deletePaths, string selectedUrl, string selectedItemTag)
+                : base(context, searchPatterns, viewPaths, uploadPaths, deletePaths, selectedUrl, selectedItemTag)
+            {
+            }
+
+            public override DirectoryItem ResolveRootDirectoryAsTree(string path)
+            {
+                DirectoryItem orgDir = base.ResolveRootDirectoryAsTree(path);
+
+                if (orgDir.Name.Length == 36)
+                    orgDir.Name = "My Account";
+
+                return orgDir;
+            }
+
         }
 
     }
