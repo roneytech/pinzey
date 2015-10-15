@@ -103,6 +103,7 @@
     </div><!-- End #top -->
 
     <div id="about">
+        <a href="#about" class="icon-arrow-down"></a>
         <div class="body-content">
             <h2>Share files with your loved ones, no signup to contribute.</h2>
             <p>Let friends and family upload files all in one location, without the hastle of multiple signups. Only one account holder necessary.</p>

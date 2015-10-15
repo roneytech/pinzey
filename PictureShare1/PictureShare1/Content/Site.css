@@ -42,8 +42,7 @@
 .RadUpload .ruUploadSuccess:before,
 .payment #MainContent_ButtonSubmit:after,
 .RadFileExplorer .jpg:before, .RadFileExplorer .jpeg:before, .RadFileExplorer .jpe:before,
-.RadFileExplorer .rfeThumbnailView .rfeFile .rfeFileIcon:before,
-#top:after {
+.RadFileExplorer .rfeThumbnailView .rfeFile .rfeFileIcon:before {
   font-family: 'pinzey';
   speak: none;
   font-style: normal;
@@ -64,7 +63,6 @@
 .icon-arrow-right:before { content: "\e82d"; }
 .RadFileExplorer .RadToolBar .icnBack .rtbText:before,
 .icon-arrow-left:before { content: "\e82e"; }
-#top:after,
 .icon-arrow-down:before { content: "\e82f"; }
 .icon-arrow-up:before { content: "\e830"; }
 .icon-file-add:before { content: "\e801"; }
@@ -148,6 +146,8 @@ a {
   -ms-transition: all 0.4s ease-in-out;
 }
 a:hover, a:active, a:focus, *:focus { text-decoration: none; outline: 0; }
+body p a { text-decoration: none !important; font-weight: normal !important; text-transform: none !important; }
+body p a img { display: none !important; }
 body {
   position: relative;
   font-family: 'Open Sans', sans-serif;
@@ -199,21 +199,6 @@ body .navbar-inverse .navbar-nav > li:last-child > a { padding-right: none; }
 }
 .body-content { padding-top: 100px; }
 #top { color: #fff; position: relative; width: 100%; height: 100vh; }
-#top:after {
-  color: rgba(255, 255, 255, 0.8);
-  left: 50%;
-  font-size: 28px;
-  bottom: 7px;
-  font-weight: bold;
-  position: absolute;
-  margin-left: -14px;
-  cursor: pointer;
-  transition: all 0.4s ease-in-out;
-  -webkit-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
-  -ms-transition: all 0.4s ease-in-out;
-}
-#top:hover:after { bottom: 14px; }
 .left {
   color: rgba(255, 255, 255, 0.8);
   text-align: center;
@@ -1081,6 +1066,7 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
   font-size: 18px;
   text-align: center;
   padding-bottom: 100px;
+  position: relative;
 }
 #pricing { background: #f1f2f2; }
 #about .body-content,
@@ -1088,13 +1074,28 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
 
 #about h2,
 #pricing h2 { color: #a15366; }
+#about .icon-arrow-down {
+  color: rgba(255, 255, 255, 0.8);
+  left: 50%;
+  font-size: 28px;
+  top: -34px;
+  font-weight: bold;
+  position: absolute;
+  margin-left: -14px;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+}
+#about .icon-arrow-down:hover { top: -44px; }
 
 .pricing_table { margin: 40px 0; display: inline-block; width: 100%; }
 .pricing_table li {
   text-align: left;
   width: 30%; margin-left: 5%;
   position: relative;
-  min-height: 260px;
+  min-height: 280px;
   float: left; list-style: none outside none;
   background: #a05366; /* fallback for old browsers */
   background: -moz-linear-gradient(45deg,  #a05366 0%, #452f41 100%);
