@@ -78,9 +78,21 @@
                         }
                     })
             }
+
+            function OnExplorerFileOpen(oExplorer, args) {
+                if (!args.get_item().isDirectory()) {
+                    setTimeout(function () {
+                        var oWindowManager = oExplorer.get_windowManager();
+                        var previewWindow = oWindowManager.getActiveWindow(); // Gets the current active widow.
+                        previewWindow.setSize(800, 700);
+                        previewWindow.center();
+                    }, 100);   // Some timeout is required in order to allow the window to become active
+                }
+            }
+
         </script>
     </telerik:RadCodeBlock>
-
+    
     <div>
         <h1>Pin:
             <asp:Label ID="LabelAlbumPin" runat="server" /></h1>
@@ -96,9 +108,11 @@
             Configuration-MaxUploadFileSize="500000000"
             ExplorerMode="Thumbnails"
             OnClientFolderChange="OnClientFolderChange"
-            ToolTip="Right click on a file or folder to download it. Downloads will be zipped up into a single file.">
+            ToolTip="Right click on a file or folder to download it. Downloads will be zipped up into a single file."
+            OnClientFileOpen="OnExplorerFileOpen">
         </telerik:RadFileExplorer>
         <br />
         <br />
     </div>
 </asp:Content>
+
