@@ -90,6 +90,15 @@
                 }
             }
 
+            function OnClientDelete(oExplorer, args) {
+                var item = args.get_item();
+
+                if (item.isDirectory()) {
+                    args.set_cancel(true);
+                    alert("Sorry, deletion of directories is not allowed at this time. This prevents users from accidentally deleting everyone's photos.");
+                }
+            }
+</script>
         </script>
     </telerik:RadCodeBlock>
     
@@ -108,6 +117,7 @@
             Configuration-MaxUploadFileSize="500000000"
             ExplorerMode="Thumbnails"
             OnClientFolderChange="OnClientFolderChange"
+            OnClientDelete="OnClientDelete"
             ToolTip="Right click on a file or folder to download it. Downloads will be zipped up into a single file."
             OnClientFileOpen="OnExplorerFileOpen">
         </telerik:RadFileExplorer>
