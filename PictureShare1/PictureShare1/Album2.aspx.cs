@@ -36,7 +36,7 @@ namespace PictureShare1
             RadFileExplorerAlbum.TreeView.OnClientContextMenuItemClicked = "onClientContextMenuItemClicked";
             ButtonDownload.Click += new EventHandler(ButtonDownload_Click);
 
-            //RadFileExplorerAlbum.Configuration.ContentProviderTypeName = typeof(CustomContentProvider).AssemblyQualifiedName;
+            RadFileExplorerAlbum.Configuration.ContentProviderTypeName = typeof(CustomContentProvider).AssemblyQualifiedName;
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -170,10 +170,6 @@ namespace PictureShare1
         {
             string[] subdirectoryEntries = Directory.GetDirectories(rootFolder);
             string[] reletiveDirectoryPaths = new string[subdirectoryEntries.Length];
-            //foreach (string relativePath in subdirectoryEntries)
-            //{
-            //    relativePath = relativePath.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], String.Empty);
-            //}
             string path;
             for (int i = 0; i < subdirectoryEntries.Length; i++)
             {
@@ -185,34 +181,36 @@ namespace PictureShare1
             return reletiveDirectoryPaths;
         }
 
-        //public class CustomContentProvider : FileSystemContentProvider
-        //{
+        public class CustomContentProvider : FileSystemContentProvider
+        {
 
-        //    public CustomContentProvider(HttpContext context, string[] searchPatterns, string[] viewPaths, string[] uploadPaths, string[] deletePaths, string selectedUrl, string selectedItemTag)
-        //        : base(context, searchPatterns, viewPaths, uploadPaths, deletePaths, selectedUrl, selectedItemTag)
-        //    {
-        //    }
+            public CustomContentProvider(HttpContext context, string[] searchPatterns, string[] viewPaths, string[] uploadPaths, string[] deletePaths, string selectedUrl, string selectedItemTag)
+                : base(context, searchPatterns, viewPaths, uploadPaths, deletePaths, selectedUrl, selectedItemTag)
+            {
+            }
 
-        //    public override DirectoryItem ResolveRootDirectoryAsTree(string path)
-        //    {
-        //        try
-        //        {
-        //            DirectoryItem orgDir = base.ResolveRootDirectoryAsTree(path);
+            // Show directories as album name instead of pin.
+            public override DirectoryItem ResolveRootDirectoryAsTree(string path)
+            {
+                Album album = new Album();
+                try
+                {
+                    DirectoryItem orgDir = base.ResolveRootDirectoryAsTree(path);
+                    orgDir.Name = album.GetAlbumName(orgDir.Name);
+                    return orgDir;
 
-        //            if (orgDir != null && orgDir.Name.Length == 36)
-        //                orgDir.Name = "My Account";
-        //            return orgDir;
+                }
+                catch (UnauthorizedAccessException uae)
+                {
+                    //Eat access exceptions.
+                    //return new DirectoryItem();
+                    return null;
+                }
+            }
 
-        //        }
-        //        catch (UnauthorizedAccessException uae)
-        //        {
-        //            //Eat access exceptions.
-        //            //return new DirectoryItem();
-        //            return null;
-        //        }             
-        //    }
+        }
 
-        //}
+
 
     }
 }
