@@ -42,8 +42,7 @@
 .RadUpload .ruUploadSuccess:before,
 .payment #MainContent_ButtonSubmit:after,
 .RadFileExplorer .jpg:before, .RadFileExplorer .jpeg:before, .RadFileExplorer .jpe:before,
-.RadFileExplorer .rfeThumbnailView .rfeFile .rfeFileIcon:before,
-#top:after {
+.RadFileExplorer .rfeThumbnailView .rfeFile .rfeFileIcon:before {
   font-family: 'pinzey';
   speak: none;
   font-style: normal;
@@ -64,7 +63,6 @@
 .icon-arrow-right:before { content: "\e82d"; }
 .RadFileExplorer .RadToolBar .icnBack .rtbText:before,
 .icon-arrow-left:before { content: "\e82e"; }
-#top:after,
 .icon-arrow-down:before { content: "\e82f"; }
 .icon-arrow-up:before { content: "\e830"; }
 .icon-file-add:before { content: "\e801"; }
@@ -148,6 +146,8 @@ a {
   -ms-transition: all 0.4s ease-in-out;
 }
 a:hover, a:active, a:focus, *:focus { text-decoration: none; outline: 0; }
+body p a { text-decoration: none !important; font-weight: normal !important; text-transform: none !important; }
+body p a img { display: none !important; }
 body {
   position: relative;
   font-family: 'Open Sans', sans-serif;
@@ -199,21 +199,6 @@ body .navbar-inverse .navbar-nav > li:last-child > a { padding-right: none; }
 }
 .body-content { padding-top: 100px; }
 #top { color: #fff; position: relative; width: 100%; height: 100vh; }
-#top:after {
-  color: rgba(255, 255, 255, 0.8);
-  left: 50%;
-  font-size: 28px;
-  bottom: 7px;
-  font-weight: bold;
-  position: absolute;
-  margin-left: -14px;
-  cursor: pointer;
-  transition: all 0.4s ease-in-out;
-  -webkit-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
-  -ms-transition: all 0.4s ease-in-out;
-}
-#top:hover:after { bottom: 14px; }
 .left {
   color: rgba(255, 255, 255, 0.8);
   text-align: center;
@@ -352,6 +337,9 @@ ul.half li h3 { color: #a15366; }
     left:14px;
     border-radius: (100%);
     transform: rotate(-40deg);
+    -webkit-transform: rotate(-40deg);
+    -moz-transform: rotate(-40deg);
+    -o-transform: rotate(-40deg);
 }
 .refresh:before{
     content:'';
@@ -361,6 +349,9 @@ ul.half li h3 { color: #a15366; }
     top: 6px;
     right: 14px;
     transform: rotate(-30deg);
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
 }
 @-webkit-keyframes spinforever {
   from { transform: rotate(0deg); }
@@ -380,15 +371,13 @@ ul.half li h3 { color: #a15366; }
 }
 
 /* -- Collaboration -- */
-
 .circle:nth-child(1) { color: #f99f2a; }
 .circle:nth-child(2) { color: #f0586f; }
 .circle:nth-child(3) { color: #a15366; }
-.collaboration { position: absolute; top: -14px; left: 50%; }
 .collaboration * {
   font-size: 21px;
   position: absolute;
-  top: 50%;
+  top: -14px;
   left: 50%;
 }
 .triangle {
@@ -396,7 +385,8 @@ ul.half li h3 { color: #a15366; }
   height: 1em;
   margin-top: -0.5em;
   overflow: hidden;
-  transform-origin: 33% center;
+  -webkit-transform-origin: 33% center;
+          transform-origin: 33% center;
   mix-blend-mode: multiply;
 }
 .triangle::after {
@@ -408,422 +398,462 @@ ul.half li h3 { color: #a15366; }
   width: 1em;
   height: 1em;
   background: currentColor;
-  transform: scaleY(0.57735) rotate(45deg) scale(1.22474);
+  -webkit-transform: scaleY(0.57735) rotate(45deg) scale(1.22474);
+          transform: scaleY(0.57735) rotate(45deg) scale(1.22474);
+}
+
+@-webkit-keyframes tri-1-1 {
+  from, 40% {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg);
+  }
 }
 @keyframes tri-1-1 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg); }
-}
-@-webkit-keyframes tri-1-1 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg); }
-}
-@-moz-keyframes tri-1-1 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg); }
-}
-@-o-keyframes tri-1-1 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg); }
+  from, 40% {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg);
+  }
 }
 .circle:nth-child(1) .triangle:nth-child(1) {
-  animation: tri-1-1 1.7s ease infinite;
   -webkit-animation: tri-1-1 1.7s ease infinite;
-  -moz-animation: tri-1-1 1.7s ease infinite;
-  -o-animation: tri-1-1 1.7s ease infinite;
+          animation: tri-1-1 1.7s ease infinite;
   z-index: 1;
-}
-@keyframes tri-1-2 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg); }
 }
 @-webkit-keyframes tri-1-2 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg); }
+  from, 40% {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg);
+  }
 }
-@-moz-keyframes tri-1-2 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg); }
-}
-@-o-keyframes tri-1-2 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg); }
+@keyframes tri-1-2 {
+  from, 40% {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg);
+  }
 }
 .circle:nth-child(1) .triangle:nth-child(2) {
-  animation: tri-1-2 1.7s ease infinite;
   -webkit-animation: tri-1-2 1.7s ease infinite;
-  -moz-animation: tri-1-2 1.7s ease infinite;
-  -o-animation: tri-1-2 1.7s ease infinite;
+          animation: tri-1-2 1.7s ease infinite;
   z-index: 2;
-}
-@keyframes tri-1-3 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg); }
 }
 @-webkit-keyframes tri-1-3 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg); }
+  from, 40% {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg);
+  }
 }
-@-moz-keyframes tri-1-3 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg); }
-}
-@-o-keyframes tri-1-3 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg); }
+@keyframes tri-1-3 {
+  from, 40% {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg);
+  }
 }
 .circle:nth-child(1) .triangle:nth-child(3) {
-  animation: tri-1-3 1.7s ease infinite;
   -webkit-animation: tri-1-3 1.7s ease infinite;
-  -moz-animation: tri-1-3 1.7s ease infinite;
-  -o-animation: tri-1-3 1.7s ease infinite;
+          animation: tri-1-3 1.7s ease infinite;
   z-index: 3;
-}
-@keyframes tri-1-4 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg); }
 }
 @-webkit-keyframes tri-1-4 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg); }
+  from, 40% {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg);
+  }
 }
-@-moz-keyframes tri-1-4 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg); }
-}
-@-o-keyframes tri-1-4 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg); }
+@keyframes tri-1-4 {
+  from, 40% {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg);
+  }
 }
 .circle:nth-child(1) .triangle:nth-child(4) {
-  animation: tri-1-4 1.7s ease infinite;
   -webkit-animation: tri-1-4 1.7s ease infinite;
-  -moz-animation: tri-1-4 1.7s ease infinite;
-  -o-animation: tri-1-4 1.7s ease infinite;
+          animation: tri-1-4 1.7s ease infinite;
   z-index: 4;
-}
-@keyframes tri-1-5 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg); }
 }
 @-webkit-keyframes tri-1-5 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg); }
+  from, 40% {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg);
+  }
 }
-@-moz-keyframes tri-1-5 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg); }
-}
-@-o-keyframes tri-1-5 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg); }
+@keyframes tri-1-5 {
+  from, 40% {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg);
+  }
 }
 .circle:nth-child(1) .triangle:nth-child(5) {
-  animation: tri-1-5 1.7s ease infinite;
   -webkit-animation: tri-1-5 1.7s ease infinite;
-  -moz-animation: tri-1-5 1.7s ease infinite;
-  -o-animation: tri-1-5 1.7s ease infinite;
+          animation: tri-1-5 1.7s ease infinite;
   z-index: 5;
-}
-@keyframes tri-1-6 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg); }
 }
 @-webkit-keyframes tri-1-6 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg); }
+  from, 40% {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg);
+  }
 }
-@-moz-keyframes tri-1-6 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg); }
-}
-@-o-keyframes tri-1-6 {
-  from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-50deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg); }
+@keyframes tri-1-6 {
+  from, 40% {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-50deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-50deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg);
+  }
 }
 .circle:nth-child(1) .triangle:nth-child(6) {
-  animation: tri-1-6 1.7s ease infinite;
   -webkit-animation: tri-1-6 1.7s ease infinite;
-  -moz-animation: tri-1-6 1.7s ease infinite;
-  -o-animation: tri-1-6 1.7s ease infinite;
+          animation: tri-1-6 1.7s ease infinite;
   z-index: 6;
-}
-@keyframes tri-2-1 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg); }
 }
 @-webkit-keyframes tri-2-1 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg); }
+  from, 40% {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg);
+  }
 }
-@-moz-keyframes tri-2-1 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg); }
-}
-@-o-keyframes tri-2-1 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg); }
+@keyframes tri-2-1 {
+  from, 40% {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg);
+  }
 }
 .circle:nth-child(2) .triangle:nth-child(1) {
-  animation: tri-2-1 1.7s ease infinite;
   -webkit-animation: tri-2-1 1.7s ease infinite;
-  -moz-animation: tri-2-1 1.7s ease infinite;
-  -o-animation: tri-2-1 1.7s ease infinite;
+          animation: tri-2-1 1.7s ease infinite;
   z-index: 1;
-}
-@keyframes tri-2-2 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg); }
 }
 @-webkit-keyframes tri-2-2 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg); }
+  from, 40% {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg);
+  }
 }
-@-moz-keyframes tri-2-2 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg); }
-}
-@-o-keyframes tri-2-2 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg); }
+@keyframes tri-2-2 {
+  from, 40% {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg);
+  }
 }
 .circle:nth-child(2) .triangle:nth-child(2) {
-  animation: tri-2-2 1.7s ease infinite;
   -webkit-animation: tri-2-2 1.7s ease infinite;
-  -moz-animation: tri-2-2 1.7s ease infinite;
-  -o-animation: tri-2-2 1.7s ease infinite;
+          animation: tri-2-2 1.7s ease infinite;
   z-index: 2;
-}
-@keyframes tri-2-3 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg); }
 }
 @-webkit-keyframes tri-2-3 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg); }
+  from, 40% {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg);
+  }
 }
-@-moz-keyframes tri-2-3 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg); }
-}
-@-o-keyframes tri-2-3 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg); }
+@keyframes tri-2-3 {
+  from, 40% {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg);
+  }
 }
 .circle:nth-child(2) .triangle:nth-child(3) {
-  animation: tri-2-3 1.7s ease infinite;
   -webkit-animation: tri-2-3 1.7s ease infinite;
-  -moz-animation: tri-2-3 1.7s ease infinite;
-  -o-animation: tri-2-3 1.7s ease infinite;
+          animation: tri-2-3 1.7s ease infinite;
   z-index: 3;
-}
-@keyframes tri-2-4 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg); }
 }
 @-webkit-keyframes tri-2-4 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg); }
+  from, 40% {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg);
+  }
 }
-@-moz-keyframes tri-2-4 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg); }
-}
-@-o-keyframes tri-2-4 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg); }
+@keyframes tri-2-4 {
+  from, 40% {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg);
+  }
 }
 .circle:nth-child(2) .triangle:nth-child(4) {
-  animation: tri-2-4 1.7s ease infinite;
   -webkit-animation: tri-2-4 1.7s ease infinite;
-  -moz-animation: tri-2-4 1.7s ease infinite;
-  -o-animation: tri-2-4 1.7s ease infinite;
+          animation: tri-2-4 1.7s ease infinite;
   z-index: 4;
-}
-@keyframes tri-2-5 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg); }
 }
 @-webkit-keyframes tri-2-5 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg); }
+  from, 40% {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg);
+  }
 }
-@-moz-keyframes tri-2-5 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg); }
-}
-@-o-keyframes tri-2-5 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg); }
+@keyframes tri-2-5 {
+  from, 40% {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg);
+  }
 }
 .circle:nth-child(2) .triangle:nth-child(5) {
-  animation: tri-2-5 1.7s ease infinite;
   -webkit-animation: tri-2-5 1.7s ease infinite;
-  -moz-animation: tri-2-5 1.7s ease infinite;
-  -o-animation: tri-2-5 1.7s ease infinite;
+          animation: tri-2-5 1.7s ease infinite;
   z-index: 5;
-}
-@keyframes tri-2-6 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg); }
 }
 @-webkit-keyframes tri-2-6 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg); }
+  from, 40% {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg);
+  }
 }
-@-moz-keyframes tri-2-6 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg); }
-}
-@-o-keyframes tri-2-6 {
-  from, 40% { transform: rotate(-170deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-170deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg); }
+@keyframes tri-2-6 {
+  from, 40% {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-170deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-170deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg);
+  }
 }
 .circle:nth-child(2) .triangle:nth-child(6) {
-  animation: tri-2-6 1.7s ease infinite;
   -webkit-animation: tri-2-6 1.7s ease infinite;
-  -moz-animation: tri-2-6 1.7s ease infinite;
-  -o-animation: tri-2-6 1.7s ease infinite;
+          animation: tri-2-6 1.7s ease infinite;
   z-index: 6;
-}
-@keyframes tri-3-1 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg); }
 }
 @-webkit-keyframes tri-3-1 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg); }
+  from, 40% {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg);
+  }
 }
-@-moz-keyframes tri-3-1 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg); }
-}
-@-o-keyframes tri-3-1 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg); }
+@keyframes tri-3-1 {
+  from, 40% {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(40deg);
+  }
 }
 .circle:nth-child(3) .triangle:nth-child(1) {
-  animation: tri-3-1 1.7s ease infinite;
   -webkit-animation: tri-3-1 1.7s ease infinite;
-  -moz-animation: tri-3-1 1.7s ease infinite;
-  -o-animation: tri-3-1 1.7s ease infinite;
+          animation: tri-3-1 1.7s ease infinite;
   z-index: 1;
 }
-@keyframes tri-3-2 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg); }
-}
 @-webkit-keyframes tri-3-2 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg); }
+  from, 40% {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg);
+  }
 }
-@-moz-keyframes tri-3-2 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg); }
-}
-@-o-keyframes tri-3-2 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg); }
+@keyframes tri-3-2 {
+  from, 40% {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(120deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(40deg);
+  }
 }
 .circle:nth-child(3) .triangle:nth-child(2) {
-  animation: tri-3-2 1.7s ease infinite;
   -webkit-animation: tri-3-2 1.7s ease infinite;
-  -moz-animation: tri-3-2 1.7s ease infinite;
-  -o-animation: tri-3-2 1.7s ease infinite;
+          animation: tri-3-2 1.7s ease infinite;
   z-index: 2;
 }
-@keyframes tri-3-3 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg); }
-}
 @-webkit-keyframes tri-3-3 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg); }
+  from, 40% {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg);
+  }
 }
-@-moz-keyframes tri-3-3 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg); }
-}
-@-o-keyframes tri-3-3 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg); }
+@keyframes tri-3-3 {
+  from, 40% {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(180deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(40deg);
+  }
 }
 .circle:nth-child(3) .triangle:nth-child(3) {
-  animation: tri-3-3 1.7s ease infinite;
   -webkit-animation: tri-3-3 1.7s ease infinite;
-  -moz-animation: tri-3-3 1.7s ease infinite;
-  -o-animation: tri-3-3 1.7s ease infinite;
+          animation: tri-3-3 1.7s ease infinite;
   z-index: 3;
 }
-@keyframes tri-3-4 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg); }
-}
 @-webkit-keyframes tri-3-4 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg); }
+  from, 40% {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg);
+  }
 }
-@-moz-keyframes tri-3-4 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg); }
-}
-@-o-keyframes tri-3-4 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg); }
+@keyframes tri-3-4 {
+  from, 40% {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(240deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(40deg);
+  }
 }
 .circle:nth-child(3) .triangle:nth-child(4) {
-  animation: tri-3-4 1.7s ease infinite;
   -webkit-animation: tri-3-4 1.7s ease infinite;
-  -moz-animation: tri-3-4 1.7s ease infinite;
-  -o-animation: tri-3-4 1.7s ease infinite;
+          animation: tri-3-4 1.7s ease infinite;
   z-index: 4;
 }
-@keyframes tri-3-5 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg); }
-}
 @-webkit-keyframes tri-3-5 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg); }
+  from, 40% {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg);
+  }
 }
-@-moz-keyframes tri-3-5 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg); }
-}
-@-o-keyframes tri-3-5 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg); }
+@keyframes tri-3-5 {
+  from, 40% {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(300deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(40deg);
+  }
 }
 .circle:nth-child(3) .triangle:nth-child(5) {
-  animation: tri-3-5 1.7s ease infinite;
   -webkit-animation: tri-3-5 1.7s ease infinite;
-  -moz-animation: tri-3-5 1.7s ease infinite;
-  -o-animation: tri-3-5 1.7s ease infinite;
+          animation: tri-3-5 1.7s ease infinite;
   z-index: 5;
 }
-@keyframes tri-3-6 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg); }
-}
 @-webkit-keyframes tri-3-6 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg); }
+  from, 40% {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg);
+  }
 }
-@-moz-keyframes tri-3-6 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg); }
-}
-@-o-keyframes tri-3-6 {
-  from, 40% { transform: rotate(-290deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg); }
-  to { transform: rotate(-290deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg); }
+@keyframes tri-3-6 {
+  from, 40% {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(360deg) translateX(1.1547em) rotate(160deg);
+  }
+  to {
+    -webkit-transform: rotate(-290deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg);
+            transform: rotate(-290deg) translateX(1.1547em) rotate(420deg) translateX(1.1547em) rotate(40deg);
+  }
 }
 .circle:nth-child(3) .triangle:nth-child(6) {
-  animation: tri-3-6 1.7s ease infinite;
   -webkit-animation: tri-3-6 1.7s ease infinite;
-  -moz-animation: tri-3-6 1.7s ease infinite;
-  -o-animation: tri-3-6 1.7s ease infinite;
+          animation: tri-3-6 1.7s ease infinite;
   z-index: 6;
 }
+
+
 
 /* -- Share -- */
 .share {
@@ -862,6 +892,9 @@ ul.half li h3 { color: #a15366; }
   background: #452f41;
   border-radius: 0.011em 0 0 0.011em;
   transform-origin: right center;
+  -webkit-transform-origin: right center;
+  -moz-transform-origin: right center;
+  -o-transform-origin: right center;
   animation: inner 8s linear infinite;
   animation-play-state: running !important;
   -webkit-animation: inner 8s linear infinite;
@@ -879,51 +912,99 @@ ul.half li h3 { color: #a15366; }
 .hexagon:nth-child(7) .part::before, .hexagon:nth-child(7) .part::after { background: #f99f2a; }
 .hexagon .part::before {
   transform: translateX(-0.00275em) rotate(60deg) translateX(0.00275em);
+  -webkit-transform: translateX(-0.00275em) rotate(60deg) translateX(0.00275em);
+  -moz-transform: translateX(-0.00275em) rotate(60deg) translateX(0.00275em);
+  -o-transform: translateX(-0.00275em) rotate(60deg) translateX(0.00275em);
 }
 .hexagon .part::after {
   transform: translateX(-0.00275em) rotate(-60deg) translateX(0.00275em);
+  -webkit-transform: translateX(-0.00275em) rotate(-60deg) translateX(0.00275em);
+  -moz-transform: translateX(-0.00275em) rotate(-60deg) translateX(0.00275em);
+  -o-transform: translateX(-0.00275em) rotate(-60deg) translateX(0.00275em);
 }
 .hexagon .part:nth-child(1) {
   transform: translate(-50%, -50%) rotate(60deg);
+  -webkit-transform: translate(-50%, -50%) rotate(60deg);
+  -moz-transform: translate(-50%, -50%) rotate(60deg);
+  -o-transform: translate(-50%, -50%) rotate(60deg);
 }
 .hexagon .part:nth-child(2) {
   transform: translate(-50%, -50%) rotate(120deg);
+  -webkit-transform: translate(-50%, -50%) rotate(120deg);
+  -moz-transform: translate(-50%, -50%) rotate(120deg);
+  -o-transform: translate(-50%, -50%) rotate(120deg);
 }
 .hexagon .part:nth-child(3) {
   transform: translate(-50%, -50%) rotate(180deg);
+  -webkit-transform: translate(-50%, -50%) rotate(180deg);
+  -moz-transform: translate(-50%, -50%) rotate(180deg);
+  -o-transform: translate(-50%, -50%) rotate(180deg);
 }
 .hexagon .part:nth-child(4) {
   transform: translate(-50%, -50%) rotate(240deg);
+  -webkit-transform: translate(-50%, -50%) rotate(240deg);
+  -moz-transform: translate(-50%, -50%) rotate(240deg);
+  -o-transform: translate(-50%, -50%) rotate(240deg);
 }
 .hexagon .part:nth-child(5) {
   transform: translate(-50%, -50%) rotate(300deg);
+  -webkit-transform: translate(-50%, -50%) rotate(300deg);
+  -moz-transform: translate(-50%, -50%) rotate(300deg);
+  -o-transform: translate(-50%, -50%) rotate(300deg);
 }
 .hexagon .part:nth-child(6) {
   transform: translate(-50%, -50%) rotate(360deg);
+  -webkit-transform: translate(-50%, -50%) rotate(360deg);
+  -moz-transform: translate(-50%, -50%) rotate(360deg);
+  -o-transform: translate(-50%, -50%) rotate(360deg);
 }
 .hexagon:nth-child(1) .part, .hexagon:nth-child(1) .part::before, .hexagon:nth-child(1) .part::after {
   animation-delay: 0s;
+  -webkit-animation-delay: 0s;
+  -moz-animation-delay: 0s;
+  -o-animation-delay: 0s;
 }
 .hexagon:nth-child(2) .part, .hexagon:nth-child(2) .part::before, .hexagon:nth-child(2) .part::after {
   animation-delay: -1.33333s;
+  -webkit-animation-delay: -1.33333s;
+  -moz-animation-delay: -1.33333s;
+  -o-animation-delay: -1.33333s;
 }
 .hexagon:nth-child(3) .part, .hexagon:nth-child(3) .part::before, .hexagon:nth-child(3) .part::after {
   animation-delay: -2.66667s;
+  -webkit-animation-delay: -2.66667s;
+  -moz-animation-delay: -2.66667s;
+  -o-animation-delay: -2.66667s;
 }
 .hexagon:nth-child(4) .part, .hexagon:nth-child(4) .part::before, .hexagon:nth-child(4) .part::after {
   animation-delay: -4s;
+  -webkit-animation-delay: -4s;
+  -moz-animation-delay: -4s;
+  -o-animation-delay: -4s;
 }
 .hexagon:nth-child(5) .part, .hexagon:nth-child(5) .part::before, .hexagon:nth-child(5) .part::after {
   animation-delay: -5.33333s;
+  -moz-animation-delay: -5.33333s;
+  -wekbit-animation-delay: -5.33333s;
+  -o-animation-delay: -5.33333s;
 }
 .hexagon:nth-child(6) .part, .hexagon:nth-child(6) .part::before, .hexagon:nth-child(6) .part::after {
   animation-delay: -6.66667s;
+  -webkit-animation-delay: -6.66667s;
+  -moz-animation-delay: -6.66667s;
+  -o-animation-delay: -6.66667s;
 }
 .hexagon:nth-child(7) .part, .hexagon:nth-child(7) .part::before, .hexagon:nth-child(7) .part::after {
   animation-delay: -8s;
+  -webkit-animation-delay: -8s;
+  -moz-animation-delay: -8s;
+  -o-animation-delay: -8s;
 }
 .hexagon:nth-child(2n) {
   transform: rotate(30deg);
+  -webkit-transform: rotate(30deg);
+  -moz-transform: rotate(30deg);
+  -o-transform: rotate(30deg);
 }
 
 @keyframes part {
@@ -992,7 +1073,7 @@ input {
   -o-transition: all 0.4s ease-in-out;
 }
 input:focus { border: 1px solid #5fc3b0; }
-input[type="checkbox"], input[type="radio"] { float: left; width: auto; margin-top: 0; margin-right: 6px; }
+input[type="checkbox"], input[type="radio"] { float: left; width: auto !important; margin-top: 0; margin-right: 6px; }
 input[type="submit"] {
   color: #A05366;
   display: inline-block;
@@ -1021,6 +1102,7 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
   left: 0; top: 0;
   width: 100%;
   padding-left: 0;
+  font-size: 28px;
   background: transparent;
   border-radius: 0;
   border: none;
@@ -1081,6 +1163,7 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
   font-size: 18px;
   text-align: center;
   padding-bottom: 100px;
+  position: relative;
 }
 #pricing { background: #f1f2f2; }
 #about .body-content,
@@ -1088,13 +1171,28 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
 
 #about h2,
 #pricing h2 { color: #a15366; }
+#about .icon-arrow-down {
+  color: rgba(255, 255, 255, 0.8);
+  left: 50%;
+  font-size: 28px;
+  top: -34px;
+  font-weight: bold;
+  position: absolute;
+  margin-left: -14px;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+}
+#about .icon-arrow-down:hover { top: -44px; }
 
 .pricing_table { margin: 40px 0; display: inline-block; width: 100%; }
 .pricing_table li {
   text-align: left;
   width: 30%; margin-left: 5%;
   position: relative;
-  min-height: 260px;
+  min-height: 280px;
   float: left; list-style: none outside none;
   background: #a05366; /* fallback for old browsers */
   background: -moz-linear-gradient(45deg,  #a05366 0%, #452f41 100%);
@@ -1131,14 +1229,11 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
   bottom: 21px; right: 21px;
 }
 
-/* ----- Login ----- */
-
-#loginForm { color: rgba(255, 255, 255, 0.8); }
-
-/* ----- Account Settings ----- */
+/* ----- Login, Registration & Account Settings ----- */
 
 .account_settings,
-.set_password {
+.set_password,
+.register {
   display: inline-block;
   width: 100%;
   background: #f99f2a; /* fallback for old browsers */
@@ -1150,8 +1245,9 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
   background: linear-gradient(45deg,  #f99f2a 0%,#f0586f 100%);
 }
 .set_password h4,
-.account_settings h4 { margin: 28px 0 0 28px; }
-.set_password .white_container,
+.account_settings h4,
+.register h4 { margin: 28px 0 0 28px; }
+.white_container,
 .account_settings .dl-horizontal {
   padding: 28px;
   margin: 28px -28px 28px 28px;
@@ -1163,7 +1259,9 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
 body dt { font-weight: normal; margin-bottom: 18px; text-transform: uppercase; }
 .account_settings .dl-horizontal dt { width: 180px; }
 .account_settings .dl-horizontal dd { margin-left: 200px; }
+.register .col-md-10 { width: 100%; }
 
+.register label,
 .set_password label {
   clear: both;
   text-align: left !important;
@@ -1171,6 +1269,7 @@ body dt { font-weight: normal; margin-bottom: 18px; text-transform: uppercase; }
   font-weight: normal;
   text-transform: uppercase;
 }
+.register input,
 .set_password input {
   background: transparent;
   border: none;
@@ -1180,9 +1279,12 @@ body dt { font-weight: normal; margin-bottom: 18px; text-transform: uppercase; }
   padding: 10px 0;
   border-bottom: 2px solid #a7a9ac;
 }
+.register input:focus,
 .set_password input:focus { border: none; border-bottom: 2px solid #a7a9ac; box-shadow: none; }
 .set_password .col-md-10 { width: 100%; margin: 0; }
+.register .form-group,
 .set_password .form-group { margin-bottom: 0; }
+.register input[type="submit"],
 .set_password input[type="submit"] {
   color: rgba(255, 255, 255, 0.8);
   background: transparent;
@@ -1194,10 +1296,19 @@ body dt { font-weight: normal; margin-bottom: 18px; text-transform: uppercase; }
   text-align: right;
   padding: 0 0 0 21px;
 }
+.register input[type="submit"]:hover,
 .set_password input[type="submit"]:hover { color: rgba(255, 255, 255, 0.6); background: transparent; }
 
 .manage_logins p { color: rgba(255, 255, 255, 0.8); }
 .manage_logins p a { color: #f99f2a; }
+
+#loginForm { position: relative; }
+#MainContent_RegisterHyperLink {
+  position: absolute;
+  bottom: 40px;
+  color: rgba(255, 255, 255, 0.8);
+  left: 28px;
+}
 
 
 /* ----- Payment Processing ----- */
@@ -1396,6 +1507,11 @@ body .RadWindow_Default img { width: 100%; height: auto; }
 body .RadFileExplorer .rfeThumbnailView .rfeThumbTitle { padding: 8px 0 0 0; }
 body .RadFileExplorer_Default .rfeThumbList .rfeLink:hover { background-color: #e5e5e5; border-radius: 0; }
 
+
+
+/* ----- Footer ----- */
+
+footer { color: rgba(255, 255, 255, 0.8); margin-top: 28px; }
 
 /* ----- Media Queries ----- */
 
