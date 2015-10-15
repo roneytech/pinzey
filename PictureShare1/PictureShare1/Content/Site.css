@@ -337,6 +337,9 @@ ul.half li h3 { color: #a15366; }
     left:14px;
     border-radius: (100%);
     transform: rotate(-40deg);
+    -webkit-transform: rotate(-40deg);
+    -moz-transform: rotate(-40deg);
+    -o-transform: rotate(-40deg);
 }
 .refresh:before{
     content:'';
@@ -346,6 +349,9 @@ ul.half li h3 { color: #a15366; }
     top: 6px;
     right: 14px;
     transform: rotate(-30deg);
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
 }
 @-webkit-keyframes spinforever {
   from { transform: rotate(0deg); }
@@ -382,6 +388,9 @@ ul.half li h3 { color: #a15366; }
   margin-top: -0.5em;
   overflow: hidden;
   transform-origin: 33% center;
+  -webkit-transform-origin: 33% center;
+  -moz-transform-origin: 33% center;
+  -o-transform-origin: 33% center;
   mix-blend-mode: multiply;
 }
 .triangle::after {
@@ -392,8 +401,11 @@ ul.half li h3 { color: #a15366; }
   left: -0.5em;
   width: 1em;
   height: 1em;
-  background: currentColor;
+  background: inherit;
   transform: scaleY(0.57735) rotate(45deg) scale(1.22474);
+  -webkit-transform: scaleY(0.57735) rotate(45deg) scale(1.22474);
+  -moz-transform: scaleY(0.57735) rotate(45deg) scale(1.22474);
+  -o-transform: scaleY(0.57735) rotate(45deg) scale(1.22474);
 }
 @keyframes tri-1-1 {
   from, 40% { transform: rotate(-50deg) translateX(1.1547em) rotate(60deg) translateX(1.1547em) rotate(160deg); }
@@ -977,7 +989,7 @@ input {
   -o-transition: all 0.4s ease-in-out;
 }
 input:focus { border: 1px solid #5fc3b0; }
-input[type="checkbox"], input[type="radio"] { float: left; width: auto; margin-top: 0; margin-right: 6px; }
+input[type="checkbox"], input[type="radio"] { float: left; width: auto !important; margin-top: 0; margin-right: 6px; }
 input[type="submit"] {
   color: #A05366;
   display: inline-block;
@@ -1132,14 +1144,11 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
   bottom: 21px; right: 21px;
 }
 
-/* ----- Login ----- */
-
-#loginForm { color: rgba(255, 255, 255, 0.8); }
-
-/* ----- Account Settings ----- */
+/* ----- Login, Registration & Account Settings ----- */
 
 .account_settings,
-.set_password {
+.set_password,
+.register {
   display: inline-block;
   width: 100%;
   background: #f99f2a; /* fallback for old browsers */
@@ -1151,8 +1160,9 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
   background: linear-gradient(45deg,  #f99f2a 0%,#f0586f 100%);
 }
 .set_password h4,
-.account_settings h4 { margin: 28px 0 0 28px; }
-.set_password .white_container,
+.account_settings h4,
+.register h4 { margin: 28px 0 0 28px; }
+.white_container,
 .account_settings .dl-horizontal {
   padding: 28px;
   margin: 28px -28px 28px 28px;
@@ -1164,7 +1174,9 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
 body dt { font-weight: normal; margin-bottom: 18px; text-transform: uppercase; }
 .account_settings .dl-horizontal dt { width: 180px; }
 .account_settings .dl-horizontal dd { margin-left: 200px; }
+.register .col-md-10 { width: 100%; }
 
+.register label,
 .set_password label {
   clear: both;
   text-align: left !important;
@@ -1172,6 +1184,7 @@ body dt { font-weight: normal; margin-bottom: 18px; text-transform: uppercase; }
   font-weight: normal;
   text-transform: uppercase;
 }
+.register input,
 .set_password input {
   background: transparent;
   border: none;
@@ -1181,9 +1194,12 @@ body dt { font-weight: normal; margin-bottom: 18px; text-transform: uppercase; }
   padding: 10px 0;
   border-bottom: 2px solid #a7a9ac;
 }
+.register input:focus,
 .set_password input:focus { border: none; border-bottom: 2px solid #a7a9ac; box-shadow: none; }
 .set_password .col-md-10 { width: 100%; margin: 0; }
+.register .form-group,
 .set_password .form-group { margin-bottom: 0; }
+.register input[type="submit"],
 .set_password input[type="submit"] {
   color: rgba(255, 255, 255, 0.8);
   background: transparent;
@@ -1195,10 +1211,19 @@ body dt { font-weight: normal; margin-bottom: 18px; text-transform: uppercase; }
   text-align: right;
   padding: 0 0 0 21px;
 }
+.register input[type="submit"]:hover,
 .set_password input[type="submit"]:hover { color: rgba(255, 255, 255, 0.6); background: transparent; }
 
 .manage_logins p { color: rgba(255, 255, 255, 0.8); }
 .manage_logins p a { color: #f99f2a; }
+
+#loginForm { position: relative; }
+#MainContent_RegisterHyperLink {
+  position: absolute;
+  bottom: 40px;
+  color: rgba(255, 255, 255, 0.8);
+  left: 28px;
+}
 
 
 /* ----- Payment Processing ----- */
@@ -1397,6 +1422,11 @@ body .RadWindow_Default img { width: 100%; height: auto; }
 body .RadFileExplorer .rfeThumbnailView .rfeThumbTitle { padding: 8px 0 0 0; }
 body .RadFileExplorer_Default .rfeThumbList .rfeLink:hover { background-color: #e5e5e5; border-radius: 0; }
 
+
+
+/* ----- Footer ----- */
+
+footer { color: rgba(255, 255, 255, 0.8); margin-top: 28px; }
 
 /* ----- Media Queries ----- */
 
