@@ -178,12 +178,21 @@ namespace PictureShare1
 
             public override DirectoryItem ResolveRootDirectoryAsTree(string path)
             {
-                DirectoryItem orgDir = base.ResolveRootDirectoryAsTree(path);
+                try
+                {
+                    DirectoryItem orgDir = base.ResolveRootDirectoryAsTree(path);
 
-                if (orgDir.Name.Length == 36)
-                    orgDir.Name = "My Account";
+                    if (orgDir != null && orgDir.Name.Length == 36)
+                        orgDir.Name = "My Account";
+                    return orgDir;
 
-                return orgDir;
+                }
+                catch (UnauthorizedAccessException uae)
+                {
+                    //Eat access exceptions.
+                    //return new DirectoryItem();
+                    return null;
+                }             
             }
 
         }
