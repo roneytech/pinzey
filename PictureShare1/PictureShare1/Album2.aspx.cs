@@ -36,7 +36,7 @@ namespace PictureShare1
             RadFileExplorerAlbum.TreeView.OnClientContextMenuItemClicked = "onClientContextMenuItemClicked";
             ButtonDownload.Click += new EventHandler(ButtonDownload_Click);
 
-            RadFileExplorerAlbum.Configuration.ContentProviderTypeName = typeof(CustomContentProvider).AssemblyQualifiedName;
+            //RadFileExplorerAlbum.Configuration.ContentProviderTypeName = typeof(CustomContentProvider).AssemblyQualifiedName;
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace PictureShare1
                 if (User.Identity.IsAuthenticated)
                 {
                     userFolder += User.Identity.GetUserId() + "/";
-                    RadFileExplorerAlbum.Configuration.ViewPaths = new string[] { userFolder };
+                    RadFileExplorerAlbum.Configuration.ViewPaths = getFolderArray(Request.MapPath(userFolder));
                     RadFileExplorerAlbum.Configuration.UploadPaths = new string[] { userFolder };
                     RadFileExplorerAlbum.Configuration.DeletePaths = new string[] { userFolder };
                     if (!String.IsNullOrEmpty(albumPin))
@@ -166,36 +166,53 @@ namespace PictureShare1
             }
         }
 
-
-
-        public class CustomContentProvider : FileSystemContentProvider
+        string [] getFolderArray(string rootFolder)
         {
-
-            public CustomContentProvider(HttpContext context, string[] searchPatterns, string[] viewPaths, string[] uploadPaths, string[] deletePaths, string selectedUrl, string selectedItemTag)
-                : base(context, searchPatterns, viewPaths, uploadPaths, deletePaths, selectedUrl, selectedItemTag)
+            string[] subdirectoryEntries = Directory.GetDirectories(rootFolder);
+            string[] reletiveDirectoryPaths = new string[subdirectoryEntries.Length];
+            //foreach (string relativePath in subdirectoryEntries)
+            //{
+            //    relativePath = relativePath.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], String.Empty);
+            //}
+            string path;
+            for (int i = 0; i < subdirectoryEntries.Length; i++)
             {
+                path = "~/";
+                path += subdirectoryEntries[i].Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], String.Empty);
+                path = path.Replace(@"\", "/");
+                reletiveDirectoryPaths[i] = path;
             }
-
-            public override DirectoryItem ResolveRootDirectoryAsTree(string path)
-            {
-                try
-                {
-                    DirectoryItem orgDir = base.ResolveRootDirectoryAsTree(path);
-
-                    if (orgDir != null && orgDir.Name.Length == 36)
-                        orgDir.Name = "My Account";
-                    return orgDir;
-
-                }
-                catch (UnauthorizedAccessException uae)
-                {
-                    //Eat access exceptions.
-                    //return new DirectoryItem();
-                    return null;
-                }             
-            }
-
+            return reletiveDirectoryPaths;
         }
+
+        //public class CustomContentProvider : FileSystemContentProvider
+        //{
+
+        //    public CustomContentProvider(HttpContext context, string[] searchPatterns, string[] viewPaths, string[] uploadPaths, string[] deletePaths, string selectedUrl, string selectedItemTag)
+        //        : base(context, searchPatterns, viewPaths, uploadPaths, deletePaths, selectedUrl, selectedItemTag)
+        //    {
+        //    }
+
+        //    public override DirectoryItem ResolveRootDirectoryAsTree(string path)
+        //    {
+        //        try
+        //        {
+        //            DirectoryItem orgDir = base.ResolveRootDirectoryAsTree(path);
+
+        //            if (orgDir != null && orgDir.Name.Length == 36)
+        //                orgDir.Name = "My Account";
+        //            return orgDir;
+
+        //        }
+        //        catch (UnauthorizedAccessException uae)
+        //        {
+        //            //Eat access exceptions.
+        //            //return new DirectoryItem();
+        //            return null;
+        //        }             
+        //    }
+
+        //}
 
     }
 }
