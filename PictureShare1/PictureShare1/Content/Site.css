@@ -42,7 +42,8 @@
 .RadUpload .ruUploadSuccess:before,
 .payment #MainContent_ButtonSubmit:after,
 .RadFileExplorer .jpg:before, .RadFileExplorer .jpeg:before, .RadFileExplorer .jpe:before,
-.RadFileExplorer .rfeThumbnailView .rfeFile .rfeFileIcon:before {
+.RadFileExplorer .rfeThumbnailView .rfeFile .rfeFileIcon:before,
+#ctl00_MainContent_RadTextBoxAlbumName_wrapper:after {
   font-family: 'pinzey';
   speak: none;
   font-style: normal;
@@ -60,6 +61,7 @@
 #new_album:after,
 .RadFileExplorer .RadToolBar .icnForward .rtbText:before,
 .payment #MainContent_ButtonSubmit:after,
+#ctl00_MainContent_RadTextBoxAlbumName_wrapper:after,
 .icon-arrow-right:before { content: "\e82d"; }
 .RadFileExplorer .RadToolBar .icnBack .rtbText:before,
 .icon-arrow-left:before { content: "\e82e"; }
@@ -1142,7 +1144,8 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
 .left .error,
 .right .error,
 #MainContent_LabelLoginError,
-#MainContent_LabelErrorMessage {
+#MainContent_LabelErrorMessage,
+.text-danger {
   display: inline-block;
   clear: both;
   width: 100%; text-align: center;
@@ -1270,7 +1273,8 @@ body dt { font-weight: normal; margin-bottom: 18px; text-transform: uppercase; }
   text-transform: uppercase;
 }
 .register input,
-.set_password input {
+.set_password input,
+#ctl00_MainContent_RadTextBoxAlbumName {
   background: transparent;
   border: none;
   border-radius: 0;
@@ -1280,12 +1284,15 @@ body dt { font-weight: normal; margin-bottom: 18px; text-transform: uppercase; }
   border-bottom: 2px solid #a7a9ac;
 }
 .register input:focus,
-.set_password input:focus { border: none; border-bottom: 2px solid #a7a9ac; box-shadow: none; }
+.set_password input:focus,
+#ctl00_MainContent_RadTextBoxAlbumName:focus { border: none; border-bottom: 2px solid #a7a9ac; box-shadow: none; }
+#ctl00_MainContent_RadTextBoxAlbumName { color: rgba(255, 255, 255, 0.8); font-size: 18px; min-height: 44px; }
 .set_password .col-md-10 { width: 100%; margin: 0; }
 .register .form-group,
 .set_password .form-group { margin-bottom: 0; }
 .register input[type="submit"],
-.set_password input[type="submit"] {
+.set_password input[type="submit"],
+#MainContent_ButtonChangeAlbumName {
   color: rgba(255, 255, 255, 0.8);
   background: transparent;
   margin: 0 56px 28px;
@@ -1297,7 +1304,16 @@ body dt { font-weight: normal; margin-bottom: 18px; text-transform: uppercase; }
   padding: 0 0 0 21px;
 }
 .register input[type="submit"]:hover,
-.set_password input[type="submit"]:hover { color: rgba(255, 255, 255, 0.6); background: transparent; }
+.set_password input[type="submit"]:hover,
+#MainContent_ButtonChangeAlbumName:hover { color: rgba(255, 255, 255, 0.6); background: transparent; }
+#MainContent_ButtonChangeAlbumName { font-size: 18px; padding-bottom: 0; float: none; margin: 0; line-height: 1.4; text-align: left; }
+body #ctl00_MainContent_RadTextBoxAlbumName_wrapper { position: relative; width: 250px !important; }
+#ctl00_MainContent_RadTextBoxAlbumName_wrapper:after {
+    right: -180px;
+    font-size: 18px;
+    position: absolute;
+    top: 14px;
+}
 
 .manage_logins p { color: rgba(255, 255, 255, 0.8); }
 .manage_logins p a { color: #f99f2a; }
@@ -1433,7 +1449,7 @@ body .RadFileExplorer .RadToolBar .rtbInner { height: auto; min-height: 32px; pa
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f99f2a', endColorstr='#f0586f',GradientType=1 );
 }
 body .rtbItem span, body .rtbItem span:before { font-size: 24px; color: rgba(255, 255, 255, 0.8); }
-body .RadTreeView_Default .rtSelected .rtIn,
+body .RadTreeView .rtLines .rtBot.rtSelected,
 body .RadGrid_Default .rgHeader,
 body .RadGrid .rgRow:nth-child(even) { color: inherit; background-color: #e5e5e5; border: none; background-image: none; }
 body .RadGrid .rgRow:hover,
