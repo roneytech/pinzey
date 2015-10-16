@@ -45,12 +45,19 @@
 
             function OnClientFolderChange(sender, args) {
                 var pinLabel = $get("<%= LabelAlbumPin.ClientID %>");
-                var pinValue = args.get_item().get_name();
+                var radFile = $find("<%= RadFileExplorerAlbum.ClientID %>");
+                var radText = $find("<%= RadTextBoxAlbumName.ClientID %>");
+                //var nameLabel = $get("");
+                var nameValue = args.get_item().get_name();
+                var currentDirectory = radFile.get_currentDirectory();
+                var pinValue = currentDirectory.split('/').pop();
                 pinLabel.innerHTML = pinValue;
-                SetAlbumNameByPinFromRest(pinValue);
+                radText.set_value(nameValue);
+                //nameLabel.innerHTML = nameValue;
+                //SetAlbumNameByPinFromRest(pinValue);
             }
 
-            function SetAlbumNameByUserIdFromRest(userId) {
+<%--            function SetAlbumNameByUserIdFromRest(userId) {
                 $.ajax({
                     type: "GET",
                     url: "/AlbumService.svc/GetPinNameList/" + userId,
@@ -65,9 +72,9 @@
 
                     }
                 })
-            }
+            }--%>
 
-            function SetAlbumNameByPinFromRest(searchPin) {
+<%--            function SetAlbumNameByPinFromRest(searchPin) {
                     $.ajax({
                         type: "GET",
                         url: "/AlbumService.svc/GetAlbumName/" + searchPin,
@@ -77,7 +84,7 @@
                             nameLabel.innerHTML = resp.GetAlbumNameResult;
                         }
                     })
-            }
+            }--%>
 
             function OnExplorerFileOpen(oExplorer, args) {
                 if (!args.get_item().isDirectory()) {
@@ -104,10 +111,13 @@
     
     <div>
         <h1>Pin:
-            <asp:Label ID="LabelAlbumPin" runat="server" /></h1>
+            <asp:Label ID="LabelAlbumPin" runat="server" /></h1>        
         <br />
         <h1>Name:
-            <asp:Label ID="LabelAlbumName" runat="server" /></h1>
+        <%--<asp:Label ID="LabelAlbumName" runat="server" /> <br />--%>
+            <telerik:RadTextBox ID="RadTextBoxAlbumName" runat="server" ShowButton="false" ></telerik:RadTextBox>
+            <asp:Button ID="ButtonChangeAlbumName" runat="server" Text="Change Name" OnClick="ButtonChangeAlbumName_Click"></asp:Button>
+        </h1>
         <asp:HiddenField ID="HiddenFieldDownload" runat="server" />
         <asp:Button ID="ButtonDownload" runat="server" Style="display: none" />
         <telerik:RadFileExplorer ID="RadFileExplorerAlbum"

@@ -150,6 +150,19 @@ namespace PictureShare1
             }
         }
 
+        public void ChangeAlbumName(string newAlbumName, string pin)
+        {
+            using (SqlConnection conn = new SqlConnection())
+            {
+                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE Album SET AlbumName = @0 WHERE AlbumPin = @1", conn);
+                cmd.Parameters.Add(new SqlParameter("0", newAlbumName));
+                cmd.Parameters.Add(new SqlParameter("1", pin));
+                cmd.ExecuteNonQuery();
+            }
+        }
+
 
     }
 

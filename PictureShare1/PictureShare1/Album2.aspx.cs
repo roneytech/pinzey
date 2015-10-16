@@ -57,7 +57,8 @@ namespace PictureShare1
                     if (!String.IsNullOrEmpty(albumPin))
                     {                
                         RadFileExplorerAlbum.InitialPath = Page.ResolveUrl(userFolder + albumPin);
-                        LabelAlbumName.Text = album.GetAlbumName(albumPin);
+                        //LabelAlbumName.Text = album.GetAlbumName(albumPin);
+                        RadTextBoxAlbumName.Text = album.GetAlbumName(albumPin);
                     }
                 }
                 else
@@ -70,7 +71,8 @@ namespace PictureShare1
                         RadFileExplorerAlbum.Configuration.UploadPaths = new string[] { userFolder + albumPin };
                         RadFileExplorerAlbum.Configuration.DeletePaths = new string[] { userFolder + albumPin };
                         RadFileExplorerAlbum.InitialPath = Page.ResolveUrl(userFolder + albumPin);
-                        LabelAlbumName.Text = album.GetAlbumName(albumPin);
+                        
+                        //LabelAlbumName.Text = album.GetAlbumName(albumPin);
                     }
                     else
                     {
@@ -80,7 +82,15 @@ namespace PictureShare1
             }
         }
 
-        void ButtonDownload_Click(object sender, EventArgs e)
+        protected void ButtonChangeAlbumName_Click(object sender, EventArgs e)
+        {
+            Album album = new Album();
+            var pin = RadFileExplorerAlbum.CurrentFolder.Substring(RadFileExplorerAlbum.CurrentFolder.LastIndexOf('/') + 1);
+            album.ChangeAlbumName(RadTextBoxAlbumName.Text, pin);
+            RadFileExplorerAlbum.TreeView.Nodes.Clear();
+        }
+
+        protected void ButtonDownload_Click(object sender, EventArgs e)
         {
             string[] paths = HiddenFieldDownload.Value.Split('|');
             if (paths.Length > 0 && !String.IsNullOrEmpty(paths[0]))
