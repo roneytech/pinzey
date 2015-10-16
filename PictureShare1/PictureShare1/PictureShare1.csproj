@@ -197,6 +197,7 @@
     <Content Include="Account\Web.config" />
     <Content Include="AccountSettings.aspx" />
     <None Include="Properties\PublishProfiles\Local Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Payment.aspx" />
     <Content Include="Scripts\bootstrap.js" />
