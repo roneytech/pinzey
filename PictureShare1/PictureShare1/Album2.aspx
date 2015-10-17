@@ -5,11 +5,25 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
+       <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="8aqznpahstk8pkd"></script>
+
         <script type="text/javascript">
             function extendedFileExplorer_onGridContextItemClicked(oGridMenu, args) {
-                var menuItemText = args.get_item().get_text();
-                if (menuItemText == "Download") {
+                //var menuItemText = args.get_item().get_text();
+                var menuItemValue = args.get_item().get_value();
+                if (menuItemValue == "Download1") {
                     extendedFileExplorer_sendItemsPathsToServer();
+                }
+                if (menuItemValue == "Download2") {
+                    var oExplorer = $find("<%= RadFileExplorerAlbum.ClientID %>"); // Find the RadFileExplorer ; 
+                    var selectedItems = oExplorer.get_selectedItems();
+                    var baseUrl = window.location.href.replace("#","");
+                    var itemPaths = new Array();
+                    for (var i = 0; i < selectedItems.length; i++) {
+                        var url = baseUrl + selectedItems[i].get_path();
+                        itemPaths.push({ 'url': url, 'filename': 'testFilename' + i.toString() });
+                    }
+                    saveToDropbox(itemPaths);
                 }
             }
 
@@ -17,9 +31,50 @@
                 var menuItem = args.get_menuItem();
                 var treeNode = args.get_node();
 
-                if (menuItem.get_value() == "Download") {
+                if (menuItem.get_value() == "Download1") {
                     extendedFileExplorer_sendItemsPathsToServer();
                 }
+
+                if (menuItem.get_value() == "Download2") {
+                    var oExplorer = $find("<%= RadFileExplorerAlbum.ClientID %>"); // Find the RadFileExplorer ; 
+                    var selectedItems = oExplorer.get_selectedItems();
+                    var baseUrl = window.location.href.replace("#", "");
+                    var itemPaths = new Array();
+                    for (var i = 0; i < selectedItems.length; i++) {
+                        var url = baseUrl + selectedItems[i].get_path();
+                        itemPaths.push({ 'url': url, 'filename': 'testFilename' + i.toString() });
+                    }
+                    saveToDropbox(itemPaths);
+                }
+            }
+
+            function saveToDropbox(arrayOfFiles)
+            {
+                var options = {
+                    files: arrayOfFiles,
+
+                    // Success is called once all files have been successfully added to the user's
+                    // Dropbox, although they may not have synced to the user's devices yet.
+                    success: function () {
+                        // Indicate to the user that the files have been saved.
+                        alert("Success! Files saved to your Dropbox.");
+                    },
+
+                    // Progress is called periodically to update the application on the progress
+                    // of the user's downloads. The value passed to this callback is a float
+                    // between 0 and 1. The progress callback is guaranteed to be called at least
+                    // once with the value 1.
+                    progress: function (progress) { },
+
+                    // Cancel is called if the user presses the Cancel button or closes the Saver.
+                    cancel: function () { },
+
+                    // Error is called in the event of an unexpected response from the server
+                    // hosting the files, such as not being able to find a file. This callback is
+                    // also called if there is an error on Dropbox or if the user is over quota.
+                    error: function (errorMessage) { }
+                };
+                Dropbox.save(options);
             }
 
             function extendedFileExplorer_sendItemsPathsToServer() {
@@ -47,13 +102,11 @@
                 var pinLabel = $get("<%= LabelAlbumPin.ClientID %>");
                 var radFile = $find("<%= RadFileExplorerAlbum.ClientID %>");
                 var radText = $find("<%= RadTextBoxAlbumName.ClientID %>");
-                //var nameLabel = $get("");
                 var nameValue = args.get_item().get_name();
                 var currentDirectory = radFile.get_currentDirectory();
                 var pinValue = currentDirectory.split('/').pop();
                 pinLabel.innerHTML = pinValue;
                 radText.set_value(nameValue);
-                //nameLabel.innerHTML = nameValue;
                 //SetAlbumNameByPinFromRest(pinValue);
             }
 

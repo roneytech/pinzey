@@ -22,18 +22,34 @@ namespace PictureShare1
         protected void Page_Init(object sender, EventArgs e)
         {
             // Add a custom download item to the grid context menu.
-            RadMenuItem item = new RadMenuItem("Download");
+            RadMenuItem item = new RadMenuItem("Download to my computer");
             item.PostBack = false;
-            item.Value = "Download";
+            item.Value = "Download1";
             RadFileExplorerAlbum.GridContextMenu.Items.Add(item);
             RadFileExplorerAlbum.GridContextMenu.OnClientItemClicked = "extendedFileExplorer_onGridContextItemClicked";
             
             // Add a custom download item to the tree view context menu.
-            RadMenuItem item2 = new RadMenuItem("Download");
+            RadMenuItem item2 = new RadMenuItem("Download to my computer");
             item2.PostBack = false;
-            item2.Value = "Download";
+            item2.Value = "Download1";
             RadFileExplorerAlbum.TreeView.ContextMenus[0].Items.Add(item2);
             RadFileExplorerAlbum.TreeView.OnClientContextMenuItemClicked = "onClientContextMenuItemClicked";
+            //ButtonDownload.Click += new EventHandler(ButtonDownload_Click);
+
+            // Add a custom download item to the grid context menu.
+            RadMenuItem item3 = new RadMenuItem("Download to my Dropbox account");
+            item3.PostBack = false;
+            item3.Value = "Download2";
+            RadFileExplorerAlbum.GridContextMenu.Items.Add(item3);
+            RadFileExplorerAlbum.GridContextMenu.OnClientItemClicked = "extendedFileExplorer_onGridContextItemClicked";
+
+            // Add a custom download item to the tree view context menu.
+            RadMenuItem item4 = new RadMenuItem("Download to my Dropbox account");
+            item4.PostBack = false;
+            item4.Value = "Download2";
+            RadFileExplorerAlbum.TreeView.ContextMenus[0].Items.Add(item4);
+            RadFileExplorerAlbum.TreeView.OnClientContextMenuItemClicked = "onClientContextMenuItemClicked";
+
             ButtonDownload.Click += new EventHandler(ButtonDownload_Click);
 
             RadFileExplorerAlbum.Configuration.ContentProviderTypeName = typeof(CustomContentProvider).AssemblyQualifiedName;
