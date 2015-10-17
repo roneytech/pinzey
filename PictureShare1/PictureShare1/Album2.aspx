@@ -15,15 +15,9 @@
                     extendedFileExplorer_sendItemsPathsToServer();
                 }
                 if (menuItemValue == "Download2") {
-                    var oExplorer = $find("<%= RadFileExplorerAlbum.ClientID %>"); // Find the RadFileExplorer ; 
-                    var selectedItems = oExplorer.get_selectedItems();
-                    var baseUrl = window.location.href.replace("#","");
-                    var itemPaths = new Array();
-                    for (var i = 0; i < selectedItems.length; i++) {
-                        var url = baseUrl + selectedItems[i].get_path();
-                        itemPaths.push({ 'url': url, 'filename': 'testFilename' + i.toString() });
-                    }
-                    saveToDropbox(itemPaths);
+                    var oExplorer = $find("<%= RadFileExplorerAlbum.ClientID %>");
+                    var fileList = oExplorer.get_selectedItems();
+                    saveToDropbox(makeDropboxFileListFromSelectedItems(fileList));
                 }
             }
 
@@ -36,16 +30,31 @@
                 }
 
                 if (menuItem.get_value() == "Download2") {
-                    var oExplorer = $find("<%= RadFileExplorerAlbum.ClientID %>"); // Find the RadFileExplorer ; 
-                    var selectedItems = oExplorer.get_selectedItems();
-                    var baseUrl = window.location.href.replace("#", "");
-                    var itemPaths = new Array();
-                    for (var i = 0; i < selectedItems.length; i++) {
-                        var url = baseUrl + selectedItems[i].get_path();
-                        itemPaths.push({ 'url': url, 'filename': 'testFilename' + i.toString() });
-                    }
-                    saveToDropbox(itemPaths);
+                    var oExplorer = $find("<%= RadFileExplorerAlbum.ClientID %>");
+                    var fileList = oExplorer.get_fileList().get_items();
+                    saveToDropbox(makeDropboxFileListFromFileList(fileList));
                 }
+            }
+
+            function makeDropboxFileListFromFileList(fileArray) {
+                var baseUrl = window.location.href.replace("#", "");
+                var itemPaths = new Array();
+                for (var i = 0; i < fileArray.length; i++) {
+                    var url = baseUrl + fileArray[i].Path;
+                    itemPaths.push({ 'url': url, 'filename': fileArray[i].Name });
+                }
+                return itemPaths;
+            }
+
+            function makeDropboxFileListFromSelectedItems(selectedItemArray)
+            {
+                var baseUrl = window.location.href.replace("#", "");
+                var itemPaths = new Array();
+                for (var i = 0; i < selectedItemArray.length; i++) {
+                    var url = baseUrl + selectedItemArray[i].get_path();
+                    itemPaths.push({ 'url': url, 'filename': selectedItemArray[i].get_name() });
+                }
+                return itemPaths;
             }
 
             function saveToDropbox(arrayOfFiles)
