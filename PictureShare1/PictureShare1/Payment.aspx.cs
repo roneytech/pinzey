@@ -5,12 +5,20 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Stripe;
+using System.Web.Security;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using PictureShare1.Models;
+//using Owin;
+using Microsoft.AspNet.Identity.EntityFramework;
+
 
 namespace PictureShare1
 {
     public partial class Payment : System.Web.UI.Page
     {
-
+        const int level1Price = 2400;
+        const int level2Price = 4800;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,11 +31,44 @@ namespace PictureShare1
                 TextBoxExpirationYear.Text,
                 TextBoxExpirationMonth.Text,
                 TextBoxCvc.Text);
-            if (chargeCard(LabelTokenId.Text, (int.Parse(DropDownListOption.SelectedValue)*100)))
+            int paymentAmount = 0;
+            switch (DropDownListOption.SelectedValue)
             {
-                LabelChargeDetails.Text = "Charge sucessful!";
+                case "Level1":
+                    paymentAmount = level1Price;
+                    break;
+                case "Level2":
+                    paymentAmount = level2Price;
+                    break;
+                default:
+                    paymentAmount = 0;
+                    break;
+            }
+
+            if (paymentAmount > 0)
+            {
+                if (chargeCard(LabelTokenId.Text, paymentAmount))
+                {
+                    LabelChargeDetails.Text = "Charge sucessful!";
+                    updateUsersRole(DropDownListOption.SelectedValue);
+
+                }
             }
         }
+
+        protected void updateUsersRole(string roleName)
+        {
+            var context = HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>();
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+            if (!roleManager.RoleExists(roleName))
+            {
+                var roleresult = roleManager.Create(new IdentityRole(roleName));
+            }
+            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var result = manager.AddToRole(User.Identity.GetUserId(), roleName);
+        }
+
 
         protected string getStripeToken(string cardNumber, string expirationYear, string expirationMonth, string cvc)
         {

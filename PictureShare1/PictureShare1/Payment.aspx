@@ -5,7 +5,8 @@
         <h3>Payment Details</h3>
         <p>
         <span class="select"><asp:DropDownList ID="DropDownListOption" runat="server">
-            <asp:ListItem Text="$2/Month for 12 Months = $24.00" Value="24"></asp:ListItem>
+            <asp:ListItem Text="$2/Month for 12 Months = $24.00" Value="Level1"></asp:ListItem>
+            <asp:ListItem Text="$4/Month for 12 Months = $48.00" Value="Level2"></asp:ListItem>
         </asp:DropDownList></span>
         <asp:TextBox ID="TextBoxCardNumber" Text="4242424242424242" runat="server" placeholder="Credit Card Number"></asp:TextBox>
         <asp:TextBox ID="TextBoxExpirationYear" Text="2022" runat="server" placeholder="Exp Year"></asp:TextBox>
