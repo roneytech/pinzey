@@ -14,6 +14,7 @@ namespace PictureShare1
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
         private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";
         private string _antiXsrfTokenValue;
+        public string albumLink = "/Album2";
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -68,12 +69,35 @@ namespace PictureShare1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (!UserHasAlbums())
+                    albumLink = "/";
+            }
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
         {
             Context.GetOwinContext().Authentication.SignOut();
+        }
+
+        protected bool UserHasAlbums()
+        {
+            var claimsIdentity = HttpContext.Current.User.Identity as ClaimsIdentity;
+            if (claimsIdentity != null)
+            {
+                var userIdClaim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                if (userIdClaim != null)
+                {
+                    var userIdValue = userIdClaim.Value;
+                    Album album = new Album();
+                    if (album.GetPinNameListByUser(userIdValue).Length > 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 
