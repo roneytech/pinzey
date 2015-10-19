@@ -75,6 +75,7 @@
 .RadFileExplorer .jpg:before, .RadFileExplorer .jpeg:before, .RadFileExplorer .jpe:before,
 .icon-image:before { content: "\e804"; }
 .icon-camera:before { content: "\e805"; }
+body .RadTreeView_Default .rtPlus:before,
 .icon-plus:before { content: "\e806"; }
 .icon-file-add2:before { content: "\e807"; }
 .rfeFileExtension.folder:before,
@@ -123,11 +124,11 @@
 .RadFileExplorer .RadToolBar .icnThumbnailsView .rtbText:before,
 .icon-grid:before { content: "\e807"; font-size: 34px; }
 .icon-share:before { content: "\e808"; }
+body .RadTreeView_Default .rtMinus:before,
 .icon-minus:before { content: "\e831"; }
 .RadFileExplorer .RadToolBar .icnGridView .rtbText:before,
 .icon-list:before { content: "\e832"; }
 .icon-folder-download:before { content: "\e833"; }
-body .RadTreeView_Default .rtMinus:before,
 .icon-folder-minus:before { content: "\e834"; }
 .RadFileExplorer .RadToolBar .icnNewFolder .rtbText:before,
 .RadTreeView_Default .rtPlus:before,
@@ -193,6 +194,12 @@ body .navbar-inverse .navbar-nav > li > a {
   padding: 7px 18px 12px;
 }
 body .navbar-inverse .navbar-nav > li:last-child > a { padding-right: none; }
+
+/* Responsive Header */
+body .navbar-inverse .navbar-toggle { border: none; }
+body .navbar-inverse .navbar-toggle:hover,
+body .navbar-inverse .navbar-toggle:focus { background-color: transparent; }
+body .navbar-inverse .navbar-collapse { border-color: transparent; }
 
 /* ----- Top ----- */
 
@@ -1557,6 +1564,14 @@ footer { color: rgba(255, 255, 255, 0.8); margin-top: 28px; clear: both; width: 
 @media (min-width: 1200px) {
   .body-content { max-width: 50%; }
 }
+@media (max-width: 1300px) {
+  #logo { top: 40px; }
+  #about .body-content, #pricing .body-content,
+ .body-content { max-width: 80%; }
+}
+@media (max-width: 1000px) {
+  .pricing_table li .white { width: 210px; }
+}
 @media (max-width: 940px) {
   .left h2,
   .right h2 { max-width: 80%; }
@@ -1569,9 +1584,38 @@ footer { color: rgba(255, 255, 255, 0.8); margin-top: 28px; clear: both; width: 
   #existing_album:hover:after,
   #new_album:hover:after { right: 32px; }
 }
+@media (max-width: 850px) {
+  .pricing_table li { min-height: 300px; }
+  .pricing_table li .white { width: 190px; }
+  .account_settings .dl-horizontal dt { float: left; clear: left; }
+  .account_settings .dl-horizontal dd { margin-left: 0; float: left; }
+}
+@media (max-width: 770px) {
+  .pricing_table li { min-height: 300px; }
+  .pricing_table li .white { width: 100%; left: 0; }
+  body .navbar-nav { margin: 0 -15px; }
+  body .navbar-inverse .navbar-nav > li > a,
+  body .navbar-inverse .navbar-nav > li > a:hover,
+  body .navbar-inverse .navbar-nav > li > a:focus { background: #fff; color: #a15366; }
+}
+@media (max-width: 740px) {
+  .pricing_table li { min-height: 330px; }
+}
+@media (max-width: 680px) {
+  .pricing_table li {
+    margin-left: 0; width: 100%;
+    min-height: 280px;
+    margin-bottom: 40px;
+    clear: both; float: none;
+  }
+  .pricing_table li .white { left: -21px; }
+}
 @media (max-width: 655px) {
   #existing_album,
   #new_album { left: 7%; }
+}
+@media (max-width: 560px) {
+  ul.half li { width: 100%; float: none; clear: both; margin-bottom: 70px; }
 }
 @media (max-width: 500px) {
   .left,
@@ -1589,4 +1633,5 @@ footer { color: rgba(255, 255, 255, 0.8); margin-top: 28px; clear: both; width: 
   .gnav li a { padding: 7px 14px 12px; }
   .modal { padding: 60px; margin-left: -160px; }
   #existing_album, #new_album { left: 5%; }
+  .account_settings .dl-horizontal { margin-left: 0; }
 }
