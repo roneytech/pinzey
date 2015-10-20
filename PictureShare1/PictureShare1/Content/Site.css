@@ -1406,7 +1406,9 @@ body .RadFileExplorer {
 }
 .RadToolBar_Default { font-family: 'Open Sans', sans-serif; background-color: transparent; }
 body #RAD_SPLITTER_PANE_CONTENT_ctl00_MainContent_RadFileExplorerAlbum_paneTree { height: calc(100% - 14px) !important; }
-body #ctl00_MainContent_RadFileExplorerAlbum_splitter { height: 454px !important; overflow: hidden; }
+body .RadFileExplorer .rfePaneGrid,
+body .RadSplitter { width: 100% !important; }
+body #ctl00_MainContent_RadFileExplorerAlbum_splitter { height: 454px !important; width: 100% !important; overflow: hidden; }
 body .RadToolBar_Default .rtbOuter { background: #F9FAFC; background-image: none; box-shadow: none; border: none; padding: 0; }
 body .RadSplitter .rspPane {  }
 body .RadSplitter .rspResizeBar { border-left: none; width: 1px; }
@@ -1584,22 +1586,44 @@ footer { color: rgba(255, 255, 255, 0.8); margin-top: 28px; clear: both; width: 
   #existing_album:hover:after,
   #new_album:hover:after { right: 32px; }
 }
+@media (max-width: 900px) {
+  body .RadFileExplorer .rfeThumbnailView .rlvI { width: 80px; }
+  body .RadFileExplorer .rfeThumbnailView .rfeImageFile img { height: auto; max-height: 80px; }
+}
 @media (max-width: 850px) {
   .pricing_table li { min-height: 300px; }
   .pricing_table li .white { width: 190px; }
   .account_settings .dl-horizontal dt { float: left; clear: left; }
   .account_settings .dl-horizontal dd { margin-left: 0; float: left; }
+  body .RadFileExplorer .rfeThumbnailView .rlvI { width: 70px; }
+  body .RadFileExplorer .rfeThumbnailView .rfeImageFile img { height: auto; max-height: 70px; }
 }
 @media (max-width: 770px) {
   .pricing_table li { min-height: 300px; }
   .pricing_table li .white { width: 100%; left: 0; }
-  body .navbar-nav { margin: 0 -15px; }
+  body .navbar-nav { margin: 0; float: left; width: 100%; }
   body .navbar-inverse .navbar-nav > li > a,
   body .navbar-inverse .navbar-nav > li > a:hover,
   body .navbar-inverse .navbar-nav > li > a:focus { background: #fff; color: #a15366; }
+  body .RadToolBar_Horizontal .rtbItem, body .RadToolBar_Horizontal .rtbItem:first-child { margin-left: 14px; }
+  body .RadFileExplorer .rfeThumbnailView .rlvI:first-child,
+  body .RadFileExplorer .rfeThumbnailView .rlvI:nth-child(4n+1) { margin-left: 0; clear: both; }
+  body .RadFileExplorer .rfeThumbnailView .rlvI:nth-child(5n+1) { margin-left: 5px; clear: none; }
+  body .gnav { width: 100%; }
+  body .gnav li { margin: 0; float: none; clear: both; width: 100%; }
+  body .navbar-collapse { padding: 0; }
 }
 @media (max-width: 740px) {
   .pricing_table li { min-height: 330px; }
+  body #RAD_SPLITTER_PANE_CONTENT_ctl00_MainContent_RadFileExplorerAlbum_paneTree { width: 180px !important; }
+}
+@media (max-width: 720px) {
+  body .RadFileExplorer .rfeThumbnailView .rlvI { width: 80px; }
+  body .RadFileExplorer .rfeThumbnailView .rfeImageFile img { height: auto; max-height: 80px; }
+  body .RadFileExplorer .rfeThumbnailView .rlvI:nth-child(3n+1) { margin-left: 5px; clear: none; }
+  body .RadFileExplorer .rfeThumbnailView .rlvI:first-child,
+  body .RadFileExplorer .rfeThumbnailView .rlvI:nth-child(4n+1) { margin-left: 0; clear: both; }
+  body .rtbItem span, body .rtbItem span:before { font-size: 18px; }
 }
 @media (max-width: 680px) {
   .pricing_table li {
@@ -1609,13 +1633,22 @@ footer { color: rgba(255, 255, 255, 0.8); margin-top: 28px; clear: both; width: 
     clear: both; float: none;
   }
   .pricing_table li .white { left: -21px; }
+  #about .body-content, #pricing .body-content, .body-content { max-width: 90%; }
+  body .RadFileExplorer .rfeThumbnailView .rlvI:nth-child(3n+1) { margin-left: 5px; clear: none; }
+  body .RadFileExplorer .rfeThumbnailView .rlvI:first-child,
+  body .RadFileExplorer .rfeThumbnailView .rlvI:nth-child(4n+1) { margin-left: 0; clear: both; }
 }
 @media (max-width: 655px) {
   #existing_album,
   #new_album { left: 7%; }
+  body .RadFileExplorer .rfeThumbnailView .rlvI:first-child,
+  body .RadFileExplorer .rfeThumbnailView .rlvI:nth-child(2n+1),
+  body .RadToolBar_Horizontal .rtbItem, body .RadToolBar_Horizontal .rtbItem:first-child { margin-left: 5px; }
 }
 @media (max-width: 560px) {
   ul.half li { width: 100%; float: none; clear: both; margin-bottom: 70px; }
+  body .RadFileExplorer .rfeThumbnailView .rlvI { width: 100%; height: auto; display: inline-block; overflow: hidden; margin: 0 0 5px 0 !important; }
+  body .RadFileExplorer .rfeThumbnailView .rfeImageFile img { max-height: 160px; }
 }
 @media (max-width: 500px) {
   .left,
