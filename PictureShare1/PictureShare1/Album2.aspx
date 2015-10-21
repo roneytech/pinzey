@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Album2.aspx.cs" MasterPageFile="~/Site.Master" Inherits="PictureShare1.AlbumTel" Title="Pinzey Picture Sharing"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Album2.aspx.cs" MasterPageFile="~/Site.Master" Inherits="PictureShare1.AlbumTel" Title="Pinzey Picture Sharing" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
-       <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="8aqznpahstk8pkd"></script>
+        <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="8aqznpahstk8pkd"></script>
 
         <script type="text/javascript">
             function extendedFileExplorer_onGridContextItemClicked(oGridMenu, args) {
@@ -46,8 +46,7 @@
                 return itemPaths;
             }
 
-            function makeDropboxFileListFromSelectedItems(selectedItemArray)
-            {
+            function makeDropboxFileListFromSelectedItems(selectedItemArray) {
                 var baseUrl = window.location.href.replace("#", "");
                 var itemPaths = new Array();
                 for (var i = 0; i < selectedItemArray.length; i++) {
@@ -57,8 +56,7 @@
                 return itemPaths;
             }
 
-            function saveToDropbox(arrayOfFiles)
-            {
+            function saveToDropbox(arrayOfFiles) {
                 var options = {
                     files: arrayOfFiles,
 
@@ -119,7 +117,7 @@
                 //SetAlbumNameByPinFromRest(pinValue);
             }
 
-<%--            function SetAlbumNameByUserIdFromRest(userId) {
+            <%--            function SetAlbumNameByUserIdFromRest(userId) {
                 $.ajax({
                     type: "GET",
                     url: "/AlbumService.svc/GetPinNameList/" + userId,
@@ -150,12 +148,13 @@
 
             function OnExplorerFileOpen(oExplorer, args) {
                 if (!args.get_item().isDirectory()) {
-                    setTimeout(function () {
-                        var oWindowManager = oExplorer.get_windowManager();
-                        var previewWindow = oWindowManager.getActiveWindow(); // Gets the current active widow.
-                        previewWindow.setSize(800, 700);
-                        previewWindow.center();
-                    }, 100);   // Some timeout is required in order to allow the window to become active
+
+                    addImagesToImageGalary();
+                    selectGallaryItem(args.get_item().get_name());
+                    args.set_cancel(true);
+                    
+                    var oWnd = $find("<%= RadWindow1.ClientID %>");
+                    oWnd.show();
                 }
             }
 
@@ -167,17 +166,58 @@
                     alert("Sorry, deletion of directories is not allowed at this time. This prevents users from accidentally deleting everyone's photos.");
                 }
             }
-</script>
+
+
+            function selectGallaryItem(itemToOpen) {
+                var oImage = $find("<%= RadImageGallery2.ClientID %>");
+                var itemsArray = oImage.get_items();
+                var titles = [];
+                var paths = [];
+                var count = itemsArray.get_count();
+                var gallaryItem;
+                for (var i = 0; i < count; i++) {
+                    var imageUrl = itemsArray.getItem(i).get_imageUrl();
+                    imageUrl = imageUrl.split('%20').join(' ')
+                    if (imageUrl.indexOf(itemToOpen) > -1) {
+                        gallaryItem = itemsArray.getItem(i);
+                    }
+
+                }
+                
+                oImage.selectItem(gallaryItem);
+            }
+
+            function addImagesToImageGalary(itemToSelect)
+            {
+                // Get the image gallary and clear its items.
+                var oImage = $find("<%= RadImageGallery2.ClientID %>");
+                oImage.get_items().clear();
+
+                // Get list of items.
+                var oExplorer = $find("<%= RadFileExplorerAlbum.ClientID %>");
+                var fileList = oExplorer.get_fileList().get_items();
+
+                for (var i = 0; i < fileList.length; i++) {
+                    var item = new Telerik.Web.UI.ImageGalleryItem({
+                        //title: "Image title",
+                        //description: "Image description",
+                        //thumbnailUrl: fileList[i].Path,
+                        imageUrl: fileList[i].Path
+                    });
+                    oImage.get_items().add(item);
+                }
+            }
+
         </script>
     </telerik:RadCodeBlock>
-    
+
     <div>
         <h1>Pin:
-            <asp:Label ID="LabelAlbumPin" runat="server" /></h1>        
+            <asp:Label ID="LabelAlbumPin" runat="server" /></h1>
         <br />
         <h1>Name:
         <%--<asp:Label ID="LabelAlbumName" runat="server" /> <br />--%>
-            <telerik:RadTextBox ID="RadTextBoxAlbumName" runat="server" ShowButton="false" ></telerik:RadTextBox>
+            <telerik:RadTextBox ID="RadTextBoxAlbumName" runat="server" ShowButton="false"></telerik:RadTextBox>
             <asp:Button ID="ButtonChangeAlbumName" runat="server" Text="Change Name" OnClick="ButtonChangeAlbumName_Click"></asp:Button>
         </h1>
         <asp:HiddenField ID="HiddenFieldDownload" runat="server" />
@@ -193,8 +233,17 @@
             ToolTip="Right click on a file or folder to download it. Downloads will be zipped up into a single file."
             OnClientFileOpen="OnExplorerFileOpen">
         </telerik:RadFileExplorer>
-        <br />
-        <br />
+        <telerik:RadWindow runat="server" ID="RadWindow1"
+            Behaviors="Close,Move" ShowContentDuringLoad="true"
+            VisibleStatusbar="false" AutoSize="false" Height="650px" Width="640px"
+            Modal="true">
+            <ContentTemplate>
+                <telerik:RadImageGallery runat="server" ID="RadImageGallery2" DisplayAreaMode="Image"
+                    Width="600px" Height="600" Visible="true">
+                     <ThumbnailsAreaSettings Mode="ImageSliderPreview" />
+                </telerik:RadImageGallery>
+            </ContentTemplate>
+        </telerik:RadWindow>
     </div>
 </asp:Content>
 

@@ -73,6 +73,7 @@ namespace PictureShare1
                     if (!String.IsNullOrEmpty(albumPin))
                     {                
                         RadFileExplorerAlbum.InitialPath = Page.ResolveUrl(userFolder + albumPin);
+                        //RadImageGallery2.ImagesFolderPath = Page.ResolveUrl(userFolder + albumPin);
                         //LabelAlbumName.Text = album.GetAlbumName(albumPin);
                         RadTextBoxAlbumName.Text = album.GetAlbumName(albumPin);
                     }
@@ -87,7 +88,7 @@ namespace PictureShare1
                         RadFileExplorerAlbum.Configuration.UploadPaths = new string[] { userFolder + albumPin };
                         RadFileExplorerAlbum.Configuration.DeletePaths = new string[] { userFolder + albumPin };
                         RadFileExplorerAlbum.InitialPath = Page.ResolveUrl(userFolder + albumPin);
-                        
+                        //RadImageGallery2.ImagesFolderPath = Page.ResolveUrl(userFolder + albumPin);
                         //LabelAlbumName.Text = album.GetAlbumName(albumPin);
                     }
                     else
@@ -235,7 +236,6 @@ namespace PictureShare1
             }
 
         }
-
 
 
     }
