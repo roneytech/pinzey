@@ -7,8 +7,12 @@ using System.Web.UI.WebControls;
 using System.IO;
 using IZ.WebFileManager;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity.EntityFramework;
+using PictureShare1.Models;
 using Telerik.Web.UI;
 using Telerik.Web.UI.Widgets;
+//using System.Web.Security;
 
 namespace PictureShare1
 {
@@ -66,7 +70,9 @@ namespace PictureShare1
                 LabelAlbumPin.Text = albumPin;
                 if (User.Identity.IsAuthenticated)
                 {
-                    userFolder += User.Identity.GetUserId() + "/";
+                    string userId = User.Identity.GetUserId();
+                    userFolder += userId + "/";
+                    RadFileExplorerAlbum.Configuration.MaxUploadFileSize = GetUploadLimit(userId);
                     RadFileExplorerAlbum.Configuration.ViewPaths = getFolderArray(Request.MapPath(userFolder));
                     RadFileExplorerAlbum.Configuration.UploadPaths = new string[] { userFolder };
                     RadFileExplorerAlbum.Configuration.DeletePaths = new string[] { userFolder };
@@ -82,7 +88,9 @@ namespace PictureShare1
                 {
                     if (!String.IsNullOrEmpty(albumPin))
                     {
-                        userFolder += album.GetAlbumUserId(albumPin) + "/";
+                        string userId = album.GetAlbumUserId(albumPin);
+                        userFolder += userId + "/";
+                        RadFileExplorerAlbum.Configuration.MaxUploadFileSize = GetUploadLimit(userId);
                         RadFileExplorerAlbum.Configuration.SearchPatterns = new string[] { "*.jpg", "*.jpeg", "*.gif", "*.png" };
                         RadFileExplorerAlbum.Configuration.ViewPaths = new string[] { userFolder + albumPin };
                         RadFileExplorerAlbum.Configuration.UploadPaths = new string[] { userFolder + albumPin };
@@ -237,6 +245,22 @@ namespace PictureShare1
 
         }
 
-
+        protected int GetUploadLimit(string userId)
+        {
+            var context = HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>();
+            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            if(manager.IsInRole(userId, "Level2"))
+            { 
+                return 500000000;
+            }
+            else if (manager.IsInRole(userId, "Level1"))
+            {
+                return 50000000;
+            }
+            else 
+            {
+                return 5000000;
+            }
+        }
     }
 }

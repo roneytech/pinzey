@@ -125,7 +125,7 @@ namespace PictureShare1
                 conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Album WHERE AlbumPin = @0", conn);
-                cmd.Parameters.Add(new SqlParameter("0", pin));
+                cmd.Parameters.Add(new SqlParameter("@0", pin));
 
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
