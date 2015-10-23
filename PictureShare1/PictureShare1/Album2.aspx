@@ -216,7 +216,7 @@
             <asp:Label ID="LabelAlbumPin" runat="server" /></h1>
         <br />
         <h1>Name:
-        <%--<asp:Label ID="LabelAlbumName" runat="server" /> <br />--%>
+        <%--<asp:Label ID="LabelAlbumName" runat="server" /> <br />  --%>
             <telerik:RadTextBox ID="RadTextBoxAlbumName" runat="server" ShowButton="false"></telerik:RadTextBox>
             <asp:Button ID="ButtonChangeAlbumName" runat="server" Text="Change Name" OnClick="ButtonChangeAlbumName_Click"></asp:Button>
         </h1>
@@ -231,7 +231,8 @@
             OnClientFolderChange="OnClientFolderChange"
             OnClientDelete="OnClientDelete"
             ToolTip="Right click on a file or folder to download it. Downloads will be zipped up into a single file."
-            OnClientFileOpen="OnExplorerFileOpen">
+            OnClientFileOpen="OnExplorerFileOpen"
+            OnExplorerPopulated="RadFileExplorerAlbum_ExplorerPopulated">
         </telerik:RadFileExplorer>
         <telerik:RadWindow runat="server" ID="RadWindow1"
             Behaviors="Close,Move" ShowContentDuringLoad="true"

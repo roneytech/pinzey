@@ -72,38 +72,83 @@ namespace PictureShare1
                 {
                     string userId = User.Identity.GetUserId();
                     userFolder += userId + "/";
-                    RadFileExplorerAlbum.Configuration.MaxUploadFileSize = GetUploadLimit(userId);
-                    RadFileExplorerAlbum.Configuration.ViewPaths = getFolderArray(Request.MapPath(userFolder));
-                    RadFileExplorerAlbum.Configuration.UploadPaths = new string[] { userFolder };
-                    RadFileExplorerAlbum.Configuration.DeletePaths = new string[] { userFolder };
+
                     if (!String.IsNullOrEmpty(albumPin))
-                    {                
-                        RadFileExplorerAlbum.InitialPath = Page.ResolveUrl(userFolder + albumPin);
-                        //RadImageGallery2.ImagesFolderPath = Page.ResolveUrl(userFolder + albumPin);
-                        //LabelAlbumName.Text = album.GetAlbumName(albumPin);
+                    {
+                        string albumUserId = album.GetAlbumUserId(albumPin);
+                        if (albumUserId == userId)
+                        {
+                            //This album pin belongs to the current users
+                            //RadFileExplorerAlbum.InitialPath = Page.ResolveUrl(userFolder);
+                            RadFileExplorerAlbum.Configuration.MaxUploadFileSize = GetUploadLimit(userId);
+                            RadFileExplorerAlbum.Configuration.ViewPaths = getFolderArray(Request.MapPath(userFolder));
+                            RadFileExplorerAlbum.Configuration.UploadPaths = new string[] { userFolder };
+                            RadFileExplorerAlbum.Configuration.DeletePaths = new string[] { userFolder };
+                        }
+                        else
+                            // The user is logged in but its not their album.
+                            ViewAnotherUsersAlbum(albumPin);
+                        LabelAlbumPin.Text = albumPin;
                         RadTextBoxAlbumName.Text = album.GetAlbumName(albumPin);
+                    }
+                    else
+                    { 
+                        // Load users root folder.
+                        RadFileExplorerAlbum.Configuration.MaxUploadFileSize = GetUploadLimit(userId);
+                        RadFileExplorerAlbum.Configuration.ViewPaths = getFolderArray(Request.MapPath(userFolder));
+                        RadFileExplorerAlbum.Configuration.UploadPaths = new string[] { userFolder };
+                        RadFileExplorerAlbum.Configuration.DeletePaths = new string[] { userFolder };
                     }
                 }
                 else
                 {
                     if (!String.IsNullOrEmpty(albumPin))
                     {
-                        string userId = album.GetAlbumUserId(albumPin);
-                        userFolder += userId + "/";
-                        RadFileExplorerAlbum.Configuration.MaxUploadFileSize = GetUploadLimit(userId);
-                        RadFileExplorerAlbum.Configuration.SearchPatterns = new string[] { "*.jpg", "*.jpeg", "*.gif", "*.png" };
-                        RadFileExplorerAlbum.Configuration.ViewPaths = new string[] { userFolder + albumPin };
-                        RadFileExplorerAlbum.Configuration.UploadPaths = new string[] { userFolder + albumPin };
-                        RadFileExplorerAlbum.Configuration.DeletePaths = new string[] { userFolder + albumPin };
-                        RadFileExplorerAlbum.InitialPath = Page.ResolveUrl(userFolder + albumPin);
-                        //RadImageGallery2.ImagesFolderPath = Page.ResolveUrl(userFolder + albumPin);
-                        //LabelAlbumName.Text = album.GetAlbumName(albumPin);
+                        // The user is not logged in therefor its another users pin.
+                        ViewAnotherUsersAlbum(albumPin);
+                        LabelAlbumPin.Text = albumPin;
+                        RadTextBoxAlbumName.Text = album.GetAlbumName(albumPin);
                     }
                     else
                     {
+                        // The user is not logged in and no pin is given. Redirect.
                         Response.Redirect("~/Default.aspx");
                     }
                 }                
+            }
+        }
+
+        private void ViewAnotherUsersAlbum(string albumPin)
+        {
+            Album album = new Album();
+            string albumUserId = album.GetAlbumUserId(albumPin);
+            string albumUserFolder = rootDir + albumUserId + "/";
+            RadFileExplorerAlbum.Configuration.MaxUploadFileSize = GetUploadLimit(albumUserId);
+            RadFileExplorerAlbum.Configuration.SearchPatterns = new string[] { "*.jpg", "*.jpeg", "*.gif", "*.png" };
+            RadFileExplorerAlbum.Configuration.ViewPaths = new string[] { albumUserFolder + albumPin };
+            RadFileExplorerAlbum.Configuration.UploadPaths = new string[] { albumUserFolder + albumPin };
+            RadFileExplorerAlbum.Configuration.DeletePaths = new string[] { albumUserFolder + albumPin };
+            RadFileExplorerAlbum.InitialPath = Page.ResolveUrl(albumUserFolder + albumPin);
+        }
+
+        protected void RadFileExplorerAlbum_ExplorerPopulated(object sender, Telerik.Web.UI.RadFileExplorerPopulatedEventArgs e)
+        {
+            if (e.ControlName == "tree")
+            {
+                albumPin = Request.QueryString["pin"];
+                if (!String.IsNullOrEmpty(albumPin))
+                {
+                    Album album = new Album();
+                    albumName = album.GetAlbumName(albumPin);
+                    RadTreeNode node = RadFileExplorerAlbum.TreeView.FindNodeByText(albumName);
+                    if (node != null)
+                    {
+                        node.Selected = true;
+                        node.Focus();
+                        node.Expanded = true;
+                        RadFileExplorerAlbum.InitialPath = node.FullPath;     
+                    }
+                }
             }
         }
 
@@ -255,11 +300,11 @@ namespace PictureShare1
             }
             else if (manager.IsInRole(userId, "Level1"))
             {
-                return 50000000;
+                return 5000000;
             }
             else 
             {
-                return 5000000;
+                return 1000000;
             }
         }
     }
