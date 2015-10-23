@@ -190,9 +190,12 @@ header { position: fixed; top: 0; width: 100%; z-index: 1; }
 .gnav li { list-style: none outside none; margin: 0 0 0 7px; float: left; }
 body .gnav li a,
 body .navbar-inverse .navbar-nav > li > a {
-  color: rgba(255, 255, 255, 0.8);
+  color: #fff;
   padding: 7px 18px 12px;
+  background: rgba(0, 0, 0, 0.3);
 }
+body .gnav li a:hover,
+body .navbar-inverse .navbar-nav > li > a:hover { background: rgba(0, 0, 0, 0.3); }
 body .navbar-inverse .navbar-nav > li:last-child > a { padding-right: none; }
 
 /* Responsive Header */
@@ -246,14 +249,14 @@ body .navbar-inverse .navbar-collapse { border-color: transparent; }
     -o-transition: all 0.4s ease-in-out;
     -ms-transition: all 0.4s ease-in-out;
 }
-#top:hover .left,
+/*#top:hover .left,
 #top:hover .right,
 .left.nohover,
 .right.nohover { width: 30%; }
 #top:hover .left:hover,
 .left.hover,
 #top:hover .right:hover,
-.right.hover { width: 70%; }
+.right.hover { width: 70%; }*/
 
 .left h2,
 .right h2 { margin-top: 30vh; }
@@ -1105,7 +1108,7 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
 .forgot { font-style: italic; color: #7f7f7f; font-size: 12px; }
 
 #existing_album,
-#new_album { position: relative; width: 50%; display: block; margin: 0 auto; }
+#new_album { position: relative; width: 60%; display: block; margin: 0 auto; }
 #existing_album input,
 #new_album input {
   color: rgba(255, 255, 255, 0.8);
@@ -1563,6 +1566,9 @@ footer { color: rgba(255, 255, 255, 0.8); margin-top: 28px; clear: both; width: 
 
 /* ----- Media Queries ----- */
 
+@media (min-width: 1500px) {
+  #existing_album, #new_album { width: 50%; }
+}
 @media (min-width: 1200px) {
   .body-content { max-width: 50%; }
 }

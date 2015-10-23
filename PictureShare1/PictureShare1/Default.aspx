@@ -66,7 +66,7 @@
             <h2>View album</h2>
             <div id="existing_album">
                 <asp:Panel ID="Panel1" runat="server" defaultbutton="ButtonLoadAlbum">
-                <asp:TextBox ID="TextBoxPin" runat="server" placeholder="Pin" ToolTip="Click here and enter your pin!"></asp:TextBox>
+                <asp:TextBox ID="TextBoxPin" runat="server" placeholder="Enter your pin here" ToolTip="Click here and enter your pin!"></asp:TextBox>
                 <asp:Button ID="ButtonLoadAlbum" Text="Go" runat="server" OnClick="ButtonLoadAlbum_Click" />
                 <p class="error">
                     <asp:Label ID="LabelErrorMessage" runat="server" Text="" ForeColor="Red"></asp:Label>
@@ -85,12 +85,12 @@
             </p>--%>
             <asp:Panel ID="Panel2" runat="server" defaultbutton="ButtonCreateAlbum">
             <div id="new_album">
-                <asp:TextBox ID="TextBoxAlbumName" runat="server" placeholder="Album Name" ToolTip="Click here and enter a name for your new album. You will be given a pin to share with your friends and family."></asp:TextBox>
+                <asp:TextBox ID="TextBoxAlbumName" runat="server" placeholder="Enter a new album name" ToolTip="Click here and enter a name for your new album. You will be given a pin to share with your friends and family."></asp:TextBox>
                 <asp:Button ID="ButtonCreateAlbum" runat="server" Text="Go" OnClick="ButtonCreateAlbum_Click" />
             </div>
             </asp:Panel>
             <div class="error">
-                <h3>
+                <h3 class="yourpin">
                     <asp:Label ID="LabelPin" runat="server" Text="Your pin is:" Visible="false"></asp:Label></h3>
                 <p>
                     <asp:Button ID="ButtonGoToAlbum" Text="View your new album" runat="server" PostBackUrl="~/Album.aspx" Visible="false" />
@@ -207,7 +207,7 @@
 
     <div id="pricing">
         <div class="body-content">
-            <h2>File sharing on the cheap-cheap</h2>
+            <h2>File sharing you can afford</h2>
             <ul class="pricing_table">
                 <li>
                     <div class="white">
