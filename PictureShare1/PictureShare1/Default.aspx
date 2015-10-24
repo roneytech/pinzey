@@ -83,23 +83,31 @@
             <%--            <p>
                 <a class="btn btn-default" href="CreateAlbum.aspx">Create New Album &raquo;</a>
             </p>--%>
-            <asp:Panel ID="Panel2" runat="server" defaultbutton="ButtonCreateAlbum">
-            <div id="new_album">
-                <asp:TextBox ID="TextBoxAlbumName" runat="server" placeholder="Enter a new album name" ToolTip="Click here and enter a name for your new album. You will be given a pin to share with your friends and family."></asp:TextBox>
-                <asp:Button ID="ButtonCreateAlbum" runat="server" Text="Go" OnClick="ButtonCreateAlbum_Click" />
-            </div>
+            <asp:Panel ID="Panel2" runat="server" DefaultButton="ButtonCreateAlbum">
+                <div id="new_album">
+                    <asp:TextBox ID="TextBoxAlbumName" runat="server" placeholder="Enter a new album name" ToolTip="Click here and enter a name for your new album. You will be given a pin to share with your friends and family."></asp:TextBox>
+                    <asp:Button ID="ButtonCreateAlbum" runat="server" Text="Go" OnClick="ButtonCreateAlbum_Click" />
+                </div>
+
+                <div class="error">
+                    <h3 class="yourpin">
+                        <asp:Label ID="LabelPin" runat="server" Text="Your pin is:" Visible="false"></asp:Label></h3>
+                    <p>
+                        <asp:Button ID="ButtonGoToAlbum" Text="View your new album" runat="server" PostBackUrl="~/Album.aspx" Visible="false" />
+                    </p>
             </asp:Panel>
-            <div class="error">
-                <h3 class="yourpin">
-                    <asp:Label ID="LabelPin" runat="server" Text="Your pin is:" Visible="false"></asp:Label></h3>
-                <p>
-                    <asp:Button ID="ButtonGoToAlbum" Text="View your new album" runat="server" PostBackUrl="~/Album.aspx" Visible="false" />
-                </p>
-                <p>
-                    <asp:Label ID="LabelLoginError" runat="server" Text=""></asp:Label>
-                </p>
+            <asp:LoginView ID="LoginView1" runat="server">
+                <AnonymousTemplate>
+                    <p>
+                        <%--<asp:Label ID="LabelLoginError" runat="server" Text=""></asp:Label>--%>
+                        Please <a href="Account/Login.aspx">login</a> or <a href="Account/Register.aspx">create an account</a> first
+                    </p>
+                </AnonymousTemplate>
+            </asp:LoginView>
             </div>
-        </div><!-- End .right -->
+
+        </div>
+        <!-- End .right -->
     </div><!-- End #top -->
 
     <div id="about">

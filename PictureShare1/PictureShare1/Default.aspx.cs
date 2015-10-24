@@ -17,13 +17,13 @@ namespace PictureShare1
         {
             if (User.Identity.IsAuthenticated)
             {
-                LabelLoginError.Text = "";
+                //LabelLoginError.Text = "";
                 TextBoxAlbumName.Enabled = true;
                 ButtonCreateAlbum.Enabled = true;
             }
             else
             {
-                LabelLoginError.Text = "Please login or create an account first.";
+                //LabelLoginError.Text = "Please login or create an account first.";
                 TextBoxAlbumName.Enabled = false;
                 ButtonCreateAlbum.Enabled = false;
             }
@@ -58,7 +58,7 @@ namespace PictureShare1
             }
             else
             {
-                LabelLoginError.Text = "Please login or create an account to create albums.";
+                //LabelLoginError.Text = "Please login or create an account to create albums.";
             }
         }
 
