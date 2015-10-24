@@ -269,6 +269,23 @@ namespace PictureShare1
             {
             }
 
+            public int GetNthIndex(string s, char t, int n)
+            {
+                int count = 0;
+                for (int i = 0; i < s.Length; i++)
+                {
+                    if (s[i] == t)
+                    {
+                        count++;
+                        if (count == n)
+                        {
+                            return i;
+                        }
+                    }
+                }
+                return -1;
+            }
+
             // Show directories as album name instead of pin.
             public override DirectoryItem ResolveRootDirectoryAsTree(string path)
             {
@@ -276,11 +293,26 @@ namespace PictureShare1
                 try
                 {
                     DirectoryItem orgDir = base.ResolveRootDirectoryAsTree(path);
-                    orgDir.Name = album.GetAlbumName(orgDir.Name);
+
+                    string pin = "";
+                    int firstSlash = GetNthIndex(path, '/', 3);
+                    int secondSlash = GetNthIndex(path, '/', 4);
+                    if (secondSlash > firstSlash)
+                    {
+                        pin = path.Substring(firstSlash, (secondSlash - firstSlash)) + " : ";
+                    }
+                    else
+                    {
+                        pin = orgDir.Name + " : ";
+                    }
+                    
+                    
+                    orgDir.Name = pin + album.GetAlbumName(orgDir.Name);
                     return orgDir;
+                    
 
                 }
-                catch (UnauthorizedAccessException uae)
+                catch (UnauthorizedAccessException)
                 {
                     //Eat access exceptions.
                     //return new DirectoryItem();
@@ -289,6 +321,7 @@ namespace PictureShare1
             }
 
         }
+
 
         protected int GetUploadLimit(string userId)
         {

@@ -105,15 +105,28 @@
                 return itemPaths.join("|");
             }
 
+            // Set pin label depending on folder selected.
             function OnClientFolderChange(sender, args) {
                 var pinLabel = $get("<%= LabelAlbumPin.ClientID %>");
                 var radFile = $find("<%= RadFileExplorerAlbum.ClientID %>");
                 var radText = $find("<%= RadTextBoxAlbumName.ClientID %>");
                 var nameValue = args.get_item().get_name();
-                var currentDirectory = radFile.get_currentDirectory();
-                var pinValue = currentDirectory.split('/').pop();
-                pinLabel.innerHTML = pinValue;
-                radText.set_value(nameValue);
+                var currentDirectory = args.get_item().get_path();
+                var folderCount = currentDirectory.split('/').length - 1;
+                if (folderCount < 4) {
+                    pinLabel.innerHTML = nameValue.substr(0, nameValue.indexOf(' '));
+                    radText.set_value(nameValue.substr(nameValue.indexOf(': '), nameValue.length - nameValue.indexOf(': ')));
+                }
+                else {
+                    var directories = currentDirectory.split('/');
+                    directories.pop();
+                    var pinValue = directories.pop();
+                    pinLabel.innerHTML = pinValue;
+                    SetAlbumNameByPinFromRest(pinValue);
+
+                }
+                //pinLabel.innerHTML = nameValue.substr(0, nameValue.indexOf(' '));
+
                 //SetAlbumNameByPinFromRest(pinValue);
             }
 
@@ -134,17 +147,18 @@
                 })
             }--%>
 
-<%--            function SetAlbumNameByPinFromRest(searchPin) {
+            function SetAlbumNameByPinFromRest(searchPin) {
                     $.ajax({
                         type: "GET",
                         url: "/AlbumService.svc/GetAlbumName/" + searchPin,
                         dataType: "json",
                         success: function (resp) {
-                            var nameLabel = $get("<%= LabelAlbumName.ClientID %>");
-                            nameLabel.innerHTML = resp.GetAlbumNameResult;
+                            var radText = $get("<%= RadTextBoxAlbumName.ClientID %>");
+                            radText.set_value(resp.GetAlbumNameResult);
+                            //nameLabel.innerHTML = resp.GetAlbumNameResult;
                         }
                     })
-            }--%>
+            }
 
             function OnExplorerFileOpen(oExplorer, args) {
                 if (!args.get_item().isDirectory()) {
@@ -224,6 +238,8 @@
         <asp:Button ID="ButtonDownload" runat="server" Style="display: none" />
         <telerik:RadFileExplorer ID="RadFileExplorerAlbum"
             runat="server"
+            Width="700px"
+            TreePaneWidth ="300px"
             VisibleControls="FileList, Grid, Toolbar, ListView, TreeView, ContextMenus"
             Configuration-AllowMultipleSelection="true"
             Configuration-MaxUploadFileSize="500000000"
