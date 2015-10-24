@@ -69,6 +69,7 @@
                 <asp:TextBox ID="TextBoxPin" runat="server" placeholder="Enter your pin here" ToolTip="Click here and enter your pin!"></asp:TextBox>
                 <asp:Button ID="ButtonLoadAlbum" Text="Go" runat="server" OnClick="ButtonLoadAlbum_Click" />
                 <p class="error">
+                    <br />
                     <asp:Label ID="LabelErrorMessage" runat="server" Text="" ForeColor="Red"></asp:Label>
                 </p>
                 </asp:Panel>
@@ -92,7 +93,7 @@
                 <div class="error">
                     <h3 class="yourpin">
                         <asp:Label ID="LabelPin" runat="server" Text="Your pin is:" Visible="false"></asp:Label></h3>
-                    <p>
+                    <p>                        
                         <asp:Button ID="ButtonGoToAlbum" Text="View your new album" runat="server" PostBackUrl="~/Album.aspx" Visible="false" />
                     </p>
             </asp:Panel>
@@ -225,7 +226,7 @@
                         <h5>Files:</h5>
                         <p>.JPG, .PNG</p>
                     </div>
-                    <a href="/payment">Yes Please</a>
+                    <a href="/Account/register.aspx">Yes Please</a>
                 </li>
                 <li>
                     <div class="white">

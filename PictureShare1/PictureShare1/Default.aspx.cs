@@ -69,7 +69,7 @@ namespace PictureShare1
             {
                 Response.Redirect("Album2.aspx?pin=" + TextBoxPin.Text);
             }
-            return "Album not found.";
+            return "Album not found";
         }
 
         protected void LogIn(object sender, EventArgs e)
