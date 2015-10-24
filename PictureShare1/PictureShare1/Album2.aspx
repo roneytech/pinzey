@@ -130,6 +130,17 @@
                 //SetAlbumNameByPinFromRest(pinValue);
             }
 
+            function SetInitialAlbumPinText() {
+                var pinLabel = $get("<%= LabelAlbumPin.ClientID %>");
+                var radFile = $find("<%= RadFileExplorerAlbum.ClientID %>");
+                var radText = $find("<%= RadTextBoxAlbumName.ClientID %>");
+                var radTree = radFile.get_tree();
+                var node = radTree.get_nodes().getNode(0);
+                var nodeText = node.get_text();
+                pinLabel.innerHTML = nodeText.substr(0, nodeText.indexOf(' '));
+                radText.set_value(nodeText.substr(nodeText.indexOf(': '), nodeText.length - nodeText.indexOf(': ')));
+            }
+
             <%--            function SetAlbumNameByUserIdFromRest(userId) {
                 $.ajax({
                     type: "GET",
@@ -248,7 +259,8 @@
             OnClientDelete="OnClientDelete"
             ToolTip="Right click on a file or folder to download it. Downloads will be zipped up into a single file."
             OnClientFileOpen="OnExplorerFileOpen"
-            OnExplorerPopulated="RadFileExplorerAlbum_ExplorerPopulated">
+            OnExplorerPopulated="RadFileExplorerAlbum_ExplorerPopulated"
+            OnClientLoad="SetInitialAlbumPinText">
         </telerik:RadFileExplorer>
         <telerik:RadWindow runat="server" ID="RadWindow1"
             Behaviors="Close,Move" ShowContentDuringLoad="true"
