@@ -28,6 +28,7 @@ namespace PictureShare1
 
         public bool AlbumExists(string pin)
         {
+            if (String.IsNullOrEmpty(pin)) return false;
             return !String.IsNullOrEmpty(GetAlbumNameDAL(pin));
         }
 
@@ -114,7 +115,7 @@ namespace PictureShare1
                 }
             }
             else
-                throw new Exception();
+                return "Album not found";
         }
 
         protected string GetAlbumUserDAL(string pin)
