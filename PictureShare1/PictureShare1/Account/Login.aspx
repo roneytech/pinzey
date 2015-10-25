@@ -3,12 +3,12 @@
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <h2><%: Title %>.</h2>
+    <%--<h2><%: Title %>.</h2>--%>
 
     <div class="row">
             <section id="loginForm">
                 <div class="form-horizontal register">
-                    <h4>Use a local account to log in.</h4>
+                    <h4>Log in to your account</h4>
                     <div class="white_container">
                         <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                             <p class="text-danger">
