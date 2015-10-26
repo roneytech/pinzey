@@ -249,9 +249,13 @@
                 tooltip.set_text("Click here to upload your files!");
                 tooltip.set_showEvent(Telerik.Web.UI.ToolTipShowEvent.OnMouseOver);
                 tooltip.set_animation(Telerik.Web.UI.ToolTipAnimation.FlyIn);
+                tooltip.set_animationDuration(2000);
+                tooltip.set_position(Telerik.Web.UI.ToolTipPosition.TopRight);
+
                 setTimeout(function () {
                     radToolTip.show();
                 }, 20);
+                tooltip.show();
             }
         </script>
     </telerik:RadCodeBlock>
