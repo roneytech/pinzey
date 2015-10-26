@@ -130,7 +130,12 @@
                 //SetAlbumNameByPinFromRest(pinValue);
             }
 
-            function SetInitialAlbumPinText() {
+            function OnFileExplorerLoad() {
+                setInitialAlbumPinText();
+                addToolTip();
+            }
+
+            function setInitialAlbumPinText() {
                 var pinLabel = $get("<%= LabelAlbumPin.ClientID %>");
                 var radFile = $find("<%= RadFileExplorerAlbum.ClientID %>");
                 var radText = $find("<%= RadTextBoxAlbumName.ClientID %>");
@@ -233,18 +238,38 @@
                 }
             }
 
+            function addToolTip() {
+                var oExplorer = $find("<%= RadFileExplorerAlbum.ClientID %>");
+                var toolBar = oExplorer.get_toolbar();
+                var uploadButton = toolBar.findItemByText("Upload");
+                uploadButton.onmouseover = null;
+                var element = uploadButton.get_element();
+                var toolTipManager = $find("<%= RadToolTipManager1.ClientID %>");
+                tooltip = toolTipManager.createToolTip(element);
+                tooltip.set_text("Click here to upload your files!");
+                tooltip.set_showEvent(Telerik.Web.UI.ToolTipShowEvent.OnMouseOver);
+                tooltip.set_animation(Telerik.Web.UI.ToolTipAnimation.FlyIn);
+                setTimeout(function () {
+                    radToolTip.show();
+                }, 20);
+            }
         </script>
     </telerik:RadCodeBlock>
 
     <div>
+        <telerik:RadToolTipManager ID="RadToolTipManager1" runat="server"></telerik:RadToolTipManager>
+        <telerik:RadToolTip ID="RadToolTip1" runat="server" Text="TEST" Animation="FlyIn" Visible="true"></telerik:RadToolTip>
         <h1>Pin:
             <asp:Label ID="LabelAlbumPin" runat="server" /></h1>
         <br />
         <h1>Name:
         <%--<asp:Label ID="LabelAlbumName" runat="server" /> <br />  --%>
             <telerik:RadTextBox ID="RadTextBoxAlbumName" runat="server" ShowButton="false"></telerik:RadTextBox>
-            <asp:Button ID="ButtonChangeAlbumName" runat="server" Text="Change Name" OnClick="ButtonChangeAlbumName_Click"></asp:Button>
+            <asp:Button ID="ButtonChangeAlbumName" runat="server" Text="Change Name" OnClick="ButtonChangeAlbumName_Click"></asp:Button>            
         </h1>
+        <br />
+        <a runat="server" href="~/Payment">Get more space!</a>
+        <br />
         <asp:HiddenField ID="HiddenFieldDownload" runat="server" />
         <asp:Button ID="ButtonDownload" runat="server" Style="display: none" />
         <telerik:RadFileExplorer ID="RadFileExplorerAlbum"
@@ -260,7 +285,7 @@
             ToolTip="Right click on a file or folder to download it. Downloads will be zipped up into a single file."
             OnClientFileOpen="OnExplorerFileOpen"
             OnExplorerPopulated="RadFileExplorerAlbum_ExplorerPopulated"
-            OnClientLoad="SetInitialAlbumPinText">
+            OnClientLoad="OnFileExplorerLoad">
         </telerik:RadFileExplorer>
         <telerik:RadWindow runat="server" ID="RadWindow1"
             Behaviors="Close,Move" ShowContentDuringLoad="true"
@@ -274,5 +299,11 @@
             </ContentTemplate>
         </telerik:RadWindow>
     </div>
+    Tips
+    <ol>
+        <li>Find the upload button and start uploading your files.</li>
+        <li>Create a different folder inside your album for each person so pictures don't get mixed together.</li>
+        <li>Right click on files or folders to see more options.</li>
+    </ol>
 </asp:Content>
 

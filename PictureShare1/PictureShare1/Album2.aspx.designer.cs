@@ -22,6 +22,24 @@ namespace PictureShare1 {
         protected global::Telerik.Web.UI.RadCodeBlock RadCodeBlock1;
         
         /// <summary>
+        /// RadToolTipManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadToolTipManager RadToolTipManager1;
+        
+        /// <summary>
+        /// RadToolTip1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadToolTip RadToolTip1;
+        
+        /// <summary>
         /// LabelAlbumPin control.
         /// </summary>
         /// <remarks>
