@@ -260,19 +260,18 @@
         </script>
     </telerik:RadCodeBlock>
 
-    <div>
+    <div class="albums_container">
         <telerik:RadToolTipManager ID="RadToolTipManager1" runat="server"></telerik:RadToolTipManager>
         <telerik:RadToolTip ID="RadToolTip1" runat="server" Text="TEST" Animation="FlyIn" Visible="true"></telerik:RadToolTip>
-        <h1 class="album_titles">Pin:
-            <asp:Label ID="LabelAlbumPin" runat="server" /></h1>
-        <h1 class="album_titles">Name:
-        <%--<asp:Label ID="LabelAlbumName" runat="server" /> <br />  --%>
-            <telerik:RadTextBox ID="RadTextBoxAlbumName" runat="server" ShowButton="false"></telerik:RadTextBox>
-            <asp:Button ID="ButtonChangeAlbumName" runat="server" Text="Change Name" OnClick="ButtonChangeAlbumName_Click"></asp:Button>            
-        </h1>
-        <br />
-        <a runat="server" href="~/Payment" class="more_space">Get more space!</a>
-        <br />
+        <div class="orange">
+            <h3 class="album_titles">Pin:
+                <asp:Label ID="LabelAlbumPin" runat="server" /></h3>
+            <h3 class="album_titles">Name
+            <%--<asp:Label ID="LabelAlbumName" runat="server" /> <br />  --%>
+                <telerik:RadTextBox ID="RadTextBoxAlbumName" runat="server" ShowButton="false"></telerik:RadTextBox>
+                <asp:Button ID="ButtonChangeAlbumName" runat="server" Text="Change Name" OnClick="ButtonChangeAlbumName_Click"></asp:Button>            
+            </h3>
+        </div>
         <asp:HiddenField ID="HiddenFieldDownload" runat="server" />
         <asp:Button ID="ButtonDownload" runat="server" Style="display: none" />
         <telerik:RadFileExplorer ID="RadFileExplorerAlbum"
@@ -302,8 +301,9 @@
                 </telerik:RadImageGallery>
             </ContentTemplate>
         </telerik:RadWindow>
+        <a runat="server" href="~/Payment" class="more_space">Get more space!</a>
     </div>
-    Tips
+    <h4>Tips</h4>
     <ol>
         <li>Find the upload button and start uploading your files.</li>
         <li>Create a different folder inside your album for each person so pictures don't get mixed together.</li>

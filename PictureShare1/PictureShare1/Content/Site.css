@@ -44,7 +44,8 @@
 .RadFileExplorer .jpg:before, .RadFileExplorer .jpeg:before, .RadFileExplorer .jpe:before,
 .RadFileExplorer .rfeThumbnailView .rfeFile .rfeFileIcon:before,
 #ctl00_MainContent_RadTextBoxAlbumName_wrapper:after,
-.payment .select:after {
+.payment .select:after,
+.more_space:after {
   font-family: 'pinzey';
   speak: none;
   font-style: normal;
@@ -63,6 +64,7 @@
 .RadFileExplorer .RadToolBar .icnForward .rtbText:before,
 .payment #MainContent_ButtonSubmit:after,
 #ctl00_MainContent_RadTextBoxAlbumName_wrapper:after,
+.more_space:after,
 .icon-arrow-right:before { content: "\e82d"; }
 .RadFileExplorer .RadToolBar .icnBack .rtbText:before,
 .icon-arrow-left:before { content: "\e82e"; }
@@ -156,6 +158,7 @@ body p a img { display: none !important; }
 body {
   position: relative;
   font-family: 'Open Sans', sans-serif;
+  color: rgba(255, 255, 255, 0.8);
   min-height: 100vh;
   background: #f0586f;
   background: -moz-linear-gradient(45deg,  #f0586f 0%, #452f41 100%);
@@ -203,6 +206,10 @@ body .navbar-inverse .navbar-toggle { border: none; }
 body .navbar-inverse .navbar-toggle:hover,
 body .navbar-inverse .navbar-toggle:focus { background-color: transparent; }
 body .navbar-inverse .navbar-collapse { border-color: transparent; }
+
+/* Lists */
+
+ol, ul { color: rgba(255, 255, 255, 0.8); }
 
 /* ----- Top ----- */
 
@@ -1071,8 +1078,8 @@ h4 {
 h2 { font-size: 40px; }
 h4 { font-weight: normal; font-size: 21px; }
 
-h1.album_titles { display: inline-block; float: left; }
-h1.album_titles:last-of-type { float: right; }
+h3.album_titles { display: inline-block; float: left; }
+h3.album_titles:last-of-type { float: right; margin-top: 14px; }
 
 /* -- Forms -- */
 
@@ -1308,6 +1315,7 @@ body dt { font-weight: normal; margin-bottom: 18px; text-transform: uppercase; }
   padding: 10px 0;
   border-bottom: 2px solid #a7a9ac;
 }
+#ctl00_MainContent_RadTextBoxAlbumName { font-size: 24px; border-bottom: 2px solid rgba(255, 255, 255, 0.8) }
 .register input:focus,
 .set_password input:focus,
 #ctl00_MainContent_RadTextBoxAlbumName:focus { border: none; border-bottom: 2px solid #a7a9ac; box-shadow: none; }
@@ -1471,15 +1479,18 @@ body .RadGrid_Default .rgSelectedRow,
 body .RadFileExplorer_Default .rfeThumbList .rfeSelectedLink { background: rgba(255, 255, 255, 0.4); background-image: none; border: none; border-radius: 0; }
 body .RadToolBar_Horizontal .rtbItem,
 body .RadToolBar_Horizontal .rtbItem:first-child { margin-left: 28px; }
-body .RadFileExplorer .RadToolBar .rtbInner { height: auto; min-height: 32px; padding: 7px 0;
-  background: -moz-linear-gradient(45deg,  #f99f2a 0%, #f0586f 100%);
-  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#f99f2a), color-stop(100%,#f0586f));
-  background: -webkit-linear-gradient(45deg,  #f99f2a 0%,#f0586f 100%);
-  background: -o-linear-gradient(45deg,  #f99f2a 0%,#f0586f 100%);
-  background: -ms-linear-gradient(45deg,  #f99f2a 0%,#f0586f 100%);
-  background: linear-gradient(45deg,  #f99f2a 0%,#f0586f 100%);
+body .RadFileExplorer .RadToolBar .rtbInner,
+.orange { height: auto; min-height: 32px; padding: 7px 0;
+  background: #f99f2a;
+  background: -moz-linear-gradient(left,  #f99f2a 0%, #f0586f 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#f99f2a), color-stop(100%,#f0586f));
+  background: -webkit-linear-gradient(left,  #f99f2a 0%,#f0586f 100%);
+  background: -o-linear-gradient(left,  #f99f2a 0%,#f0586f 100%);
+  background: -ms-linear-gradient(left,  #f99f2a 0%,#f0586f 100%);
+  background: linear-gradient(to right,  #f99f2a 0%,#f0586f 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f99f2a', endColorstr='#f0586f',GradientType=1 );
 }
+.orange { display: inline-block; width: 100%; margin-bottom: -5px; padding: 0 28px; }
 body .rtbItem span, body .rtbItem span:before { font-size: 24px; color: rgba(255, 255, 255, 0.8); }
 body .RadTreeView .rtLines .rtBot.rtSelected,
 body .RadGrid_Default .rgHeader,
@@ -1569,6 +1580,26 @@ body .RadFileExplorer .rfeThumbnailView .rfeThumbTitle { padding: 8px 0 0 0; }
 body .RadFileExplorer_Default .rfeThumbList .rfeLink:hover { background-color: rgba(255, 255, 255, 0.4); border-radius: 0; }
 
 
+/* -- Tool Tips -- */
+
+div.RadToolTip table.rtWrapper td.rtWrapperContent {
+  border: none;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+.albums_container { position: relative; }
+.more_space {
+  position: absolute;
+    right: -75px;
+    color: #a05366;
+    background: #fff;
+    font-size: 18px;
+    bottom: 0;
+    padding: 7px 14px;
+}
+.more_space:hover { color: #a05366; right: -80px; }
+.more_space:after { margin-left: 7px; }
+
+
 /* -- Image Gallery --- */
 
 body .RadWindow_Default td.rwWindowContent,
@@ -1588,6 +1619,9 @@ footer { color: rgba(255, 255, 255, 0.8); margin-top: 28px; clear: both; width: 
 
 @media (min-width: 1500px) {
   #existing_album, #new_album { width: 50%; }
+}
+@media (max-width: 1305px) {
+  .more_space { display: none; }
 }
 @media (min-width: 1200px) {
   .body-content { max-width: 50%; }
