@@ -296,8 +296,9 @@
             Modal="true">
             <ContentTemplate>
                 <telerik:RadImageGallery runat="server" ID="RadImageGallery2" DisplayAreaMode="Image"
-                    Width="600px" Height="600" Visible="true">
+                    Width="600px" Height="600" Visible="true" >
                      <ThumbnailsAreaSettings Mode="ImageSliderPreview" />
+                     <ClientSettings AllowKeyboardNavigation="true"/>
                 </telerik:RadImageGallery>
             </ContentTemplate>
         </telerik:RadWindow>
