@@ -250,7 +250,8 @@
                 </li>
             </ul>
             <p>Does this sound familiar? You go on a trip with friends or family and everyone takes pictures. You get home and realize it’s so hard to share them. Not everyone uses an online photo service and the ones that do all use something different. How are you going to get all those great pictures?</p>
-            <p>There is an answer and it is Pinzey! Pinzey is the place where everyone, regardless of what tools they already own, can share their files. No need for them to sign up to something new, and no need for them to stop using the tools they already love.</p>
+            <p>There is an answer and it is Pinzey! Pinzey is the place where everyone, regardless of what tools they already own, can exchange photos. There is no need to make your friends and family sign up to something new, and no need for them to stop using the tools they already love.</p>
+            <p>We built this site for our family and friends but we made it open for everyone to use. If you find it useful please consider a paid account to help us pay for storage and bandwidth.</p>
             <a href="/Account/Register" class="buttonStyle2">Come try it out!</a>
         </div>
     </div>
