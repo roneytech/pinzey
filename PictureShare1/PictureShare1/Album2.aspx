@@ -259,16 +259,15 @@
     <div>
         <telerik:RadToolTipManager ID="RadToolTipManager1" runat="server"></telerik:RadToolTipManager>
         <telerik:RadToolTip ID="RadToolTip1" runat="server" Text="TEST" Animation="FlyIn" Visible="true"></telerik:RadToolTip>
-        <h1>Pin:
+        <h1 class="album_titles">Pin:
             <asp:Label ID="LabelAlbumPin" runat="server" /></h1>
-        <br />
-        <h1>Name:
+        <h1 class="album_titles">Name:
         <%--<asp:Label ID="LabelAlbumName" runat="server" /> <br />  --%>
             <telerik:RadTextBox ID="RadTextBoxAlbumName" runat="server" ShowButton="false"></telerik:RadTextBox>
             <asp:Button ID="ButtonChangeAlbumName" runat="server" Text="Change Name" OnClick="ButtonChangeAlbumName_Click"></asp:Button>            
         </h1>
         <br />
-        <a runat="server" href="~/Payment">Get more space!</a>
+        <a runat="server" href="~/Payment" class="more_space">Get more space!</a>
         <br />
         <asp:HiddenField ID="HiddenFieldDownload" runat="server" />
         <asp:Button ID="ButtonDownload" runat="server" Style="display: none" />

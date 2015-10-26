@@ -1071,6 +1071,9 @@ h4 {
 h2 { font-size: 40px; }
 h4 { font-weight: normal; font-size: 21px; }
 
+h1.album_titles { display: inline-block; float: left; }
+h1.album_titles:last-of-type { float: right; }
+
 /* -- Forms -- */
 
 form { color: #7e7e7e; }
@@ -1174,6 +1177,7 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
 .error h3 { padding-top: 70px; }
 .error + p a,
 .error + p a:hover { font-weight: bold !important; color: rgba(0, 0, 0, 0.4); }
+.error + p a:hover { text-decoration: underline !important; }
 
 
 /* ----- About & Pricing ----- */
@@ -1328,7 +1332,7 @@ body dt { font-weight: normal; margin-bottom: 18px; text-transform: uppercase; }
 .register input[type="submit"]:hover,
 .set_password input[type="submit"]:hover,
 #MainContent_ButtonChangeAlbumName:hover { color: rgba(255, 255, 255, 0.6); background: transparent; }
-#MainContent_ButtonChangeAlbumName { padding-bottom: 0; float: none; margin: 0; line-height: 1.4; text-align: left; opacity: 0; }
+#MainContent_ButtonChangeAlbumName { padding-bottom: 0; padding-left: 0; width: 40px; float: none; margin: 0; line-height: 1.4; text-align: left; opacity: 0; }
 body #ctl00_MainContent_RadTextBoxAlbumName_wrapper { position: relative; width: 250px !important; }
 #ctl00_MainContent_RadTextBoxAlbumName_wrapper:after {
     right: -40px;
@@ -1572,7 +1576,7 @@ body .RadImageGallery { background-color: transparent; }
 body .RadImageGallery .rigActiveImage img { padding-top: 0 !important; }
 body .rwWindowContent > div,
 body .RadImageGallery { width: 100% !important; }
-body .RadImageGallery .rigItemBox { height: auto !important; }
+body .RadImageGallery .rigItemBox { height: auto !important; min-height: 500px; }
 body .TelerikModalOverlay { background-color: #000 !important; opacity: 0.7 !important; }
 
 
