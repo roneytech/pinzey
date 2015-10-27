@@ -1197,7 +1197,7 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
   text-align: center;
   position: relative;
 }
-#pricing { background: #f1f2f2; padding-bottom: 40px; }
+#pricing { background: #f1f2f2; padding-bottom: 60px; }
 #about .body-content,
 #pricing .body-content { max-width: 60%; margin: 0 auto; }
 
