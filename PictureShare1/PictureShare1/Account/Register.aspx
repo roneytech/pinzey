@@ -5,7 +5,7 @@
     <p class="text-danger">
         <asp:Literal runat="server" ID="ErrorMessage" />
     </p>
-
+    <asp:PlaceHolder id="loginForm" runat="server">
     <div class="form-horizontal register">
         <h4>Create a new account</h4>
         <div class="white_container">
@@ -42,5 +42,14 @@
                 <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn btn-default" />
             </div>
         </div>
+        </asp:PlaceHolder>
+    <asp:PlaceHolder runat="server" ID="EmailSentForm" ViewStateMode="Disabled" Visible="false">
+        <p>
+            <h1>Confirmation Email Sent</h1>
+        </p>
+        <p>
+            Please check your email and confirm your email address.
+        </p>
+    </asp:PlaceHolder>
     </div>
 </asp:Content>

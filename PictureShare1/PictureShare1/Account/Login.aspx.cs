@@ -31,30 +31,49 @@ namespace PictureShare1.Account
                 var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 var signinManager = Context.GetOwinContext().GetUserManager<ApplicationSignInManager>();
 
-                // This doen't count login failures towards account lockout
-                // To enable password failures to trigger lockout, change to shouldLockout: true
-                var result = signinManager.PasswordSignIn(Email.Text, Password.Text, RememberMe.Checked, shouldLockout: false);
-
-                switch (result)
+                // Require the user to have a confirmed email before they can log on.
+                var user = manager.FindByName(Email.Text);
+                if (user != null)
                 {
-                    case SignInStatus.Success:
-                        IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
-                        //IdentityHelper.RedirectToReturnUrl("~/Album.aspx", Response);
-                        break;
-                    case SignInStatus.LockedOut:
-                        Response.Redirect("/Account/Lockout");
-                        break;
-                    case SignInStatus.RequiresVerification:
-                        Response.Redirect(String.Format("/Account/TwoFactorAuthenticationSignIn?ReturnUrl={0}&RememberMe={1}", 
-                                                        Request.QueryString["ReturnUrl"],
-                                                        RememberMe.Checked),
-                                          true);
-                        break;
-                    case SignInStatus.Failure:
-                    default:
-                        FailureText.Text = "Invalid login attempt";
+                    if (!manager.IsEmailConfirmed(user.Id))
+                    {
+                        FailureText.Text = "You must have a confirmed email to log in.";
                         ErrorMessage.Visible = true;
-                        break;
+                    }
+                    else
+                    {
+
+                        // This doen't count login failures towards account lockout
+                        // To enable password failures to trigger lockout, change to shouldLockout: true
+                        var result = signinManager.PasswordSignIn(Email.Text, Password.Text, RememberMe.Checked, shouldLockout: false);
+
+                        switch (result)
+                        {
+                            case SignInStatus.Success:
+                                IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                                //IdentityHelper.RedirectToReturnUrl("~/Album.aspx", Response);
+                                break;
+                            case SignInStatus.LockedOut:
+                                Response.Redirect("/Account/Lockout");
+                                break;
+                            case SignInStatus.RequiresVerification:
+                                Response.Redirect(String.Format("/Account/TwoFactorAuthenticationSignIn?ReturnUrl={0}&RememberMe={1}",
+                                                                Request.QueryString["ReturnUrl"],
+                                                                RememberMe.Checked),
+                                                  true);
+                                break;
+                            case SignInStatus.Failure:
+                            default:
+                                FailureText.Text = "Invalid login attempt";
+                                ErrorMessage.Visible = true;
+                                break;
+                        }
+                    }
+                }
+                else
+                {
+                    FailureText.Text = "Invalid login attempt";
+                    ErrorMessage.Visible = true;
                 }
             }
         }
