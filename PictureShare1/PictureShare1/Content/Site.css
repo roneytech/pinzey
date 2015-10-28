@@ -1097,6 +1097,7 @@ input {
   -o-transition: all 0.4s ease-in-out;
 }
 input:focus { border: none; border-bottom: 2px solid #a7a9ac; }
+body .form-control { height: 40px; }
 input[type="checkbox"], input[type="radio"] { float: left; width: auto !important; margin-top: 0; margin-right: 6px; }
 input[type="submit"] {
   color: #A05366;
@@ -1176,14 +1177,13 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
   display: inline-block;
   clear: both;
   width: 100%; text-align: center;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.4) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
   font-size: 21px;
 }
 #MainContent_LabelErrorMessage,
 .error h3 { padding-top: 70px; }
 .error + p a,
-.error + p a:hover { font-weight: bold !important; color: rgba(0, 0, 0, 0.4); }
+.error + p a:hover { color: rgba(255, 255, 255, 0.8); }
 .error + p a:hover { text-decoration: underline !important; }
 
 
@@ -1195,10 +1195,9 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
   background: #fff;
   font-size: 18px;
   text-align: center;
-  padding-bottom: 100px;
   position: relative;
 }
-#pricing { background: #f1f2f2; }
+#pricing { background: #f1f2f2; padding-bottom: 60px; }
 #about .body-content,
 #pricing .body-content { max-width: 60%; margin: 0 auto; }
 
@@ -1256,7 +1255,7 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
 }
 .white h4 { color: #414042; font-size: 24px; margin-bottom: 7px; }
 .white p { color: #939598; font-size: 14px; }
-.pricing_table li a {
+.pricing_table li a.button {
   position: absolute;
   color: rgba(255, 255, 255, 0.8);
   bottom: 21px; right: 21px;

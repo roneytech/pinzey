@@ -220,33 +220,33 @@
             <ul class="pricing_table">
                 <li>
                     <div class="white">
-                        <h4>Free</h4>
+                        <a href="/Account/register.aspx"><h4>Free</h4>
                         <p>Simple sharing</p>
                         <hr />
                         <h5>Files:</h5>
-                        <p>.JPG, .PNG</p>
+                        <p>.JPG, .PNG</p></a>
                     </div>
-                    <a href="/Account/register.aspx">Yes Please</a>
+                    <a href="/Account/register.aspx" class="button">Yes Please</a>
                 </li>
                 <li>
                     <div class="white">
-                        <h4>$2 per month</h4>
+                        <a href="/payment"><h4>$2 per month</h4>
                         <p>More Storage</p>
                         <hr />
                         <h5>Files:</h5>
-                        <p>.JPG, .PNG, .MP4, .PDF, .DOC, .PSD, .AI</p>
+                        <p>.JPG, .PNG, .MP4, .PDF, .DOC, .PSD, .AI</p></a>
                     </div>
-                    <a href="/payment">Yes Please</a>
+                    <a href="/payment" class="button">Yes Please</a>
                 </li>
                 <li>
                     <div class="white">
-                        <h4>$4 per month</h4>
+                        <a href="/payment"><h4>$4 per month</h4>
                         <p>Unlimited Storage</p>
                         <hr />
                         <h5>Files:</h5>
-                        <p>.JPG, .PNG, .MP4, .PDF, .DOC, .PSD, .AI</p>
+                        <p>.JPG, .PNG, .MP4, .PDF, .DOC, .PSD, .AI</p></a>
                     </div>
-                    <a href="/payment">Yes Please</a>
+                    <a href="/payment" class="button">Yes Please</a>
                 </li>
             </ul>
             <p>Does this sound familiar? You go on a trip with friends or family and everyone takes pictures. You get home and realize it’s so hard to share them. Not everyone uses an online photo service and the ones that do all use something different. How are you going to get all those great pictures?</p>
