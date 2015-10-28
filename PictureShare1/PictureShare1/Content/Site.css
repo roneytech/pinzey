@@ -173,7 +173,7 @@ a,
 button,
 .button,
 input[type="submit"] { cursor: pointer; }
-p { margin-bottom: 21px; }
+p { margin-bottom: 21px; color: rgba(255, 255, 255, 0.8); }
 form p a { color: rgba(255, 255, 255, 0.8) !important; }
 
 /* ----- Header ----- */
@@ -1356,10 +1356,11 @@ body #ctl00_MainContent_RadTextBoxAlbumName_wrapper { position: relative; width:
 #loginForm { position: relative; }
 #MainContent_RegisterHyperLink {
   position: absolute;
-  bottom: 40px;
+  bottom: 80px;
   color: rgba(255, 255, 255, 0.8);
   left: 28px;
 }
+#MainContent_ForgotPasswordHyperLink { font-size: 21px; }
 
 
 /* ----- Payment Processing ----- */
