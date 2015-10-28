@@ -174,6 +174,7 @@ button,
 .button,
 input[type="submit"] { cursor: pointer; }
 p { margin-bottom: 21px; }
+form p a { color: rgba(255, 255, 255, 0.8) !important; }
 
 /* ----- Header ----- */
 
@@ -1172,8 +1173,7 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
 .right .error,
 .error + p,
 #MainContent_LabelLoginError,
-#MainContent_LabelErrorMessage,
-.text-danger {
+#MainContent_LabelErrorMessage {
   display: inline-block;
   clear: both;
   width: 100%; text-align: center;
@@ -1185,6 +1185,8 @@ input[type="submit"]:active { outline: none; box-shadow: none; border: none; }
 .error + p a,
 .error + p a:hover { color: rgba(255, 255, 255, 0.8); }
 .error + p a:hover { text-decoration: underline !important; }
+.text-danger,
+.text-danger ul { color: #f0586f !important; }
 
 
 /* ----- About & Pricing ----- */
@@ -1428,7 +1430,7 @@ body .RadFileExplorer {
 .RadToolBar_Default { font-family: 'Open Sans', sans-serif; background-color: transparent; }
 body #RAD_SPLITTER_PANE_CONTENT_ctl00_MainContent_RadFileExplorerAlbum_paneTree { height: calc(100% - 14px) !important; }
 body .RadSplitter { width: 100% !important; }
-body #ctl00_MainContent_RadFileExplorerAlbum_splitter { height: 454px !important; width: 100% !important; overflow: hidden; }
+body #ctl00_MainContent_RadFileExplorerAlbum_splitter { height: 454px !important;/* width: 100% !important; overflow: hidden;*/ }
 body .RadToolBar_Default .rtbOuter { background: #F9FAFC; background-image: none; box-shadow: none; border: none; padding: 0; }
 body .RadSplitter .rspPane {  }
 body .RadSplitter .rspResizeBar { border-left: none; width: 1px; }
@@ -1463,7 +1465,7 @@ body .RadFileExplorer .jpg,
 body .RadFileExplorer .jpeg,
 body .RadFileExplorer .jpe,
 body .RadFileExplorer .rfeThumbnailView .rfeFile .rfeFileIcon { font-size: 14px; background: none; padding: 0 !important; }
-body .RadSplitter_Default .rspResizeBar { border-right-color: rgba(255, 255, 255, 0.8); }
+body .RadSplitter_Default .rspResizeBar { border-right-color: rgba(255, 255, 255, 0.8); cursor: inherit !important; }
 body .RadTreeView_Default .rtPlus,
 body .RadTreeView_Default .rtMinus { margin-top: 0; width: 14px; height: 14px; }
 .RadFileExplorer .RadToolBar .icnUpload .rtbText:before { margin-right: 4px; }
@@ -1588,11 +1590,11 @@ div.RadToolTip table.rtWrapper td.rtWrapperContent {
 .albums_container { position: relative; }
 .more_space {
   position: absolute;
-    right: -75px;
+    right: 0;
     color: #a05366;
     background: #fff;
     font-size: 18px;
-    bottom: 0;
+    bottom: -40px;
     padding: 7px 14px;
 }
 .more_space:hover { color: #a05366; right: -80px; }
@@ -1601,7 +1603,7 @@ div.RadToolTip table.rtWrapper td.rtWrapperContent {
 
 /* -- Image Gallery --- */
 
-body .RadWindow_Default td.rwWindowContent,
+body .RadWindow_Default td.rwWindowContent { background-color: #fff; }
 body .RadImageGallery { background-color: transparent; }
 body .RadImageGallery .rigActiveImage img { padding-top: 0 !important; }
 body .rwWindowContent > div,
@@ -1624,7 +1626,7 @@ footer { color: rgba(255, 255, 255, 0.8); margin-top: 28px; clear: both; width: 
 }
 @media (min-width: 1200px) {
   .body-content { max-width: 50%; }
-  body .RadFileExplorer .rfePaneGrid { width: 100% !important; }
+  /*body .RadFileExplorer .rfePaneGrid { width: 100% !important; }*/
 }
 @media (max-width: 1300px) {
   #logo { top: 40px; }
@@ -1651,12 +1653,16 @@ footer { color: rgba(255, 255, 255, 0.8); margin-top: 28px; clear: both; width: 
   body .RadFileExplorer .rfeThumbnailView .rfeImageFile img { height: auto; max-height: 80px; }
 }
 @media (max-width: 850px) {
+  #about .body-content, #pricing .body-content, .body-content { max-width: 90%; }
   .pricing_table li { min-height: 300px; }
   .pricing_table li .white { width: 190px; }
   .account_settings .dl-horizontal dt { float: left; clear: left; }
   .account_settings .dl-horizontal dd { margin-left: 0; float: left; }
   body .RadFileExplorer .rfeThumbnailView .rlvI { width: 70px; }
   body .RadFileExplorer .rfeThumbnailView .rfeImageFile img { height: auto; max-height: 70px; }
+  body #ctl00_MainContent_RadFileExplorerAlbum_paneTree,
+  body #RAD_SPLITTER_PANE_CONTENT_ctl00_MainContent_RadFileExplorerAlbum_paneTree { width: 200px !important; }
+  body #RAD_SPLITTER_PANE_CONTENT_ctl00_MainContent_RadFileExplorerAlbum_paneGrid { min-width: 400px; }
 }
 @media (max-width: 770px) {
   .pricing_table li { min-height: 300px; }
@@ -1672,6 +1678,10 @@ footer { color: rgba(255, 255, 255, 0.8); margin-top: 28px; clear: both; width: 
   body .gnav { width: 100%; }
   body .gnav li { margin: 0; float: none; clear: both; width: 100%; }
   body .navbar-collapse { padding: 0; }
+  body .RadSplitter_Default .rspResizeBar,
+  body #ctl00_MainContent_RadFileExplorerAlbum_paneTree { display: none; }
+  body #ctl00_MainContent_RadFileExplorerAlbum_splitter,
+  body #RAD_SPLITTER_PANE_CONTENT_ctl00_MainContent_RadFileExplorerAlbum_paneGrid { width: 100% !important; }
 }
 @media (max-width: 740px) {
   .pricing_table li { min-height: 330px; }
@@ -1693,7 +1703,6 @@ footer { color: rgba(255, 255, 255, 0.8); margin-top: 28px; clear: both; width: 
     clear: both; float: none;
   }
   .pricing_table li .white { left: -21px; }
-  #about .body-content, #pricing .body-content, .body-content { max-width: 90%; }
   body .RadFileExplorer .rfeThumbnailView .rlvI:nth-child(3n+1) { margin-left: 5px; clear: none; }
   body .RadFileExplorer .rfeThumbnailView .rlvI:first-child,
   body .RadFileExplorer .rfeThumbnailView .rlvI:nth-child(4n+1) { margin-left: 0; clear: both; }
