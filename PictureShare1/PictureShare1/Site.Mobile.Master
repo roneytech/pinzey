@@ -34,15 +34,23 @@
         </asp:ScriptManager>
         <div>
             <h1>Pinzey Mobile</h1>
-            <loggedintemplate>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %>!</a></li>
-                    <li><a href="<%=albumLink %>">My Albums</a></li>
-                    <li>
-                        <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
-                    </li>
-                </ul>
-            </loggedintemplate>
+            <asp:LoginView runat="server" ViewStateMode="Disabled">
+                <AnonymousTemplate>
+                    <ul class="nav navbar-nav navbar-right gnav">
+                        <li><a runat="server" href="~/Account/Register">Create account</a></li>
+                        <li><a runat="server" href="~/Account/Login">Login</a></li>
+                    </ul>
+                </AnonymousTemplate>
+                <LoggedInTemplate>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %>!</a></li>
+                        <li><a href="<%=albumLink %>">My Albums</a></li>
+                        <li>
+                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                        </li>
+                    </ul>
+                </LoggedInTemplate>
+            </asp:LoginView>
             <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
             <section class="content-wrapper main-content clear-fix">
                 <asp:ContentPlaceHolder runat="server" ID="MainContent" />
