@@ -192,6 +192,7 @@ header { position: fixed; top: 0; width: 100%; z-index: 1; }
 #logo:before { font-size: 50px; padding-left: 24px; }
 .gnav { float: right; display: inline-block; margin: 0; padding: 0; }
 .gnav li { list-style: none outside none; margin: 0 0 0 7px; float: left; }
+.navbar-nav > li { margin: 0 0 0 7px; }
 body .gnav li a,
 body .navbar-inverse .navbar-nav > li > a {
   color: #fff;
@@ -1084,7 +1085,8 @@ h3.album_titles:last-of-type { float: right; margin-top: 14px; }
 
 /* -- Forms -- */
 
-form { color: #7e7e7e; }
+form,
+.rfeUploadContainer .RadUpload .ruInputs ul { color: #7e7e7e; }
 input {
   color: #7e7e7e;
   padding: 14px 0;
