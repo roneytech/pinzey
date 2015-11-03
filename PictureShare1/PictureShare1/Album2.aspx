@@ -226,15 +226,17 @@
                 // Get list of items.
                 var oExplorer = $find("<%= RadFileExplorerAlbum.ClientID %>");
                 var fileList = oExplorer.get_fileList().get_items();
-
                 for (var i = 0; i < fileList.length; i++) {
-                    var item = new Telerik.Web.UI.ImageGalleryItem({
-                        //title: "Image title",
-                        //description: "Image description",
-                        //thumbnailUrl: fileList[i].Path,
-                        imageUrl: fileList[i].Path
-                    });
-                    oImage.get_items().add(item);
+                    var filePath = fileList[i].Path;
+                    if (/\.(jpe?g|png|gif|bmp)$/i.test(filePath)) {
+                        var item = new Telerik.Web.UI.ImageGalleryItem({
+                            //title: "Image title",
+                            //description: "Image description",
+                            //thumbnailUrl: fileList[i].Path,
+                            imageUrl: fileList[i].Path
+                        });                    
+                        oImage.get_items().add(item);
+                    }
                 }
             }
 
