@@ -278,7 +278,7 @@
         <asp:Button ID="ButtonDownload" runat="server" Style="display: none" />
         <telerik:RadFileExplorer ID="RadFileExplorerAlbum"
             runat="server"
-            Width="700px"
+            Width="100%"
             TreePaneWidth ="300px"
             VisibleControls="FileList, Grid, Toolbar, ListView, TreeView, ContextMenus"
             Configuration-AllowMultipleSelection="true"
