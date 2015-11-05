@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Owin;
 using PictureShare1.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace PictureShare1.Account
 {
@@ -26,11 +27,27 @@ namespace PictureShare1.Account
                 signInManager.SignIn( user, isPersistent: false, rememberBrowser: false);
                 loginForm.Visible = false;
                 EmailSentForm.Visible = true;
+
+                // For Beta add all users to full account.
+                updateUsersRole(user.Id, "level2");
             }
             else 
             {
                 ErrorMessage.Text = result.Errors.FirstOrDefault();
             }
+        }
+
+        protected void updateUsersRole(string userId, string roleName)
+        {
+            var context = HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>();
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+            if (!roleManager.RoleExists(roleName))
+            {
+                var roleresult = roleManager.Create(new IdentityRole(roleName));
+            }
+            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var result = manager.AddToRole(userId, roleName);
         }
     }
 }
