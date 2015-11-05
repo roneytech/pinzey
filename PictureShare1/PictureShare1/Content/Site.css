@@ -1632,7 +1632,7 @@ footer { color: rgba(255, 255, 255, 0.8); margin-top: 28px; clear: both; width: 
   .more_space { display: none; }
 }
 @media (min-width: 1200px) {
-  .body-content { max-width: 50%; }
+  .body-content { max-width: 90%; }
   /*body .RadFileExplorer .rfePaneGrid { width: 100% !important; }*/
 }
 @media (max-width: 1300px) {
