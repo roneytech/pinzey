@@ -1551,6 +1551,7 @@ body .RadUpload .ruRemove { margin-bottom: 0; background-image: url('../fonts/cr
 body .RadUpload .ruRemove,
 body .RadUpload .ruInputs li input[type="button"] { opacity: 0; z-index: 1; }
 body .RadUpload .ruInputs li:last-child input[type="button"] { opacity: 1; }
+body .RadUpload .ruInputs { color: #7e7e7e }
 body .RadUpload .ruFileWrap { overflow: visible !important; }
 .RadAsyncUpload span.ruFileWrap:after { right: -14px; top: 5px; position: absolute; }
 body .rfeUploadContainer .RadUpload .ruInputs li:last-child span.ruFileWrap:after { display: none; }
@@ -1558,6 +1559,10 @@ body .RadUpload .ruUploadSuccess { background-image: none; }
 .RadUpload .ruUploadSuccess:before { color: green; position: absolute; top: 5px; left: 0; }
 body .RadTreeView_Default,
 body .RadSplitter_Default *:before { color: rgba(255, 255, 255, 0.8); }
+
+body .rfeUploadInfoPanel dl,
+body .rfeUploadInfoPanel dt { margin-bottom: 0px; }
+body .rfeUploadInfoPanel { padding: 7px; }
 
 body .RadFileExplorer .rfeThumbnailView .rlvI { width: 91px; }
 body .RadFileExplorer_Default .rfeThumbList .rfeSelectedLink:hover,
