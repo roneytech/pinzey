@@ -1211,6 +1211,8 @@ body .form-horizontal .checkbox { padding-top: 0; }
 
 #about h2,
 #pricing h2 { color: #a15366; }
+#about p,
+#pricing p { color: #414042; }
 #about .icon-arrow-down {
   color: rgba(255, 255, 255, 0.8);
   left: 50%;
@@ -1500,6 +1502,7 @@ body .RadFileExplorer .RadToolBar .rtbInner,
 }
 .orange { display: inline-block; width: 100%; margin-bottom: -5px; padding: 0 28px; }
 body .rtbItem span, body .rtbItem span:before { font-size: 24px; color: rgba(255, 255, 255, 0.8); }
+body .RadTreeView .rtLines .rtBot { background-image: none; }
 body .RadTreeView .rtLines .rtBot.rtSelected,
 body .RadGrid_Default .rgHeader,
 body .RadTreeView_Default .rtSelected,
