@@ -262,7 +262,11 @@
         </script>
     </telerik:RadCodeBlock>
 
+    <div class="main_left"></div>
+    <div class="main_right"></div>
+
     <div class="albums_container">
+        
         <telerik:RadToolTipManager ID="RadToolTipManager1" runat="server"></telerik:RadToolTipManager>
         <telerik:RadToolTip ID="RadToolTip1" runat="server" Text="TEST" Animation="FlyIn" Visible="true"></telerik:RadToolTip>
         <div class="orange">
@@ -279,7 +283,7 @@
         <telerik:RadFileExplorer ID="RadFileExplorerAlbum"
             runat="server"
             Width="100%"
-            TreePaneWidth ="300px"
+            TreePaneWidth ="25%"
             VisibleControls="FileList, Grid, Toolbar, ListView, TreeView, ContextMenus"
             Configuration-AllowMultipleSelection="true"
             Configuration-MaxUploadFileSize="500000000"
@@ -291,6 +295,7 @@
             OnExplorerPopulated="RadFileExplorerAlbum_ExplorerPopulated"
             OnClientLoad="OnFileExplorerLoad">
         </telerik:RadFileExplorer>
+        
         <telerik:RadWindow runat="server" ID="RadWindow1"
             Behaviors="Close,Move" ShowContentDuringLoad="true"
             VisibleStatusbar="false" AutoSize="false" Height="650px" Width="640px"
@@ -305,11 +310,15 @@
         </telerik:RadWindow>
         <a runat="server" href="~/Payment" class="more_space">Get more space!</a>
     </div>
-    <h4>Tips</h4>
-    <ol>
-        <li>Find the upload button and start uploading your files.</li>
-        <li>Create a different folder inside your album for each person so pictures don't get mixed together.</li>
-        <li>Right click on files or folders to see more options.</li>
-    </ol>
+
+    <div class="tips">
+        <h4>Tips</h4>
+        <ol>
+            <li>Find the upload button and start uploading your files.</li>
+            <li>Create a different folder inside your album for each person so pictures don't get mixed together.</li>
+            <li>Right click on files or folders to see more options.</li>
+        </ol>
+    </div>
+
 </asp:Content>
 
