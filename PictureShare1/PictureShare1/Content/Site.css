@@ -178,7 +178,7 @@ form p a { color: rgba(255, 255, 255, 0.8) !important; }
 
 /* ----- Header ----- */
 
-body .navbar-inverse { background-color: transparent; border: none; position: absolute; }
+body .navbar-inverse { background-color: transparent; border: none; position: absolute; min-height: 90px; }
 header { position: fixed; top: 0; width: 100%; z-index: 1; }
 #logo {
   color: #fff;
@@ -1752,3 +1752,6 @@ footer { color: rgba(255, 255, 255, 0.8); margin-top: 28px; clear: both; width: 
   #existing_album, #new_album { left: 5%; }
   .account_settings .dl-horizontal { margin-left: 0; }
 }
+
+.main_left { left: 25%; background: #fff; }
+.main_right { width: 75%; background: #f1f4f8; }
