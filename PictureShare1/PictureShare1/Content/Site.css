@@ -1753,5 +1753,16 @@ footer { color: rgba(255, 255, 255, 0.8); margin-top: 28px; clear: both; width: 
   .account_settings .dl-horizontal { margin-left: 0; }
 }
 
+.RadSplitter + form#ctl01 { position: relative; }
+.RadSplitter + form#ctl01:before,
+.RadSplitter + form#ctl01:after {
+  position: absolute; content: "";
+  height: 100%; top: 90px;
+  z-index: -1;
+}
+.RadSplitter + form#ctl01:before { background: #fff; width: 25%; left: 0; }
+.RadSplitter + form#ctl01:after { background: #f1f4f8; width: 75%; right: 0; }
 .main_left { left: 25%; background: #fff; }
 .main_right { width: 75%; background: #f1f4f8; }
+.orange,
+body .RadFileExplorer .RadToolBar { width: 75%; float: right; }
