@@ -1474,7 +1474,7 @@ body .RadFileExplorer .jpg,
 body .RadFileExplorer .jpeg,
 body .RadFileExplorer .jpe,
 body .RadFileExplorer .rfeThumbnailView .rfeFile .rfeFileIcon { font-size: 14px; background: none; padding: 0 !important; }
-body .RadSplitter_Default .rspResizeBar { border-right-color: rgba(255, 255, 255, 0.8); cursor: inherit !important; }
+body .RadSplitter_Default .rspResizeBar { border-right-color: transparent; cursor: inherit !important; }
 body .RadTreeView_Default .rtPlus,
 body .RadTreeView_Default .rtMinus { margin-top: 0; width: 14px; height: 14px; }
 .RadFileExplorer .RadToolBar .icnUpload .rtbText:before { margin-right: 4px; }
@@ -1561,8 +1561,6 @@ body .RadUpload .ruFileWrap { overflow: visible !important; }
 body .rfeUploadContainer .RadUpload .ruInputs li:last-child span.ruFileWrap:after { display: none; }
 body .RadUpload .ruUploadSuccess { background-image: none; }
 .RadUpload .ruUploadSuccess:before { color: green; position: absolute; top: 5px; left: 0; }
-body .RadTreeView_Default,
-body .RadSplitter_Default *:before { color: rgba(255, 255, 255, 0.8); }
 
 body .rfeUploadInfoPanel dl,
 body .rfeUploadInfoPanel dt { margin-bottom: 0px; }
@@ -1580,7 +1578,7 @@ body .RadFileExplorer .rfeThumbnailView .rfeLink { color: rgba(255, 255, 255, 0.
 body .RadFileExplorer .RadTreeView .rtHover .rtIn,
 body .RadFileExplorer .RadTreeView .rtSelected .rtIn,
 body .RadFileExplorer .RadTreeView .rtIn,
-body .RadTreeView .rtIn { padding: 2px 2px 3px !important; border: none !important; cursor: pointer; }
+body .RadTreeView .rtIn { padding: 0 0 0 4px !important; border: none !important; cursor: pointer; }
 body .RadFileExplorer .rfeThumbList:nth-child(5n+1),
 body .RadFileExplorer .rfeThumbList:first-child { margin-left: 0; }
 body .RadFileExplorer .rfeThumbList a,
@@ -1771,4 +1769,15 @@ body .RadFileExplorer .RadToolBar { margin-bottom: 21px; }
 body .RadToolBar_Default,
 body .RadToolBar_Default .rtbOuter { background-color: transparent; background: transparent; }
 body .orange h3,
-body .RadFileExplorer .RadToolBar ul { color: #494e54; }
+body .RadFileExplorer .RadToolBar ul,
+body .RadTreeView .rtUL,
+body .RadTreeView_Default .rtSelected .rtIn { color: #494e54; }
+
+body .RadTreeView .rtLines .rtLI,
+body .RadTreeView .rtLines .rtTop,
+body .RadTreeView .rtLines .rtMid { background-image: none; padding: 4px 0; }
+body .RadTreeView_Default .rtPlus, body .RadTreeView_Default .rtMinus { display: none; }
+
+body .RadTreeView_Default { font-family: 'Open Sans', Helvetica, sans-serif; font-size: 14px; }
+
+body .RadTreeView_Default .rtSelected { font-weight: 600; background: #f1f4f8; }
