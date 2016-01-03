@@ -1780,5 +1780,6 @@ body .RadTreeView .rtLines .rtMid { background-image: none; padding: 4px 0; }
 body .RadTreeView_Default .rtPlus, body .RadTreeView_Default .rtMinus { display: none; }
 
 body .RadGrid_Default,
-body .RadTreeView_Default { font-family: 'Open Sans', Helvetica, sans-serif; font-size: 14px; }
+body .RadTreeView_Default,
+body .RadFileExplorer .rfeThumbnailView .rfeThumbTitle { font-family: 'Open Sans', Helvetica, sans-serif; font-size: 14px; }
 body .RadTreeView_Default .rtSelected { font-weight: 600; background: #f1f4f8; }
