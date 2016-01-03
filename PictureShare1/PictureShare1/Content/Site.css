@@ -1362,9 +1362,11 @@ body #ctl00_MainContent_RadTextBoxAlbumName_wrapper { position: relative; width:
 .manage_logins p a { color: #f99f2a; }
 
 #loginForm { position: relative; }
+#loginForm > p,
+.body-content .form-horizontal { position: relative; display: block; width: 50%; margin: 0 auto; }
 #MainContent_RegisterHyperLink {
   position: absolute;
-  bottom: 80px;
+  bottom: 32px;
   color: rgba(255, 255, 255, 0.8);
   left: 28px;
 }
